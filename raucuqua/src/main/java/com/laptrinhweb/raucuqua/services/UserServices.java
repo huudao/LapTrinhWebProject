@@ -19,8 +19,4 @@ public class UserServices {
         return Register.registerAutoID_user(userName,email,password);
     }
 
-    public static void main(String[] args) {
-        System.out.println(getInstance().register("huudao1","huudao1@gmail.com","12345"));
-
-    }
 }

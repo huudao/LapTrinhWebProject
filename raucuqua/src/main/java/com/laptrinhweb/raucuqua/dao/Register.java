@@ -86,8 +86,4 @@ public class Register {
         }
         return false;
     }
-
-    public static void main(String[] args) {
-        registerAutoID_user("thuan_test2","thuan_test1@123","javax1");
-    }
 }
