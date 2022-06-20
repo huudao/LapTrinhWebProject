@@ -15,7 +15,6 @@ public class GetConnection {
         String password = "";
         con = DriverManager.getConnection(url, username, password);
     }
-
     public static GetConnection getInstance() throws SQLException, ClassNotFoundException {
         if (getConnection == null)
             getConnection = new GetConnection();
