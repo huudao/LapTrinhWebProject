@@ -5,42 +5,9 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.laptrinhweb.raucuqua.dao.Util.nextID;
+
 public class Register {
-    public static String nextID(Connection con,String table_name,String id_template,String symbolID) throws SQLException {
-        String sql ="SELECT "+id_template+" FROM "+table_name;
-        PreparedStatement ps = con.prepareStatement(sql);
-        ResultSet rs = ps.executeQuery();
-        List<Integer> id_list = new ArrayList<Integer>();
-        String lastId = null;
-        System.out.println("run nextid");
-        while(rs.next()){
-            lastId = rs.getString(1);
-            id_list.add(Integer.parseInt(rs.getString(1).substring(2)));
-            System.out.println(id_list.get(id_list.size()-1));
-        }
-
-//        int number = Integer.parseInt(lastId.substring(2))+1;
-        int number = getMax(id_list)+1;
-        System.out.println("max id: "+number
-        );
-        String newID = symbolID+String.format("%04d", number);
-        rs.close();
-        return newID;
-    }
-    public static int getMax (List<Integer> list){
-        if(list==null || list.size()==0){
-            return 0;
-        }
-        int max = list.get(0);
-        for (Integer i:list
-             ) {
-            if(max<i){
-                max = i;
-            }
-        }
-        return max;
-    }
-
     // duplicated return true
     public static boolean checkDuplicate(String userName, String email, String password) {
         try {
