@@ -15,8 +15,7 @@ public class Contact {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, nextID);
             ps.setString(2, email);
-            ps.setString(3, name
-            );
+            ps.setString(3, name);
             ps.setString(4, phone_name);
             ps.setString(5, content);
             int clar = ps.executeUpdate();
