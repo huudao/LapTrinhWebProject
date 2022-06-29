@@ -40,12 +40,50 @@ public class Util {
         }
         return max;
     }
+    public static boolean checkDataExist(String id_template,String id,String table_name){
+        try {
+            Connection con = GetConnection.getCon();
+            String sql = "select * from "+table_name+"  where "+id_template+" = ?";
+            PreparedStatement ps  = con.prepareStatement(sql);
+            ps.setString(1,id);
+            ResultSet rs = ps.executeQuery();
+            boolean exist = false;
+            while(rs.next()){
+                if(rs.getString(id_template).equals(id)){
+                    exist = true;break;}
+            }
+            rs.close();
+            return exist;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+    public static void check_amount_in_warehouse(Connection con,String id_product,int amount) throws SQLException {
+        int leftAmount =0;
+        String getAmount = "select amount_bought,amount_imported from product where id_product = ?";
+        PreparedStatement getAmountps= con.prepareStatement(getAmount);
+        getAmountps.setString(1,id_product);
+        ResultSet getamountrs = getAmountps.executeQuery();
+        getamountrs.next();
+        int amount_bought = getamountrs.getInt(1);
+        int amount_imported = getamountrs.getInt(2);
+        if(!((amount_bought+amount)<=amount_imported)){
+            int left_amount = amount_imported-amount_bought;
+            throw new SQLException("amount left in warehouse not enough, only "+left_amount+" items left. But your amount is "+amount+" at product: "+id_product);
+        }
+        getamountrs.close();
+    }
 
     public static void main(String[] args) {
         Connection con = null;
         try {
             con = GetConnection.getCon();
             System.out.println(nextID(con, "user_account", "id_user", "UA"));
+            System.out.println(checkDataExist("id_user","UA0001","user_account"));
+            check_amount_in_warehouse(con,"PD0001",200);
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
