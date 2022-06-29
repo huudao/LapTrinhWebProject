@@ -125,10 +125,61 @@ public class CartFuntions {
             throw new RuntimeException(e);
         }
     }
+    public static int getAmount(String id_user,String id_product){
+        try {
+            Connection con = GetConnection.getCon();
+            String sql = "select c_amount_bought from cart where id_user=? and id_product = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1,id_user);
+            ps.setString(2,id_product);
+            ResultSet rs = ps.executeQuery();
+            int amount = -1;
+            if(rs.next()==true){
+                amount = rs.getInt(1);
+            }
+            return amount;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public static int deleteProduct(String id_user,String id_product) {
+        try {
+            Connection con = GetConnection.getCon();
+            String sql = "delete from cart where id_user = ? and id_product = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, id_user);
+            ps.setString(2, id_product);
+            return ps.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static double totalMoney(String id_user){
+        List<Cart> products = watch(id_user);
+        double total_money = 0;
+        for (Cart cart:products
+        ) {
+            total_money+=cart.getAmount()*cart.getProduct().getPrice();
+        }
+        return total_money;
+    }
 
     public static void main(String[] args) {
-        watch("UA0001");
-        System.out.println(insertProduct("UA0001","PD0001",10));
-        System.out.println(updateAmount("UA0001","PD0001",10));
+        for(Cart c: watch("UA0001")){
+            System.out.println(c.toString());
+        }
+
+        System.out.println(insertProduct("UA0004","PD0005",10));
+        System.out.println(updateAmount("UA0004","PD0005",10));
+        System.out.println("Z: "+getAmount("UA0004","PD0005"));
+        System.out.println(deleteProduct("UA0004","PD0005"));
+        String id_user = "UA0002";
+            double totalMoneyOfCart = totalMoney(id_user);
+            System.out.println("total money of user: "+id_user+" is "+totalMoneyOfCart);
     }
 }
