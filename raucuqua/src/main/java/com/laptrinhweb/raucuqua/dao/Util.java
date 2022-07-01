@@ -76,14 +76,37 @@ public class Util {
         }
         getamountrs.close();
     }
-
+    public static boolean checkExistMail(String email) {
+        try {
+            Connection con = GetConnection.getCon();
+            String sql ="select count(email) from user_account where email = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1,email);
+            ResultSet rs = ps.executeQuery();
+            int count = 0;
+            while(rs.next()){
+                count = rs.getInt(1);
+            }
+            if(count>=1){
+                rs.close();
+                ps.close();
+                return true;
+            }
+            return false;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
     public static void main(String[] args) {
         Connection con = null;
         try {
             con = GetConnection.getCon();
             System.out.println(nextID(con, "user_account", "id_user", "UA"));
             System.out.println(checkDataExist("id_user","UA0001","user_account"));
-            check_amount_in_warehouse(con,"PD0001",200);
+//            check_amount_in_warehouse(con,"PD0001",200);
+            System.out.println(checkExistMail("thuan0373535207@gmail.com"));
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
