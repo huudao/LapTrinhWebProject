@@ -29,6 +29,7 @@ public class Comment_vote {
             Timestamp date = new Timestamp(new Date().getTime());
             ps.setTimestamp(6, date);
             int scalar = ps.executeUpdate();
+            GetConnection.releaseConection(con);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } catch (ClassNotFoundException e) {

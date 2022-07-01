@@ -20,6 +20,8 @@ public class Register {
                     return true;
                 }
             }
+            GetConnection.releaseConection(con);
+
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -41,6 +43,8 @@ public class Register {
                 psAd.setString(3, email);
                 psAd.setString(4, password);
                 int result = psAd.executeUpdate();
+                GetConnection.releaseConection(con);
+
                 if (result == 1)
                     return true;
                 else

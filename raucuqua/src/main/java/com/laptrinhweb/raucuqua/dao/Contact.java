@@ -20,6 +20,8 @@ public class Contact {
             ps.setString(4, phone_name);
             ps.setString(5, content);
             int clar = ps.executeUpdate();
+            GetConnection.releaseConection(con);
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } catch (ClassNotFoundException e) {

@@ -15,6 +15,7 @@ public class ChangePassword {
             ps.setString(1,newPassword);
             ps.setString(2,id);
             int result = ps.executeUpdate();
+            GetConnection.releaseConection(con);
             if(result ==1){
                 return true;
             }else{
@@ -33,6 +34,7 @@ public class ChangePassword {
             ps.setString(1,newPassword);
             ps.setString(2,email);
             int result = ps.executeUpdate();
+            GetConnection.releaseConection(con);
             if(result >=1){
                 return true;
             }else{

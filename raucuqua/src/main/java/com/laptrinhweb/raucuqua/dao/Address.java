@@ -28,6 +28,7 @@ public class Address {
             ps.setString(8, username);
             ps.setBoolean(9,false);
             int scalar = ps.executeUpdate();
+            GetConnection.releaseConection(con);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } catch (ClassNotFoundException e) {
@@ -56,6 +57,7 @@ public class Address {
                 addresses.add(u);
             }
             rs.close();
+            GetConnection.releaseConection(con);
             return addresses;
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -71,6 +73,7 @@ public class Address {
             ps.setString(1, id_user);
             ps.setString(2, id_address);
             int sclar = ps.executeUpdate();
+            GetConnection.releaseConection(con);
             if(sclar ==1)return true; else return false;
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -86,6 +89,7 @@ public class Address {
             ps.setString(1, id_user);
             ps.setString(2, id_address);
             int sclar = ps.executeUpdate();
+            GetConnection.releaseConection(con);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } catch (ClassNotFoundException e) {
@@ -95,8 +99,8 @@ public class Address {
     }
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
-//        watch("UA0003");
-//        addAddress("UA0005","city 1","district1","ward 1","house address 1","0123","javax");
-//        removeAddress("UA0005","AD0010");
+        watch("UA0003");
+        addAddress("UA0005","city 1","district1","ward 1","house address 1","0123","javax");
+        removeAddress("UA0005","AD0010");
     }
 }

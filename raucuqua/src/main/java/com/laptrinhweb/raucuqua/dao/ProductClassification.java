@@ -37,6 +37,8 @@ public class ProductClassification {
                 products.add(p);
             }
             rs.close();
+            GetConnection.releaseConection(con);
+
             return products;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -69,6 +71,8 @@ public class ProductClassification {
                 products.add(p);
             }
             rs.close();
+            GetConnection.releaseConection(con);
+
             return products;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -101,7 +105,9 @@ public class ProductClassification {
 //                System.out.println(p.getId_product());
                 products.add(p);
             }
-            rs.close();;
+            rs.close();
+            GetConnection.releaseConection(con);
+
             return products;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -135,7 +141,9 @@ public class ProductClassification {
 //                System.out.println(p.getId_product());
                 products.add(p);
             }
-            rs.close();;
+            rs.close();
+            GetConnection.releaseConection(con);
+
             return products;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -167,7 +175,9 @@ public class ProductClassification {
                 p.setImg_url(rs.getString(10));
                 products.add(p);
             }
-            rs.close();;
+            rs.close();
+            GetConnection.releaseConection(con);
+
             return products;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -199,7 +209,9 @@ public class ProductClassification {
                 p.setImg_url(rs.getString(10));
                 products.add(p);
             }
-            rs.close();;
+            rs.close();
+            GetConnection.releaseConection(con);
+
             return products;
         } catch (SQLException e) {
             e.printStackTrace();
