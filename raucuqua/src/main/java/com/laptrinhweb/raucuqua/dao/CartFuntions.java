@@ -48,6 +48,8 @@ public class CartFuntions {
                 user_products.add(cart);
             }
             rs.close();
+            GetConnection.releaseConection(con);
+
             return user_products;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -78,6 +80,7 @@ public class CartFuntions {
             ps.setInt(3, amount);
             int scalar = ps.executeUpdate();
             System.out.println("rumme4 scalar"+scalar);
+            GetConnection.releaseConection(con);
 
             if (scalar == 1) return true;
             else return false;
@@ -116,6 +119,8 @@ public class CartFuntions {
             ps.setString(2, id_user);
             ps.setString(3, id_product);
             int scalar = ps.executeUpdate();
+            GetConnection.releaseConection(con);
+
             if (scalar == 1) return true;
             else
                 return false;
@@ -134,6 +139,8 @@ public class CartFuntions {
             ps.setString(2,id_product);
             ResultSet rs = ps.executeQuery();
             int amount = -1;
+            GetConnection.releaseConection(con);
+
             if(rs.next()==true){
                 amount = rs.getInt(1);
             }
@@ -151,6 +158,8 @@ public class CartFuntions {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, id_user);
             ps.setString(2, id_product);
+            GetConnection.releaseConection(con);
+
             return ps.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);

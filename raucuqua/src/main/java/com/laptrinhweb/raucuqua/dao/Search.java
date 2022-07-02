@@ -39,6 +39,8 @@ public class Search {
             }
             rs.close();
             ps.close();
+            GetConnection.releaseConection(con);
+
             return products;
         } catch (SQLException e) {
             //some error when execute query
@@ -65,6 +67,8 @@ public class Search {
             }
             rs.close();
             ps.close();
+            GetConnection.releaseConection(con);
+
             return blogs;
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -94,6 +98,8 @@ public class Search {
             }
             ps.close();
             rs.close();
+            GetConnection.releaseConection(con);
+
             return p;
         } catch (SQLException e) {
             throw new RuntimeException(e);

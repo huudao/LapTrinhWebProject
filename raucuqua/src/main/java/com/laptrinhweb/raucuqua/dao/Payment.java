@@ -66,6 +66,7 @@ public class Payment {
             ) {
                 CartFuntions.deleteProduct(id_user, cart.getProduct().getId_product());
             }
+            GetConnection.releaseConection(con);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } catch (ClassNotFoundException e) {

@@ -30,6 +30,7 @@ public class Login {
                 if(!rs.getString(4).equals(password)) return null;
                 count++;
             }
+            GetConnection.releaseConection(con);
             if(count ==0) return null;
             return user;
         } catch (SQLException e) {

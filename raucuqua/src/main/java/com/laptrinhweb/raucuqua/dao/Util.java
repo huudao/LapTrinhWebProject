@@ -25,6 +25,7 @@ public class Util {
         int number = getMax(id_list)+1;
         String newID = symbolID+String.format("%04d", number);
         rs.close();
+        GetConnection.releaseConection(con);
         return newID;
     }
     public static int getMax (List<Integer> list){
@@ -53,6 +54,8 @@ public class Util {
                     exist = true;break;}
             }
             rs.close();
+            GetConnection.releaseConection(con);
+
             return exist;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -72,9 +75,12 @@ public class Util {
         int amount_imported = getamountrs.getInt(2);
         if(!((amount_bought+amount)<=amount_imported)){
             int left_amount = amount_imported-amount_bought;
+            GetConnection.releaseConection(con);
             throw new SQLException("amount left in warehouse not enough, only "+left_amount+" items left. But your amount is "+amount+" at product: "+id_product);
         }
         getamountrs.close();
+        GetConnection.releaseConection(con);
+
     }
     public static boolean checkExistMail(String email) {
         try {
@@ -87,6 +93,8 @@ public class Util {
             while(rs.next()){
                 count = rs.getInt(1);
             }
+            GetConnection.releaseConection(con);
+
             if(count>=1){
                 rs.close();
                 ps.close();
