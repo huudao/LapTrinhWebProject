@@ -1,0 +1,203 @@
+.account-contain * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.title-head {
+    font-size: 19px;
+    font-weight: 400;
+    color: #212B25;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.account-contain {
+    background: #f4f4f4;
+    border-radius: 13px;
+    margin-bottom: 20px;
+    padding: 20px;
+}
+.account-contain .block-all {
+    display: flex;
+}
+
+.account-contain .block-left {
+    flex: 0 0 25%;
+    max-width: 25%;
+}
+
+.account-contain .block-left li {
+    list-style-type: none;
+}
+
+.account-contain .block-left li a {
+    font-weight: 400;
+    font-size: 14px;
+    color: #212B25;
+    margin-bottom: 22px;
+    display: block;
+}
+
+.account-contain .block-left .block-account {
+    border-right: 2px solid #9c8e8e;
+}
+
+.account-contain .block-left .block-account p {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 16px;
+    margin-bottom: 28px;
+    color: #212B25;
+    position: relative;
+}
+
+
+.account-contain .block-right {
+    flex: 0 0 75%;
+    max-width: 75%;
+    position: relative;
+    width: 100%;
+    padding-right: 10px;
+    padding-left: 24px;
+}
+
+.account-contain .block-right table th,
+.account-contain .block-right table td{
+    border: 2px solid #9c8e8e;
+    padding: 8px;
+}
+/**/
+.account-contain .block-right form .changePass-input {
+    display: block;
+    width: 100%;
+    border-radius: 18px;
+}
+
+.account-contain .block-right form .changePass-btn {
+    margin-top: 5px;
+    font-size: 14px;
+    color: #ffffff;
+    border: none;
+    border-radius: 9999px;
+    text-align: center;
+    font-weight: 600;
+    padding: 12px;
+    background-color: #e73918;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.account-contain .block-right .address-btn {
+    margin-top: 5px;
+    font-size: 14px;
+    color: #ffffff;
+    border: none;
+    border-radius: 2px;
+    text-align: center;
+    font-weight: 600;
+    padding: 12px;
+    background-color: #e73918;
+}
+
+.account-modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.4);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.account-modal-container {
+    background-color: #fff;
+    max-width: 710px;
+    padding: 15px;
+    position: relative;
+}
+
+.account-modal-close {
+    position: absolute;
+    right: 25px;
+}
+
+.account-modal-header {
+    font-weight: 700;
+    font-size: 16px;
+    text-transform: uppercase;
+    line-height: 19px;
+    border-bottom: 1px solid #E0E0E0;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+
+.account-modal-input {
+    width: 100%;
+    margin: 10px 0;
+}
+
+.account-modal-container #Phone {
+    border: 1px solid #C4CDD5;
+    padding: 0 10px;
+    margin: 10px 0;
+    position: relative;
+    z-index: 10;
+    background: transparent !important;
+    min-height: 42px;
+    font-size: 14px;
+    text-overflow: ellipsis;
+}
+
+.account-modal-button {
+    text-align: right;
+}
+
+.account-modal-button button {
+    margin-top: 10px;
+    padding: 10px 15px;
+    border: none;
+}
+
+.account-modal-button button:first-child {
+    background-color: transparent;
+    border: 1px solid #C4CDD5;
+}
+
+.account-modal-button button:last-child {
+    background-color: #e73918;
+    color: white;
+}
+
+.modal-open {
+    display: flex;
+}
+
+/* San Pham yeu thich*/
+.account-favorite-product {
+    border-collapse: collapse;
+    width: 100%;
+
+}
+
+.account-favorite-product th, .account-favorite-product td {
+    text-align: left;
+    padding: 8px;
+}
+
+
+.account-favorite-product tr:nth-child(even){background-color: #fff}
+
+.account-favorite-product th {
+    background-color: #e73918;
+    color: white;
+}
+
+.account-favorite-product, .account-favorite-product a {
+    color: black;
+}
+
+

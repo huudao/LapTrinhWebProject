@@ -43,5 +43,7 @@ public class Login {
 
     public static void main(String[] args) {
         System.out.println(login("thejavax","jdk7"));
+        UserAccount ua = Login.login("qkhai","12");
+        System.out.println(ua.toString());
     }
 }

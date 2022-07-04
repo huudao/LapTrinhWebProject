@@ -4,10 +4,8 @@ import java.io.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.NoSuchElementException;
-import java.util.StringTokenizer;
+import java.util.*;
+import java.util.stream.Stream;
 
 public class GetConnection {
     private static GetConnection getConnection;
@@ -23,17 +21,45 @@ public class GetConnection {
         con = DriverManager.getConnection(url, username, password);
         pool = new BasicConnectionPool(url, username, password);
     }
-
+    //property
     public static Map<String, String> readConfig() {
 
-        File f = new File(".config");
-        System.out.println(f.getAbsolutePath());
+//        File f = new File(".config");
+//        File m = new File("db.property");
+        InputStream reader = GetConnection.class.getClassLoader().getResourceAsStream(".config");
+//        InputStream reader = GetConnection.class.getClassLoader().;
+//        InputStream n = GetConnection.class.getClassLoader().getResourceAsStream("test.properties");
+//        System.out.println("cannonical "+n);
 
+//        Properties p = new Properties();
+//        try {
+//            System.out.println("reader "+reader);
+//            p.load(reader);
+//            System.out.println(p.keys());
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+
+//        System.out.println(f.getAbsolutePath());
+//        System.out.println("java.class.path "+System.getProperty("java.class.path"));
+//        System.out.println("java.home "+System.getProperty("java.home"));
+//        System.out.println("java.vendor "+System.getProperty("java.vendor"));
+//        System.out.println("java.vendor.url "+System.getProperty("java.vendor.url"));
+//        System.out.println("os.arch "+System.getProperty("os.arch"));
+//        System.out.println("os.name "+System.getProperty("os.name"));
+//        System.out.println("os.version "+System.getProperty("os.version"));
+//        System.out.println("path.separator "+System.getProperty("path.separator"));
+//        System.out.println("user.dir "+System.getProperty("user.dir"));
+//        System.out.println("user.home "+System.getProperty("user.home"));
+//        System.out.println("user.name "+System.getProperty("user.name"));
+//
+//        System.out.println();
         try {
-            BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(f)));
+            BufferedReader br = new BufferedReader(new InputStreamReader(reader));
             Map<String, String> data = new HashMap<String, String>();
             String line;
             while ((line = br.readLine()) != null) {
+                System.out.println(line);
                 StringTokenizer st = new StringTokenizer(line, "\t");
                 try {
                     data.put(st.nextToken(), st.nextToken());

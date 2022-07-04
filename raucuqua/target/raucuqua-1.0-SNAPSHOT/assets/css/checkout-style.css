@@ -1,0 +1,63 @@
+.pdtop {
+    padding-top: 15px;
+}
+
+.name-email {
+    display: flex;
+    justify-content: space-between;
+}
+
+.col-6 {
+    flex-grow: 0 0 auto;
+    width: 49%;
+}
+
+.title-bill {
+    color: black;
+    font-weight: 600;
+    font-size: 25px;
+    font-family: sans-serif;
+}
+
+.content-checkout-left {
+    padding-top: 30px;
+}
+
+.content-checkout {
+    box-sizing: border-box;
+    padding-right: 20px;
+}
+
+.plus-information textarea {
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    padding: 0 0.75em;
+    height: 138px;
+    font-size: .97em;
+    border-radius: 0;
+    max-width: 100%;
+    width: 100%;
+    vertical-align: middle;
+    background-color: #fff;
+    color: #333;
+}
+
+.subtotal li:last-child {
+    text-align: center;
+}
+
+.accept-payment {
+    padding: 10px 50px;
+    border: none;
+    border-radius: 30px;
+    background-color: red;
+    color: white;
+    font-family: sans-serif;
+    font-weight: 600;
+    transition: all linear 0.3s;
+}
+
+.accept-payment:hover {
+    opacity: 0.3;
+
+}
