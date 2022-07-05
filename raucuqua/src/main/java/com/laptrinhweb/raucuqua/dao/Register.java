@@ -41,7 +41,7 @@ public class Register {
                 psAd.setString(1, newID);
                 psAd.setString(2, username);
                 psAd.setString(3, email);
-                psAd.setString(4, password);
+                psAd.setString(4, Util.hashPassword(password));
                 int result = psAd.executeUpdate();
                 GetConnection.releaseConection(con);
 
@@ -56,5 +56,10 @@ public class Register {
             e.printStackTrace();
         }
         return false;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(registerAutoID_user("abc","abc@gmail.com","abc"));
+
     }
 }

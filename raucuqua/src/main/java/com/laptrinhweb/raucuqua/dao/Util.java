@@ -2,6 +2,9 @@ package com.laptrinhweb.raucuqua.dao;
 
 import com.laptrinhweb.raucuqua.connection.GetConnection;
 
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -105,6 +108,18 @@ public class Util {
             throw new RuntimeException(e);
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    public static String hashPassword(String password) {
+        MessageDigest sha256 = null;
+        try {
+            sha256 = MessageDigest.getInstance("SHA-256");
+            byte[] hash = sha256.digest(password.getBytes());
+            BigInteger number = new BigInteger(1,hash);
+            return number.toString(16);
+        } catch (NoSuchAlgorithmException e) {
+            return null;
         }
     }
     public static void main(String[] args) {
