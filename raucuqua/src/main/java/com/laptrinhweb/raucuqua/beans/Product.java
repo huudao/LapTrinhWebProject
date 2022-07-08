@@ -1,5 +1,11 @@
 package com.laptrinhweb.raucuqua.beans;
 
+import com.laptrinhweb.raucuqua.dao.Comment_vote;
+
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.List;
+
 public class Product {
     private String id_product;
     private String product_name;
@@ -11,8 +17,11 @@ public class Product {
     private String short_description;
     private String description;
     private String img_url;
-
+    private int numberComment;
+    private double numstar;
     private double price_discount;
+    private List<CommentProduct> commentRootProducts;
+    private HashMap<String, IComment> rawCommentProducts;
     public Product(String id_product, String product_name, String product_type, int amount_bought, int amount_imported, int percent_discount, double money, String short_description, String description, String img_url) {
         this.id_product = id_product;
         this.product_name = product_name;
@@ -27,6 +36,21 @@ public class Product {
         price_discount = getPriceDiscount();
     }
     public Product() {
+    }
+    public List<CommentProduct> getCommentRootProducts() {
+        return commentRootProducts;
+    }
+
+    public void setCommentRootProducts(List<CommentProduct> commentRootProducts) {
+        this.commentRootProducts = commentRootProducts;
+    }
+
+    public HashMap<String, IComment> getRawCommentProducts() {
+        return rawCommentProducts;
+    }
+
+    public void setRawCommentProducts(HashMap<String, IComment> rawCommentProducts) {
+        this.rawCommentProducts = rawCommentProducts;
     }
     public String getId_product() {
         return id_product;
@@ -111,6 +135,37 @@ public class Product {
     public double getPriceDiscount(){
         return this.price*((100-percent_discount)/100.0);
     }
+    public void loadComment(){
+        try {
+            rawCommentProducts = Comment_vote.read_comment_hash_product(this.id_product);
+            commentRootProducts = Comment_vote.read_comment_product(this.id_product);
+            this.numberComment = rawCommentProducts.size();
+            this.numstar = numstar(rawCommentProducts);
+            System.out.printf("number product,size: %d,number star: %f \n",numberComment,numstar);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+    public double numstar(HashMap<String,IComment> rawComments){
+        int total=0;
+        for (IComment type:rawComments.values()
+        ) {
+            CommentProduct p = (CommentProduct) type;
+            total+=p.getNum_star();
+        }
+        int y = (rawComments.size()==0)?1:rawComments.size();
+        double x = total/y;
+        return x/5;
+    }
+    public double getNumstar(){
+        return numstar;
+    }
+    public int getNumberComment(){
+        return numberComment;
+    }
     @Override
     public String toString() {
         return "Product{" +
@@ -126,4 +181,5 @@ public class Product {
                 ", img_url='" + img_url + '\'' +
                 '}';
     }
+
 }

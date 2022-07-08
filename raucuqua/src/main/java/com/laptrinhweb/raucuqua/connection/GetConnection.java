@@ -26,7 +26,7 @@ public class GetConnection {
 
 //        File f = new File(".config");
 //        File m = new File("db.property");
-        InputStream reader = GetConnection.class.getClassLoader().getResourceAsStream(".config");
+        InputStream reader = GetConnection.class.getClassLoader().getResourceAsStream(".config2");
 //        InputStream reader = GetConnection.class.getClassLoader().;
 //        InputStream n = GetConnection.class.getClassLoader().getResourceAsStream("test.properties");
 //        System.out.println("cannonical "+n);
