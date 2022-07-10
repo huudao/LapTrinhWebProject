@@ -286,7 +286,7 @@
                             <td href="">
                                 <form method="post" action="DeleteAddress">
                                     <input type="hidden" name="id_address" value="<%=b.getId_address()%>">
-                                    <button type="submit">delete</button>
+                                    <button type="submit" onClick='return confirmDelete()'>delete</button>
                                 </form>
                             </td>
                         </tr>
@@ -326,10 +326,8 @@
     </section>
 
 </div>
-
-<!-- Scroll Top Button -->
-<a class="btn-scroll-top"><i class="biolife-icon icon-left-arrow"></i></a>
-
+<!-- FOOTER -->
+<jsp:include page="Footer.jsp"/>
 
 <!-- Scroll Top Button -->
 <a class="btn-scroll-top"><i class="biolife-icon icon-left-arrow"></i></a>
@@ -343,6 +341,15 @@
 <script src="assets/js/biolife.framework.js"></script>
 <script src="assets/js/functions.js"></script>
 <script>
+    function confirmDelete()
+    {
+        var agree=confirm("bạn có chắc muốn xóa địa chỉ ?");
+        if (agree)
+            return true ;
+        else
+            return false ;
+    }
+
     const addressBtn = document.getElementById('js-address-btn')
     const modal = document.getElementById('js-account-modal')
     const modalClose = document.getElementsByClassName('js-account-modal-close')
