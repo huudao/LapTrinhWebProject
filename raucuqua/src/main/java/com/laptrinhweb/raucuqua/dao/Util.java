@@ -122,10 +122,32 @@ public class Util {
             return null;
         }
     }
+    public static String getUserByMail(String email) {
+        try{
+            Connection con  = GetConnection.getCon();
+            String sql = "select user_name from user_account where email=?"
+                    ;
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1,email);
+            ResultSet rs = ps.executeQuery();
+            String name =null;
+            while(rs.next()){
+                name = rs.getString("user_name");
+            }
+
+            GetConnection.releaseConection(con);
+            return name;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
     public static void main(String[] args) {
         Connection con = null;
         try {
             con = GetConnection.getCon();
+            System.out.println(getUserByMail("thuan0373535207@gmail.com"));
             System.out.println(nextID(con, "user_account", "id_user", "UA"));
             System.out.println(checkDataExist("id_user","UA0001","user_account"));
 //            check_amount_in_warehouse(con,"PD0001",200);
@@ -137,5 +159,6 @@ public class Util {
         }
 
     }
+
 
 }

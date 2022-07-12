@@ -46,6 +46,6 @@ public class ChangePassword {
         return false;
     }
     public static void main(String[] args) {
-        System.out.println(changePassByEmail("abc@gmail.com","hey javax"));
+        System.out.println(changePassByEmail("thuan0373535207@gmail.com","hey javax"));
     }
 }
