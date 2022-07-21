@@ -20,7 +20,13 @@ public class ThanhToan extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         HttpSession s = request.getSession();
+
         UserAccount ua = (UserAccount) s.getAttribute("auth");
+        if(ua==null){
+            s.setAttribute("previousPage",request.getServletPath());
+            response.sendRedirect("dangNhap.jsp");
+            return;
+        }
         List<Cart> carts = CartFuntions.watch(ua.getId_user());
         List<UserAddress> addresses = Address.watch(ua.getId_user());
 

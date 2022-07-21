@@ -8,7 +8,14 @@
 <%@ page import="com.laptrinhweb.raucuqua.beans.UserAddress" %>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 
+<%
+    if(session.getAttribute("auth")==null) {
+        session.setAttribute("previousPage",request.getServletPath());
 
+%>
+<c:redirect url = "/dangNhap.jsp"/>
+
+<%}%>
 <%
     UserAccount ua = (UserAccount) session.getAttribute("auth");
     List<Cart> carts = (List<Cart>) request.getAttribute("carts");
