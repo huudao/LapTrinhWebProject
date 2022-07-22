@@ -27,7 +27,7 @@
                                         <li ><a href="khuyenMai.jsp">Sản phẩm khuyễn mãi</a></li>
                                         <li ><a href="banChay.jsp">Các ản phẩm HOT</a></li>
                                         <li ><a href="chinhSachGiaoHang.jsp">Chính sách </a></li>
-                                        <li ><a href="danhsachBlog.jsp">Blog</a></li>
+                                        <li ><a href="danhSachBlog.jsp">Blog</a></li>
                                         <li ><a href=" lienHe.jsp">Liên hệ</a></li>
                                     </ul>
                                 </div>
