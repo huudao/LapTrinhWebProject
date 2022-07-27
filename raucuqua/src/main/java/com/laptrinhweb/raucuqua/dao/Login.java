@@ -16,7 +16,7 @@ public class Login {
                     " WHERE user_name = ? AND password = ?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1,username);
-            ps.setString(2,password);
+            ps.setString(2,Util.hashPassword(password));
             ResultSet rs = ps.executeQuery();
             int count = 0;
             UserAccount user =null;
@@ -27,7 +27,7 @@ public class Login {
                 user.setUser_name(rs.getString(2));
                 user.setEmail(rs.getString(3));
                 if(!rs.getString(2).equals(username)) return null;
-                if(!rs.getString(4).equals(password)) return null;
+                if(!rs.getString(4).equals(Util.hashPassword(password))) return null;
                 count++;
             }
             GetConnection.releaseConection(con);

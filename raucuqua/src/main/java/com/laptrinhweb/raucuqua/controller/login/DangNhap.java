@@ -19,7 +19,7 @@ public class DangNhap extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username = request.getParameter("username");
         String pass = request.getParameter("password");
-            UserAccount ua =  Login.login(username,pass);
+        UserAccount ua =  Login.login(username,pass);
         if(ua==null){
             String error = "sai thông tin đăng nhập."
 
