@@ -28,14 +28,14 @@ public class CacLoaiSanPham extends HttpServlet {
             productsHot = ProductClassification.productTypeRauCuHot(limit);
 
         }
-        for (Product p :
-                productsHot) {
-            p.loadComment();
-        }
-        for (Product p :
-                productsKhuyenMai) {
-            p.loadComment();
-        }
+//        for (Product p :
+//                productsHot) {
+//            p.loadComment();
+//        }
+//        for (Product p :
+//                productsKhuyenMai) {
+//            p.loadComment();
+//        }
         request.setAttribute("productsHot",productsHot);
         request.setAttribute("productsKhuyenMai",productsKhuyenMai);
         request.setAttribute("type",type);
