@@ -58,6 +58,30 @@ public class CartFuntions {
         }
         return null;
     }
+    public static boolean checkProductCart(String id_user,String id_product){
+        try {
+            Connection con = GetConnection.getCon();
+            String sql = "select * from cart where id_user = ? and id_product = ?";
+            PreparedStatement ps  = con.prepareStatement(sql);
+            ps.setString(1,id_user);
+            ps.setString(2,id_product);
+            ResultSet rs = ps.executeQuery();
+            int count = 0;
+            while(rs.next()){
+                count++;
+            }
+            rs.close();
+            if(count==1){
+                return true;
+            }
+            return false;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
     //duplicate entry -> using updateAmount() method instead
     public static boolean insertProduct(String id_user,String id_product,int amount) {
         try {
