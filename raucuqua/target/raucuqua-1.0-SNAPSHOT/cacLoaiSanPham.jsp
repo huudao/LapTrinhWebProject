@@ -420,7 +420,7 @@
             </div>
         </div>
     </div>
-
+        <a type="button" onclick="runme()">click me</a>
     <!-- FOOTER -->
     <jsp:include page="Footer.jsp"/>
     <script src="assets/js/jquery-3.4.1.min.js"></script>
@@ -474,7 +474,7 @@
                 productListHtml += "                    <p class=\"message\">\""+p.shortDescription+"\"<\/p>";
                 productListHtml += "                    <div class=\"buttons\">";
                 productListHtml += "                        <a href=\"#\" class=\"btn wishlist-btn\"><i class=\"fa fa-heart\" aria-hidden=\"true\"><\/i><\/a>";
-                productListHtml += "                        <a href=\"#\" class=\"btn add-to-cart-btn\"><i class=\"fa fa-cart-arrow-down\" aria-hidden=\"true\"><\/i>Thêm vào giỏ hàng<\/a>";
+                productListHtml += "                        <a type=\"button\" class=\"btn add-to-cart-btn\" onclick=\"addCart('"+p.id+"',1,'"+p.name+"')\"><i class=\"fa fa-cart-arrow-down\" aria-hidden=\"true\" ><\/i>Thêm vào giỏ hàng<\/a>";
                 productListHtml += "                        <a href=\"#\" class=\"btn compare-btn\"><i class=\"fa fa-random\" aria-hidden=\"true\"><\/i><\/a>";
                 productListHtml += "                    <\/div>";
                 productListHtml += "                <\/div>";
@@ -484,7 +484,8 @@
             }
             document.getElementById("product-list").innerHTML = productListHtml;
         }
-
+        //addCart("+p.id+",1,"+p.name+")
+        //
         displayProduct(productsJs);
 
         function arrange() {
@@ -507,7 +508,36 @@
             displayProduct(arr);
         }
     </script>
+        <script>
 
+            <%
+               String id = "";
+               if(ua==null){
+               %>
+            <%}else{
+                    id = ua.getId_user();
+                }%>
+            function addCart(id_product,amount,name_product){
+                alert(id_product+", "+amount+", "+name_product);
+                const xhttp = new XMLHttpRequest();
+                console.log(id_product+", amount: "+amount+", name_product: "+name_product);
+                xhttp.onload = function() {
+                    let rawResult = xhttp.response;
+                    let result = rawResult.substring(0,rawResult.length-2);
+                    if(result === 'true'){
+                        alert("thêm sản phẩm "+name_product +"<p style='color:green;'>THÀNH CÔNG</p>");
+                    }else{
+                        alert("thêm sản phẩm "+name_product +" <p style='color:red;'>THẤT BẠI</p>");
+                    }
+                }
+                xhttp.open("GET", "AddCart?id_user=<%=id%>&id_product="+id_product+"&amount="+amount);
+                xhttp.send();
+            }
+            function runme(){
+                alert("run me finish");
+            }
+            alert("run this method");
+        </script>
 </body>
 
 </html>
