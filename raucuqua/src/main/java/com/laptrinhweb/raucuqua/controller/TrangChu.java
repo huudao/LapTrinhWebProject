@@ -17,7 +17,7 @@ public class TrangChu extends HttpServlet {
         //get discount products(8 products)
         //pick discount products with number bought most.
         List<Product> hotRawProducts = ProductClassification.productHot(4);
-        List<Product> discountRawProducts = ProductClassification.productForSale(4);
+        List<Product> discountRawProducts = ProductClassification.productForSale(100);
         discountRawProducts.sort((o1, o2) -> -Integer.compare(o1.getPercent_discount(),o2.getPercent_discount()));
         int hotProductSize = 4;
         int discountProduct = 8;

@@ -323,14 +323,14 @@
                                 <div class="wrap-custom-menu vertical-menu-2">
                                     <ul class="menu">
                                         <!--                                            <li><a href="trangchu.jsp">Trang chủ</a></li>-->
-                                        <!--                                            <li><a href="danhsachBlog.jsp">Blog</a></li>-->
+                                        <!--                                            <li><a href="danhSachBlog.jsp">Blog</a></li>-->
                                         <!--                                            <li><a href="chinhSachGiaoHang.jsp">Chích sách giao hàng</a></li>-->
                                         <!--                                            <li><a href=" lienHe.jsp">liên hệ</a></li>-->
                                         <li ><a href="trangchu.jsp">Trang chủ</a></li>
                                         <li ><a href="khuyenMai.jsp">Sản phẩm khuyễn mãi</a></li>
                                         <li ><a href="banChay.jsp">Các ản phẩm HOT</a></li>
                                         <li ><a href="chinhSachGiaoHang.jsp">Chính sách </a></li>
-                                        <li ><a href="danhsachBlog.jsp">Blog</a></li>
+                                        <li ><a href="danhSachBlog.jsp">Blog</a></li>
                                         <li ><a href=" lienHe.jsp">Liên hệ</a></li>
                                     </ul>
                                 </div>
