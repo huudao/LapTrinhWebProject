@@ -1,4 +1,5 @@
 package com.laptrinhweb.raucuqua.dao;
+
 import com.laptrinhweb.raucuqua.beans.Bill;
 import com.laptrinhweb.raucuqua.beans.Blog;
 import com.laptrinhweb.raucuqua.beans.BoughtProduct;
@@ -14,7 +15,7 @@ import java.util.List;
 
 public class Search {
 
-    public static List<Product> searchByName(String name){
+    public static List<Product> searchByName(String name) {
         try {
             Connection con = GetConnection.getCon();
             List<Product> products = new ArrayList<Product>();
@@ -23,9 +24,9 @@ public class Search {
                     ",amount_imported,percent_discount,price,short_discription," +
                     "discription,img_url FROM product WHERE product_name LIKE ?";
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1,"%"+name+"%");
+            ps.setString(1, "%" + name + "%");
             ResultSet rs = ps.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 Product p = new Product();
                 p.setId_product(rs.getString(1));
                 p.setProduct_name(rs.getString(2));
@@ -51,20 +52,20 @@ public class Search {
             //can't find the name to get COnnection down database
             e.printStackTrace();
         }
-    return null;
+        return null;
     }
 
     // Lay ra <number> Blog moi nhat
-    public static List<Blog> searchBlogByNumber(int number){
+    public static List<Blog> searchBlogByNumber(int number) {
         try {
             Connection con = GetConnection.getCon();
             List<Blog> blogs = new ArrayList<Blog>();
             String sql = "select * from blog order by date_post desc limit ?";
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1,number);
+            ps.setInt(1, number);
             ResultSet rs = ps.executeQuery();
-            while(rs.next()){
-                Blog blog = new Blog(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getDate(6),rs.getString(7));
+            while (rs.next()) {
+                Blog blog = new Blog(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getDate(6), rs.getString(7));
                 blogs.add(blog);
             }
             rs.close();
@@ -78,15 +79,16 @@ public class Search {
             throw new RuntimeException(e);
         }
     }
-    public static Product searchProductById(String id){
+
+    public static Product searchProductById(String id) {
         try {
             Connection con = GetConnection.getCon();
             String sql = "select * from product where id_product = ?";
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1,id);
+            ps.setString(1, id);
             ResultSet rs = ps.executeQuery();
             Product p = new Product();
-            while(rs.next()){
+            while (rs.next()) {
                 p.setId_product(rs.getString(1));
                 p.setProduct_name(rs.getString(2));
                 p.setProduct_type(rs.getString(3));
@@ -110,15 +112,16 @@ public class Search {
         }
 
     }
-    public static List<Bill> bills(String id_user){
-        try{
+
+    public static List<Bill> bills(String id_user) {
+        try {
             Connection con = GetConnection.getCon();
             String sql = "select * from bill where id_user = ?";
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1,id_user);
+            ps.setString(1, id_user);
             ResultSet rs = ps.executeQuery();
             List<Bill> bills = new ArrayList<Bill>();
-            while(rs.next()){
+            while (rs.next()) {
                 Bill bill = new Bill();
                 bill.setId_bill(rs.getString("id_bill"));
                 bill.setId_user(rs.getString("id_user"));
@@ -140,15 +143,16 @@ public class Search {
             throw new RuntimeException(e);
         }
     }
-    public static Bill billById(String id_bill){
-        try{
+
+    public static Bill billById(String id_bill) {
+        try {
             Connection con = GetConnection.getCon();
             String sql = "select * from bill where id_bill = ?";
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1,id_bill);
+            ps.setString(1, id_bill);
             ResultSet rs = ps.executeQuery();
             Bill bill = new Bill();
-            while(rs.next()){
+            while (rs.next()) {
                 bill.setId_bill(rs.getString("id_bill"));
                 bill.setId_user(rs.getString("id_user"));
                 bill.setAddress(rs.getString("address"));
@@ -167,15 +171,16 @@ public class Search {
             throw new RuntimeException(e);
         }
     }
-    public static List<BoughtProduct> boughtProductsByidBill(String id_bill){
-        try{
+
+    public static List<BoughtProduct> boughtProductsByidBill(String id_bill) {
+        try {
             Connection con = GetConnection.getCon();
             String sql = "select * from bill join bill_detail on bill.id_bill =bill_detail.id_bill join product on bill_detail.id_product=product.id_product where bill.id_bill = ?";
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1,id_bill);
+            ps.setString(1, id_bill);
             ResultSet rs = ps.executeQuery();
             List<BoughtProduct> boughtProducts = new ArrayList<BoughtProduct>();
-            while(rs.next()){
+            while (rs.next()) {
                 BoughtProduct p = new BoughtProduct();
                 p.setId_product(rs.getString("bill_detail.id_product"));
                 p.setProduct_name(rs.getString("product_name"));
@@ -199,10 +204,11 @@ public class Search {
             throw new RuntimeException(e);
         }
     }
+
     public static void main(String[] args) {
         List<Bill> bills = bills("UA0001");
-        for (Bill b:bills
-             ) {
+        for (Bill b : bills
+        ) {
             System.out.println(b.toString());
         }
 //        Bill b = billById("BI0009");
@@ -210,7 +216,7 @@ public class Search {
 
         System.out.println(b.toString());
         System.out.println("---");
-        for(BoughtProduct boughtProduct:boughtProductsByidBill("BI0013")){
+        for (BoughtProduct boughtProduct : boughtProductsByidBill("BI0013")) {
             System.out.println(boughtProduct.toString());
 
         }

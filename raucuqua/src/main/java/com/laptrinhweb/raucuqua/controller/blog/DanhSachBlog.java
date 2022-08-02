@@ -16,12 +16,12 @@ public class DanhSachBlog extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Blog> blogs = Search.searchBlogByNumber(10);
-        for (Blog b:blogs
+        for (Blog b : blogs
         ) {
             b.loadComment();
         }
-        request.setAttribute("blogs",blogs);
-        request.getRequestDispatcher("danhSachBlog.jsp").forward(request,response);
+        request.setAttribute("blogs", blogs);
+        request.getRequestDispatcher("danhSachBlog.jsp").forward(request, response);
     }
 
     @Override

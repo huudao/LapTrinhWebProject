@@ -14,16 +14,16 @@ import java.util.Comparator;
 import java.util.List;
 
 public class BlogFunction {
-    public static Blog searchBlogById(String id){
+    public static Blog searchBlogById(String id) {
         try {
             Connection con = GetConnection.getCon();
             String sql = "select * from blog where id_blog = ?";
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1,id);
+            ps.setString(1, id);
             ResultSet rs = ps.executeQuery();
             Blog blog = new Blog();
-            while(rs.next()){
-                 blog = new Blog(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getDate(6),rs.getString(7));
+            while (rs.next()) {
+                blog = new Blog(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getDate(6), rs.getString(7));
             }
             rs.close();
             ps.close();
@@ -34,7 +34,8 @@ public class BlogFunction {
             throw new RuntimeException(e);
         }
     }
-    public static void arrangeToDataAndItsChildren_fixBugOnly(List<CommentBlog> commentBlogs){
+
+    public static void arrangeToDataAndItsChildren_fixBugOnly(List<CommentBlog> commentBlogs) {
         List<IComment> commentb = new ArrayList<>();
         for (CommentBlog b :
                 commentBlogs) {
@@ -42,7 +43,8 @@ public class BlogFunction {
         }
         arrangeToDataAndItsChildren(commentb);
     }
-    public static void arrangeToDataAndItsChildren(List<IComment> commentBlogs){
+
+    public static void arrangeToDataAndItsChildren(List<IComment> commentBlogs) {
         commentBlogs.sort(new Comparator<IComment>() {
             @Override
             public int compare(IComment o1, IComment o2) {
@@ -51,15 +53,16 @@ public class BlogFunction {
                 return -c1.getDate_post().compareTo(c2.getDate_post());
             }
         });
-        for (int i = 0;i< commentBlogs.size();i++){
+        for (int i = 0; i < commentBlogs.size(); i++) {
             arrangeToDataAndItsChildren(commentBlogs.get(i).getChildren());
         }
     }
+
     public static void main(String[] args) {
-        Blog b = searchBlogById("BL0001");
-        System.out.println("----" + b.toString());
-        b.loadComment();
-        System.out.println("----" + b.getCommentRootBlogs().size());
+//        Blog b = searchBlogById("BL0001");
+//        System.out.println("----" + b.toString());
+//        b.loadComment();
+//        System.out.println("----" + b.getCommentRootBlogs().size());
 
     }
 }
