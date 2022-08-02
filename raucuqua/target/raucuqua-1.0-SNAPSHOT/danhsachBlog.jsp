@@ -241,11 +241,11 @@
 
 <!--Hero Section-->
 <div class="hero-section hero-background style-02">
-    <h1 class="page-title">Organic Fruits</h1>
+    <h1 class="page-title">Danh sách Blog</h1>
     <nav class="biolife-nav">
         <ul>
             <li class="nav-item"><a href="TrangChu" class="permal-link">Trang chủ</a></li>
-            <li class="nav-item"><span class="current-page">Our Blog</span></li>
+            <li class="nav-item"><span class="current-page">Danh sách Blog</span></li>
         </ul>
     </nav>
 </div>

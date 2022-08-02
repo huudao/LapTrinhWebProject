@@ -247,7 +247,7 @@
 
 <!--Hero Section-->
 <div class="hero-section hero-background style-02">
-    <h1 class="page-title">Blog Biolife Shop</h1>
+    <h1 class="page-title">Chi tiết Blog</h1>
     <nav class="biolife-nav">
         <ul>
             <li class="nav-item"><a href="index-2.jsp" class="permal-link">Trang chủ</a></li>
