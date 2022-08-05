@@ -1,6 +1,6 @@
 package com.laptrinhweb.raucuqua.controller;
 
-import com.laptrinhweb.raucuqua.dao.Contact;
+import com.laptrinhweb.raucuqua.dao.ContactDao;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -23,7 +23,7 @@ public class LienHe extends HttpServlet {
         String email = request.getParameter("email");
         String phone = request.getParameter("phone");
         String mess = request.getParameter("mes");
-        Contact.addContact(email,name,phone,mess);
+        ContactDao.addContact(email,name,phone,mess);
         String line = "<script>window.setTimeout(function(){window.location.href = \"TrangChu\";}, 1000);</script>";
         response.getWriter().println();
         PrintWriter out = response.getWriter();
