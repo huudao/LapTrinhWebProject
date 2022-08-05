@@ -88,7 +88,7 @@ public class GetConnection {
             selfCon = pool.getConnection();
             System.out.println("[no error]");
         } catch (Exception e) {
-            e.printStackTrace();
+//            e.printStackTrace();
             System.out.println("[err] ");
             selfCon = con;
         }
