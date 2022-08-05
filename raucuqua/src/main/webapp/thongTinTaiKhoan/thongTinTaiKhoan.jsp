@@ -26,7 +26,7 @@
   <link rel="stylesheet" href="../assets/css/style.css">
   <link rel="stylesheet" href="../assets/css/main-color.css">
   <link rel="stylesheet" href="asset/account.css">
-
+  <script src="../ckfinder/ckfinder.js"></script>
 </head>
 <body class="biolife-body">
 
@@ -91,9 +91,32 @@
         </div>
         <div class="block-right">
           <h1 class="title-head">Thông tin tài khoản</h1>
-          <div class="name-account">
-            <p><strong>Họ tên:</strong><%=ua.getUser_name()%></p>
-            <p><strong>Email:</strong> <%=ua.getEmail()%></p>
+          <div class="self-container">
+            <div class="name-account">
+              <p><strong>Họ tên:</strong> <%=ua.getUser_name()%></p>
+              <p><strong>Email:</strong> <%=ua.getEmail()%></p>
+            </div>
+            <div>
+              <script>
+                function openPopup() {
+                  var finder = new CKFinder();
+                  // finder.basePath = '../';
+                  finder.selectActionFunction = function (fileUrl) {
+                    window.location.href = "CKFinderUpdateImage?url="+encodeURIComponent(fileUrl);
+                  };
+                  finder.popup();
+                }
+              </script>
+              <img src="<%=ua.getImg_url()%>" alt="Paris" style="width:150px;height:150px;border-radius: 50%;text-align: center;"><br>
+              <h2 style="text-align: center;"><%=ua.getUser_name()%></h2>
+
+              <div class="self-container2">
+                <button onclick="openPopup()">thêm ảnh</button>
+              </div>
+            </div>
+            <div></div>
+            <div>
+            </div>
           </div>
         </div>
       </div>

@@ -143,6 +143,21 @@ public class Util {
             throw new RuntimeException(e);
         }
     }
+    public static void updateImgUrl(String id,String img_url){
+        try{
+            Connection con  = GetConnection.getCon();
+            String sql = "update user_account set img_url= ? where id_user=?"
+                    ;
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1,img_url);
+            ps.setString(2,id);
+            int rs = ps.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
     public static void main(String[] args) {
         Connection con = null;
         try {
