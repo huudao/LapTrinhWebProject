@@ -13,13 +13,14 @@ import java.util.List;
 public class BanChay extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Product> products = ProductClassification.productForSale(10);
+        List<Product> products = ProductClassification.productHot(100);
         for (Product p :
                 products) {
             p.loadComment();
         }
-        request.setAttribute("productsForSale",products);
-        request.getRequestDispatcher("khuyenMai.jsp").forward(request,response);
+        System.out.println("[SIZE]"+ products.size());
+        request.setAttribute("productHot",products);
+        request.getRequestDispatcher("banChay.jsp").forward(request,response);
     }
 
     @Override

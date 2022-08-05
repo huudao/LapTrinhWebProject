@@ -14,6 +14,7 @@ import java.util.List;
 public class Comment_vote {
 
     public static void insert_comment_blog(String id_blog, String father_id_blog, String id_user, String comment_content) {
+        System.out.println("id_blog: "+id_blog+", father_id_blog:"+father_id_blog+",id_user:"+id_user+",comment_content:"+comment_content);
         try {
             Connection con = GetConnection.getCon();
             String id_comment_blog = Util.nextID(con, "comment_blog", "id_comment_blog", "CB");
