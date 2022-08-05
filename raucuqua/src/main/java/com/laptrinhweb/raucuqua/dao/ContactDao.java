@@ -6,7 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class Contact {
+public class ContactDao {
     public static void addContact(String email,String name,String phone_name,String content) {
         try {
             Connection con = GetConnection.getCon();
