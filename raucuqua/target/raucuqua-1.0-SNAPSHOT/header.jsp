@@ -208,4 +208,74 @@
         xmlhttp.open("GET","LiveSearch?q="+str,true);
         xmlhttp.send();
     }
+
+</script>
+<script>
+    var formatter = new Intl.NumberFormat('vi-VN', {
+        style: 'currency',
+        currency: 'VND',
+
+        // These options are needed to round to whole numbers if that's what you want.
+        //minimumFractionDigits: 0, // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)
+        //maximumFractionDigits: 0, // (causes 2500.99 to be printed as $2,501)
+    });
+    function executeData(){
+        <%
+        String id = "";
+        if(ua==null){
+        %>
+        let strVar = "";
+        strVar += "<li>";
+        strVar += "                                                    <div href=\"dangNhap.jsp\" class=\"minicart-item\">";
+        strVar += "                                                        <div class=\"left-info\">";
+        strVar += "                                                            <div class=\"product-title\"><a  class=\"product-name\">vui lòng đăng nhập để mở chức năng giỏ hàng<\/a><\/div>";
+        strVar += "                                                        <\/div>";
+        strVar += "                                                    <\/div>";
+        strVar += "                                                <\/li>";
+        document.getElementById("products-cart").innerHTML=strVar;
+        return ;
+        <%}else{
+            id = ua.getId_user();
+        }%>
+
+        const xhttp = new XMLHttpRequest();
+        xhttp.onload = function() {
+            let realData = "";
+            let mydata = JSON.parse(this.responseText);
+            console.log(mydata);
+            let totalmoney = 0.0;
+            for(let i =0;i<mydata.length;i++){
+                // console.log("");
+                let line = "ChiTietSanPham?id_product="+mydata[i].product.id_product;
+                realData += "<li>";
+                realData += "                                                    <div class=\"minicart-item\">";
+                realData += "                                                        <div class=\"thumb\">";
+                realData += "                                                            <a href=\""+line+"\"><img src=\""+mydata[i].product.img_url+"\" width=\"90\" height=\"90\" alt=\"National Fresh\"><\/a>";
+                realData += "                                                        <\/div>";
+                realData += "                                                        <div class=\"left-info\">";
+                realData += "                                                            <div class=\"product-title\"><a href=\""+line+"\" class=\"product-name\">"+mydata[i].product.product_name+"<\/a><\/div>";
+                realData += "                                                            <div class=\"price\">";
+                realData += "                                                                <ins><span class=\"price-amount\"><span class=\"currencySymbol\"><\/span>"+mydata[i].product.price_discount+" đ<\/span><\/ins>";
+                realData += "                                                                <del><span class=\"price-amount\"><span class=\"currencySymbol\"><\/span>"+mydata[i].product.price+" đ<\/span><\/del>";
+                realData += "                                                            <\/div>";
+                realData += "                                                            <div class=\"qty\">";
+                realData += "                                                                <label for=\"cart[id123][qty]\">Qty:<\/label>";
+                realData += "                                                                <input type=\"number\" class=\"input-qty\" name=\"cart[id123][qty]\" id=\"cart[id123][qty]\" value=\""+mydata[i].amount+"\" disabled>";
+                realData += "                                                            <\/div>";
+                realData += "                                                        <\/div>";
+                realData += "                                                    <\/div>";
+                realData += "                                                <\/li>";
+                totalmoney+=parseFloat(mydata[i].amount)*parseFloat(mydata[i].product.price_discount);
+            }
+
+
+            document.getElementById("money-total-cart").innerHTML = formatter.format(totalmoney);
+            document.getElementById("products-cart").innerHTML = realData;
+        }
+        let va = Math.random();
+        xhttp.open("GET", "ShowCart?id_user=<%=id%>&x="+va);
+        xhttp.send();
+
+    }
+    executeData();
 </script>

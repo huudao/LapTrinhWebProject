@@ -154,6 +154,11 @@
     });
     function executeData(){
         <%
+
+        UserAccount ua =null;
+        if(session.getAttribute("auth")!=null) {
+            ua = (UserAccount) session.getAttribute("auth");
+        }
         String id = "";
         if(ua==null){
         %>

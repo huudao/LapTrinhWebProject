@@ -3,7 +3,14 @@
 <%@ page import="com.laptrinhweb.raucuqua.beans.Product" %>
 <%@ page import="com.laptrinhweb.raucuqua.beans.UserAccount" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
+<%--<%--%>
+<%--    if(session.getAttribute("auth")==null) {--%>
+<%--        session.setAttribute("previousPage",request.getServletPath());--%>
 
+<%--%>--%>
+<%--&lt;%&ndash;<c:redirect url = "/dangNhap.jsp"/>&ndash;%&gt;--%>
+
+<%--<%}%>--%>
 <%List<Product> productsHot = (List<Product>) request.getAttribute("productsHot");
     List<Product> productsKhuyenMai = (List<Product>) request.getAttribute("productsKhuyenMai");
     String type = request.getAttribute("type").toString();
@@ -180,7 +187,7 @@
                                                     <p class="message"><%=p.getShort_description()%></p>
                                                     <div class="buttons">
                                                         <a href="#" class="btn wishlist-btn"><i class="fa fa-heart" aria-hidden="true"></i></a>
-                                                        <a href="#" class="btn add-to-cart-btn"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i>Thêm vào giỏ hàng</a>
+                                                        <a href="#" class="btn add-to-cart-btn" onclick="addCart('<%=p.getId_product()%>',1,'<%=p.getProduct_name()%>')"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i>Thêm vào giỏ hàng</a>
                                                         <a href="#" class="btn compare-btn"><i class="fa fa-random" aria-hidden="true"></i></a>
                                                     </div>
                                                 </div>
@@ -338,6 +345,10 @@
         <script>
 
             <%
+                UserAccount ua =null;
+        if(session.getAttribute("auth")!=null) {
+            ua = (UserAccount) session.getAttribute("auth");
+        }
                String id = "";
                if(ua==null){
                %>
@@ -345,7 +356,7 @@
                     id = ua.getId_user();
                 }%>
             function addCart(id_product,amount,name_product){
-                alert(id_product+", "+amount+", "+name_product);
+                // alert(id_product+", "+amount+", "+name_product);
                 const xhttp = new XMLHttpRequest();
                 console.log(id_product+", amount: "+amount+", name_product: "+name_product);
                 xhttp.onload = function() {
@@ -360,10 +371,10 @@
                 xhttp.open("GET", "AddCart?id_user=<%=id%>&id_product="+id_product+"&amount="+amount);
                 xhttp.send();
             }
-            function runme(){
-                alert("run me finish");
-            }
-            alert("run this method");
+            // function runme(){
+            //     alert("run me finish");
+            // }
+            // alert("run this method");
         </script>
 </body>
 
