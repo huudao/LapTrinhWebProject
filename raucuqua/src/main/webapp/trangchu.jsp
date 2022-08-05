@@ -523,6 +523,39 @@
             xhttp.send();
         }
     </script>
+    <script>
+        function showResult(str) {
+            if (str.length==0) {
+                document.getElementById("livesearch").innerHTML="";
+                return;
+            }
+            var xmlhttp=new XMLHttpRequest();
+            xmlhttp.onreadystatechange=function() {
+                try {
+                    let va = JSON.parse(this.responseText);
+                    let searchResult = "";
+                    console.log(va);
+                    if (this.readyState==4 && this.status==200) {
+                        for(let i =0;i<va.length;i++) {
+                            // searchResult += "<option type='submit'  value=\"\">";
+                            searchResult += "  <li ><a href='ChiTietSanPham?id_product="+va[i].id_product+"'>"+va[i].product_name+"<\/a><\/li>";
+
+                            // document.getElementById("livesearch").style.border="1px solid #A5ACB2";
+                        }
+                        console.log(searchResult)
+                        document.getElementById("livesearch").innerHTML = searchResult;
+
+                    }
+                }
+                    //catch json error
+                catch(err) {
+                }
+
+            }
+            xmlhttp.open("GET","LiveSearch?q="+str,true);
+            xmlhttp.send();
+        }
+    </script>
 </body>
 
 </html>
