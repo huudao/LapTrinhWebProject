@@ -122,7 +122,7 @@ public class AdminDao {
             Connection conn = GetConnection.getCon();
             String sql = "SELECT id_contact,email,name,phone_name,content,date_up_contact FROM contact WHERE MONTH(date_up_contact) = ? AND YEAR(date_up_contact) = ? ORDER BY date_up_contact DESC";
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setInt(1,month);
+            ps.setInt(1, month);
             ps.setInt(2, year);
             ResultSet rs = ps.executeQuery();
             Contact contact = null;
@@ -149,10 +149,102 @@ public class AdminDao {
         return listContact;
     }
 
-    public static void main(String[] args) {
-        for(UserAccount u : listAccount()){
-            System.out.println(u);
+    public static boolean addProduct(String product_name, String product_type, int amount_bought, int amount_imported, int percent_discount, double price, String short_description, String description, String img_url) {
+        try {
+            Connection con = GetConnection.getCon();
+            String newID = Util.nextID(con, "product", "id_product", "PD");
+            //insert infor
+            String sqladd = "insert into product(id_product,product_name,product_type,amount_bought,amount_imported,percent_discount,price,short_discription,discription,img_url) values(?,?,?,?,?,?,?,?,?,?)";
+            PreparedStatement psAd = con.prepareStatement(sqladd);
+            psAd.setString(1, newID);
+            psAd.setString(2, product_name);
+            psAd.setString(3, product_type);
+            psAd.setInt(4, amount_bought);
+            psAd.setInt(5, amount_imported);
+            psAd.setInt(6, percent_discount);
+            psAd.setDouble(7, price);
+            psAd.setString(8, short_description);
+            psAd.setString(9, description);
+            psAd.setString(10, img_url);
+            int result = psAd.executeUpdate();
+
+            GetConnection.releaseConection(con);
+            if (result == 1)
+                return true;
+            else
+                return false;
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         }
+        return false;
+    }
+
+    public static boolean updateProduct(String id_product, String product_name, String product_type, int amount_bought, int amount_imported, int percent_discount, double price, String short_description, String description, String img_url) {
+        try {
+            Connection con = GetConnection.getCon();
+            String sqlUpdate = "UPDATE product SET product_name = ?, product_type = ?, amount_bought = ?, amount_imported = ? , percent_discount = ? , price = ?, short_discription = ?, discription = ?, img_url = ? WHERE id_product = ?";
+            PreparedStatement ps = con.prepareStatement(sqlUpdate);
+            ps.setString(1,product_name);
+            ps.setString(2,product_type);
+            ps.setInt(3,amount_bought);
+            ps.setInt(4,amount_imported);
+            ps.setInt(5,percent_discount);
+            ps.setDouble(6,price);
+            ps.setString(7,short_description);
+            ps.setString(8,description);
+            ps.setString(9,img_url);
+            ps.setString(10,id_product);
+
+            int result = ps.executeUpdate();
+
+            GetConnection.releaseConection(con);
+            if (result == 1)
+                return true;
+            else
+                return false;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public static boolean deleteProduct(String id_product){
+        try {
+            Connection con = GetConnection.getCon();
+            String sqlDelete = "DELETE FROM product WHERE id_product=?";
+            PreparedStatement psAd = con.prepareStatement(sqlDelete);
+            psAd.setString(1,id_product);
+            int result = psAd.executeUpdate();
+
+            GetConnection.releaseConection(con);
+            if (result == 1)
+                return true;
+            else
+                return false;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public static void main(String[] args) {
+//        System.out.println(updateProduct("PD0010","afasgsf", "bc",15, 15,20,12,"asfaefwa","abasafsadfdsf",""));
+
+//        System.out.println(addProduct("abc", "bc",15, 15,20,12,"asfaefwa","abasafsadfdsf",""));
+//        System.out.println(deleteProduct("PD0010"));
+
+//        for (UserAccount u : listAccount()) {
+//            System.out.println(u);
+//        }
 
 //        for(Product p : listProduct()){
 //            System.out.println(p);
