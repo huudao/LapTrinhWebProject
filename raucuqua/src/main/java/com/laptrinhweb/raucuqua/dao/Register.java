@@ -28,7 +28,7 @@ public class Register {
         return false;
     }
 
-    public static boolean registerAutoID_user(String username,String email,String password){
+    public static boolean registerAutoID_user(String username,String email,String password,String img_url){
         try {
             if(!checkDuplicate(username,email,password)) {
                 //query down to get the last id and +1 e.g UA0001 -> UA and 1 and next will be UA and 2 -> UA0002
@@ -36,12 +36,13 @@ public class Register {
                 String newID = nextID(con, "user_account", "id_user", "UA");
                 System.out.println(newID);
                 //insert infor
-                String sqladd = "insert into user_account(id_user,user_name,email,password) values(?,?,?,?)";
+                String sqladd = "insert into user_account(id_user,user_name,email,password,img_url) values(?,?,?,?,?)";
                 PreparedStatement psAd = con.prepareStatement(sqladd);
                 psAd.setString(1, newID);
                 psAd.setString(2, username);
                 psAd.setString(3, email);
                 psAd.setString(4, Util.hashPassword(password));
+                psAd.setString(5,img_url);
                 int result = psAd.executeUpdate();
                 GetConnection.releaseConection(con);
 
@@ -59,7 +60,7 @@ public class Register {
     }
 
     public static void main(String[] args) {
-        System.out.println(registerAutoID_user("abc","abc@gmail.com","abc"));
+        System.out.println(registerAutoID_user("abc","abc@gmail.com","abc",""));
 
     }
 }

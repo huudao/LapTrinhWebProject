@@ -69,6 +69,8 @@
                                 <p class="form-row wrap-btn">
                                     <button class="btn btn-submit btn-bold" type="submit">Đăng nhập</button>
                                     <a href="quenMatKhau.jsp" class="link-to-help">Quên mật khẩu</a>
+                                    <a href="https://accounts.google.com/o/oauth2/auth?scope=email%20profile&redirect_uri=http://localhost:8080/raucuqua_war/LoginGoogleHandler&response_type=code
+		   &client_id=963289098717-7ln66opmhck9imhje6dnq901taqi5v8n.apps.googleusercontent.com&approval_prompt=force">Login With Google</a>
                                 </p>
                                 <%if(request.getAttribute("error")!=null){%>
                                 <p style="color:red"><%=request.getAttribute("error")%></p>
