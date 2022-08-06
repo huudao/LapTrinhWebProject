@@ -1,6 +1,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.laptrinhweb.raucuqua.beans.UserAccount" %>
 <%@ page import="com.laptrinhweb.raucuqua.beans.Product" %>
+<%@ page import="com.laptrinhweb.raucuqua.beans.Blog" %>
 
 <%@ page contentType="text/html; charset=UTF-8" %>
 
@@ -209,7 +210,7 @@
                                         <div class="contain-product layout-default">
                                             <div class="product-thumb">
                                                 <a href=<%=link_p%> class="link-to-product">
-                                                    <img src=<%=p.getImg_url()%> alt="Vegetables" width="270" height="270" class="product-thumnail">
+                                                    <img src=<%=p.getImg_url()%> alt="Vegetables" style='height:270px;width: 270px;' width="270" height="270" class="product-thumnail">
                                                 </a>
                                                 <a class="lookup btn_call_quickview" href=<%=link_p%>><i class="biolife-icon icon-search"></i></a>
                                             </div>
@@ -309,7 +310,50 @@
                     </div>
                     <ul class="biolife-carousel nav-center nav-none-on-mobile xs-margin-top-36px" data-slick='{"rows":1,"arrows":true,"dots":false,"infinite":false,"speed":400,"slidesMargin":30,"slidesToShow":3, "responsive":[{"breakpoint":1200, "settings":{ "slidesToShow": 3}},{"breakpoint":992, "settings":{ "slidesToShow": 2}},{"breakpoint":768, "settings":{ "slidesToShow": 2}},{"breakpoint":600, "settings":{ "slidesToShow": 1}}]}'>
                             <!--Blog place li foreach-->
+                        <%
+                            List<Blog> blogs4 = (List<Blog>) request.getAttribute("blogs4");
+                            for (Blog blog:blogs4
+                            ) {
+//                                    UserAccount ua = Search.searchUserById(blog.getName());
+//                                    System.out.println("runme!"+ua.getUser_name());
+                                String link_p = "ChiTietBlog?id_blog="+blog.getId_blog();
 
+                        %>
+                        <li>
+                            <div class="post-item effect-01 style-bottom-info layout-02 ">
+                                <div class="thumbnail">
+                                    <a href=<%=link_p%> class="link-to-post"><img style='height:270px;width: 270px;' src=<%=blog.getImg_url()%> > width="370" height="270" alt=""></a>
+                                    <div class="post-date">
+                                        <span class="date"><%=blog.getDate_post().toString()%></span>
+                                    </div>
+                                </div>
+                                <div class="post-content">
+                                    <h4 class="post-name"><a href=<%=link_p%> class="linktopost"><%=blog.getName()%></a></h4>
+                                    <div class="post-meta">
+                                        <%--                                        <a href="#" class="post-meta__item author"><img src="" width="28" height="28" alt=""><span><%=ua.getUser_name()%></span></a>--%>
+                                        <a  class="post-meta__item btn liked-count" href=<%=link_p%>><%=blog.getNumberComment()%><span class="biolife-icon icon-comment"></span></a>
+                                        <%--                                        <a href="#" class="post-meta__item btn comment-count">6<span class="biolife-icon icon-like"></span></a>--%>
+                                        <%--                                        <div class="post-meta__item post-meta__item-social-box">--%>
+                                        <%--                                            <span class="tbn"><i class="fa fa-share-alt" aria-hidden="true"></i></span>--%>
+                                        <%--                                            <div class="inner-content">--%>
+                                        <%--                                                <ul class="socials">--%>
+                                        <%--                                                    <li><a href="#" title="twitter" class="socail-btn"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>--%>
+                                        <%--                                                    <li><a href="#" title="facebook" class="socail-btn"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>--%>
+                                        <%--                                                    <li><a href="#" title="pinterest" class="socail-btn"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>--%>
+                                        <%--                                                    <li><a href="#" title="youtube" class="socail-btn"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>--%>
+                                        <%--                                                    <li><a href="#" title="instagram" class="socail-btn"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>--%>
+                                        <%--                                                </ul>--%>
+                                        <%--                                            </div>--%>
+                                        <%--                                        </div>--%>
+                                    </div>
+                                    <p class="excerpt"><%=blog.getShort_discription()%></p>
+                                    <div class="group-buttons">
+                                        <a  class="btn readmore" href=<%=link_p%>>Tìm hiểu thêm</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <%}%>
                     </ul>
                 </div>
             </div>

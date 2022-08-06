@@ -1,7 +1,9 @@
 package com.laptrinhweb.raucuqua.controller;
 
+import com.laptrinhweb.raucuqua.beans.Blog;
 import com.laptrinhweb.raucuqua.beans.Product;
 import com.laptrinhweb.raucuqua.dao.ProductClassification;
+import com.laptrinhweb.raucuqua.dao.Search;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -35,7 +37,13 @@ public class TrangChu extends HttpServlet {
             request.setAttribute("firstProduct",discountProducts.get(0));
         else
             request.setAttribute("firstProduct",null);
-
+//blogs
+        List<Blog> blogs = Search.searchBlogByNumber(3);
+        for (Blog b:blogs
+        ) {
+            b.loadComment();
+        }
+        request.setAttribute("blogs4",blogs);
         request.getRequestDispatcher("trangchu.jsp").forward(request,response);
 
     }
