@@ -368,7 +368,7 @@
 
         function confirmSubmit()
         {
-            var agree=confirm("bạn có muốn đặt hàng chứ?");
+            var agree=confirm("chúng tôi sẽ gửi mail hóa đơn cho bạn, bạn có muốn đặt hàng chứ?");
             if (agree)
                 return true ;
             else

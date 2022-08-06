@@ -2,10 +2,12 @@ package com.laptrinhweb.raucuqua.services;
 
 import com.laptrinhweb.raucuqua.connection.GetConnection;
 
+import javax.activation.DataHandler;
+import javax.activation.DataSource;
+import javax.activation.FileDataSource;
 import javax.mail.*;
-import javax.mail.internet.AddressException;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
+import javax.mail.internet.*;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
@@ -13,34 +15,66 @@ import java.util.Properties;
 public class MailService {
 //    private static String from = "raucuqua111@gmail.com";
 //    private static String password = "gcmwycbdfrvorhpp";
-    public static boolean sendMail(String to, String subject, String content){
-        Session session = connect();
-        try {
-            // Create a default MimeMessage object.
-            MimeMessage message = new MimeMessage(session);
+public static boolean sendMail(String to, String subject, String content,boolean isBill,String bill){
+    Session session = connect();
+    try {
+        // Create a default MimeMessage object.
+        MimeMessage message = new MimeMessage(session);
 
-            // Set From: header field of the header.
-            message.setFrom(new InternetAddress("raucuqua111@gmail.com"));
+        // Set From: header field of the header.
+        message.setFrom(new InternetAddress("raucuqua111@gmail.com"));
 
-            // Set To: header field of the header.
-            message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+        // Set To: header field of the header.
+        message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
 
-            // Set Subject: header field
-            message.setSubject(subject);
+        // Set Subject: header field
+        message.setSubject(subject);
 
-            // Now set the actual message
-            message.setText(content,"UTF-8");
+        // Now set the actual message
+//            message.setText(content,"UTF-8");
+
+
+
+        // Create the message part
+        BodyPart messageBodyPart = new MimeBodyPart();
+
+        // Now set the actual message
+        messageBodyPart.setText(content);
+
+        // Create a multipar message
+        Multipart multipart = new MimeMultipart();
+
+        // Set text message part
+        multipart.addBodyPart(messageBodyPart);
+        if(isBill) {
+            // Part two is attachment
+            messageBodyPart = new MimeBodyPart();
+//            String filename = "BL0001.pdf";
+            File f = new File(bill);
+            DataSource source = new FileDataSource(f);
+            messageBodyPart.setDataHandler(new DataHandler(source));
+//            messageBodyPart.setFileName(f.filename);
+            messageBodyPart.setFileName(f.getName());
+            multipart.addBodyPart(messageBodyPart);
+        }
+        // Send the complete message parts
+        message.setContent(multipart,"UTF-8");
+
+
 
 //            System.out.println("sending...");
-            // Send message
-            Transport.send(message);
-            return true;
+        // Send message
+        Transport.send(message);
+        return true;
 //            System.out.println("Sent message successfully....");
-        } catch (MessagingException mex) {
-            mex.printStackTrace();
+    } catch (MessagingException mex) {
+        mex.printStackTrace();
 
-        }
-        return false;
+    }
+    return false;
+}
+    public static boolean sendMail(String to, String subject, String content){
+        return sendMail(to,subject,content,false,"");
     }
     public static Session connect(){
         // Assuming you are sending email from through gmails smtp

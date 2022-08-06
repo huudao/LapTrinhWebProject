@@ -25,7 +25,7 @@ public class billPdfCreator {
 //
 //
 //        System.out.println("OSDFJOISNV: "+f.getAbsolutePath());
-public static void exportBill(String id, int year, String month, int day, String username, String state, String payby, double shipfee, String phone_number, String address, String email, List<Cart> products){
+public static String exportBill(String id, int year, String month, int day, String username, String state, String payby, double shipfee, String phone_number, String address, String email, List<Cart> products){
     String path = "bill\\"+id+".pdf";
 
     PdfWriter pdfWriter = null;
@@ -145,6 +145,7 @@ public static void exportBill(String id, int year, String month, int day, String
     document.add(new Paragraph("Chu Shop").setBold().setFontSize(15f).setTextAlignment(TextAlignment.RIGHT));
     document.add(new Paragraph("da xac nhan").setTextAlignment(TextAlignment.RIGHT));
     document.close();
+    return path;
 }
     static Cell getHeaderTextCell(String textValue){
         return new Cell().add(textValue).setBold().setBorder(Border.NO_BORDER).setTextAlignment(TextAlignment.RIGHT);
