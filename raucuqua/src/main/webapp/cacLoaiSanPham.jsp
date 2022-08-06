@@ -294,7 +294,7 @@
                 productListHtml += "        <div class=\"contain-product layout-default\">";
                 productListHtml += "            <div class=\"product-thumb\">";
                 productListHtml += "                <a href=\""+link_p+"\" class=\"link-to-product\">";
-                productListHtml += "                    <img src=\""+p.imgUrl+"\" alt=\"Vegetables\" width=\"270\" height=\"270\" class=\"product-thumnail\">";
+                productListHtml += "                    <img src=\""+p.imgUrl+"\" alt=\"Vegetables\" style='height:270px;width: 270px;' width=\"270\" height=\"270\" class=\"product-thumnail\">";
                 productListHtml += "                <\/a>";
                 productListHtml += "                <a class=\"lookup btn_call_quickview\" href=\""+link_p+"\"><i class=\"biolife-icon icon-search\"><\/i><\/a>";
                 productListHtml += "            <\/div>";
