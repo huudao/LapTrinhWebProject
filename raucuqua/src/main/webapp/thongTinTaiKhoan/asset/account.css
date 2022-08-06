@@ -199,5 +199,13 @@
 .account-favorite-product, .account-favorite-product a {
     color: black;
 }
-
+.self-container{
+    display: flex;
+    justify-content:space-between;
+}
+.self-container2{
+    padding-top: 10px;
+    display: flex;
+    justify-content:space-around;
+}
 
