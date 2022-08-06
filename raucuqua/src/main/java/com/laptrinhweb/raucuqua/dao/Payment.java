@@ -18,10 +18,10 @@ public class Payment {
         }
 //        System.out.println("[VALID DATA] -remove this notification if needed!");
     }
-    public static synchronized void payment(String id_user,String address,String state,double total_money,String phone_number,double ship_fee,String ship_state,String payment)  {
+    public static synchronized String payment(String id_user,String address,String state,double total_money,String phone_number,double ship_fee,String ship_state,String payment,List<Cart> products)  {
         try {
             Connection con = GetConnection.getCon();
-            List<Cart> products = CartFuntions.watch(id_user);
+
             //check is amount still valid?
             checkValidData(con, products);
             //buy time!
@@ -70,6 +70,7 @@ public class Payment {
                 CartFuntions.deleteProduct(id_user, cart.getProduct().getId_product());
             }
             GetConnection.releaseConection(con);
+            return id;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } catch (ClassNotFoundException e) {
@@ -79,6 +80,6 @@ public class Payment {
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         String id_user = "UA0004";
-        payment(id_user,"java ranch 123s","đã thanh toán",CartFuntions.totalMoney(id_user),"0123445679",2000,"chưa giao hàng","offline");
+//        payment(id_user,"java ranch 123s","đã thanh toán",CartFuntions.totalMoney(id_user),"0123445679",2000,"chưa giao hàng","offline");
     }
 }
