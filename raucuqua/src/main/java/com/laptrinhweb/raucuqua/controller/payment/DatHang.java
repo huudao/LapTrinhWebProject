@@ -39,7 +39,7 @@ public class DatHang extends HttpServlet {
         HttpSession s = request.getSession();
         UserAccount xx = (UserAccount) s.getAttribute("auth");
         String x = xx.getId_user();
-        Payment.payment(x,line,"chưa thanh toán",totalMoneyWithFee,phone_number);
+        Payment.payment(x,line,"chưa thanh toán",totalMoneyWithFee,phone_number,2000,"chưa giao hàng","offline");
         response.sendRedirect("ListBill");
     }
 }

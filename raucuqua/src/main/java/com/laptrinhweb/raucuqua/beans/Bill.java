@@ -1,3 +1,9 @@
+
+
+
+
+
+
 package com.laptrinhweb.raucuqua.beans;
 
 import java.util.Date;
@@ -10,6 +16,30 @@ public class Bill {
     private double total_money;
     private Date date_time;
     private String phone_number;
+    private double ship_fee;
+    private String ship_state;
+    private String payment;
+
+    public double getShip_fee() {
+        return ship_fee;
+    }
+
+    public void setShip_fee(double ship_fee) {
+        this.ship_fee = ship_fee;
+    }
+
+    public String getPayment() {
+        return payment;
+    }
+
+    public void setPayment(String payment) {
+        this.payment = payment;
+    }
+
+    public Bill() {
+
+    }
+
 
     public String getId_bill() {
         return id_bill;
@@ -67,6 +97,13 @@ public class Bill {
         this.phone_number = phone_number;
     }
 
+    public String getShip_state() {
+        return ship_state;
+    }
+    public void setShip_state(String ship_state) {
+        this.ship_state = ship_state;
+    }
+
     @Override
     public String toString() {
         return "Bill{" +
@@ -77,6 +114,7 @@ public class Bill {
                 ", total_money=" + total_money +
                 ", date_time=" + date_time +
                 ", phone_number='" + phone_number + '\'' +
+                ", ship_state='" + ship_state + '\''+
                 '}';
     }
 }
