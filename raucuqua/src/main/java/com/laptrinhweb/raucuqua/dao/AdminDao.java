@@ -167,10 +167,14 @@ public class AdminDao {
             psAd.setString(9, description);
             psAd.setString(10, img_url);
             int result = psAd.executeUpdate();
+
+            GetConnection.releaseConection(con);
             if (result == 1)
                 return true;
             else
                 return false;
+
+
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -196,6 +200,8 @@ public class AdminDao {
             ps.setString(10,id_product);
 
             int result = ps.executeUpdate();
+
+            GetConnection.releaseConection(con);
             if (result == 1)
                 return true;
             else
@@ -215,10 +221,13 @@ public class AdminDao {
             PreparedStatement psAd = con.prepareStatement(sqlDelete);
             psAd.setString(1,id_product);
             int result = psAd.executeUpdate();
+
+            GetConnection.releaseConection(con);
             if (result == 1)
                 return true;
             else
                 return false;
+
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -228,7 +237,7 @@ public class AdminDao {
     }
 
     public static void main(String[] args) {
-//        System.out.println(updateProduct("PD0010","sàasfasf", "bc",15, 15,20,12,"asfaefwa","abasafsadfdsf",""));
+//        System.out.println(updateProduct("PD0010","afasgsf", "bc",15, 15,20,12,"asfaefwa","abasafsadfdsf",""));
 
 //        System.out.println(addProduct("abc", "bc",15, 15,20,12,"asfaefwa","abasafsadfdsf",""));
 //        System.out.println(deleteProduct("PD0010"));
