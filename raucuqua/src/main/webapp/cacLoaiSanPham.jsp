@@ -38,7 +38,7 @@
     <script>
         class Product{
 
-            constructor(id,name,type,priceDiscount,percentDiscount,price,shortDescription,imgUrl,numStar,numComment) {
+            constructor(id,name,type,priceDiscount,percentDiscount,price,shortDescription,imgUrl,numStar,numComment,outOfItem) {
                 this._id = id;
                 this._name = name;
                 this._type = type;
@@ -50,9 +50,12 @@
                 this._imgUrl = imgUrl;
                 this._numStar = numStar;
                 this._numComment = numComment;
+                this._outOfItem = outOfItem;
             }
 
-
+            get outOfItem(){
+                return this._outOfItem;
+            }
             get id() {
                 return this._id;
             }
@@ -99,12 +102,20 @@
         }
         var productsJs = [];
         <%for (Product p : productsHot ) {
+            boolean is = false;
+        if(p.getAmount_bought()>=p.getAmount_imported()){
+            //out of item
+            is = false;
+        }else{
+            //available
+            is = true;
+        }
         %>
         //(id,name,type,priceDiscount,percentDiscount,price,shortDescription,description,imgUrl,numStar,numComment) {
 
         <%--console.log("<%=p.getProduct_name()%>, <%=p.getNumberComment()%>");--%>
         productsJs[productsJs.length] = new Product("<%=p.getId_product()%>","<%=p.getProduct_name()%>","<%=p.getProduct_type()%>"
-            ,<%=p.getPriceDiscount()%>,<%=p.getPercent_discount()%>,<%=p.getPrice()%>,"<%=p.getShort_description()%>","<%=p.getImg_url()%>",<%=p.getNumstar()%>,<%=p.getNumberComment()%>);
+            ,<%=p.getPriceDiscount()%>,<%=p.getPercent_discount()%>,<%=p.getPrice()%>,"<%=p.getShort_description()%>","<%=p.getImg_url()%>",<%=p.getNumstar()%>,<%=p.getNumberComment()%>,<%=is%>);
 
         <%}%>
         // console.log(productsJs);
@@ -165,7 +176,15 @@
                                 <ul class="products-list biolife-carousel nav-center-02 nav-none-on-mobile eq-height-contain" data-slick='{"rows":1 ,"arrows":true,"dots":false,"infinite":true,"speed":400,"slidesMargin":10,"slidesToShow":4, "responsive":[{"breakpoint":1200, "settings":{ "slidesToShow": 4}},{"breakpoint":992, "settings":{ "slidesToShow": 3, "slidesMargin":25 }},{"breakpoint":768, "settings":{ "slidesToShow": 2, "slidesMargin":15}}]}'>
                                     <% for (Product p :productsKhuyenMai
                                     ) {
-
+                                        String pnotice = "";
+                                        String pcolor_notice ="color:black;";
+                                        if(p.getAmount_bought()>=p.getAmount_imported()){
+                                            pnotice = "hết hàng";
+                                            pcolor_notice = "color:red;";
+                                        }else{
+                                            pnotice = "còn hàng";
+                                            pcolor_notice = "color:green;";
+                                        }
                                     %>
                                     <%String link_p = "ChiTietSanPham?id_product="+p.getId_product();%>
 
@@ -178,7 +197,7 @@
                                                 <a class="lookup btn_call_quickview" href=<%=link_p%>><i class="biolife-icon icon-search"></i></a>
                                             </div>
                                             <div class="info">
-                                                <h4 class="product-title"><a href=<%=link_p%> class="pr-name"><%=p.getProduct_name()%></a></h4>
+                                                <h4 class="product-title"><a href=<%=link_p%> class="pr-name"><%=p.getProduct_name()%> <p class="shipping-day" style=<%=pcolor_notice%>><%=pnotice%></p></a></h4>
                                                 <div class="price ">
                                                     <ins><span class="price-amount"><span class="currencySymbol"></span><%=p.getPriceDiscount()%>đ</span></ins>
                                                     <del><span class="price-amount"><span class="currencySymbol"></span><%=p.getPrice()%>đ</span></del>
@@ -299,7 +318,12 @@
                 productListHtml += "                <a class=\"lookup btn_call_quickview\" href=\""+link_p+"\"><i class=\"biolife-icon icon-search\"><\/i><\/a>";
                 productListHtml += "            <\/div>";
                 productListHtml += "            <div class=\"info\">";
-                productListHtml += "                <h4 class=\"product-title\"><a href=\""+link_p+"\" class=\"pr-name\">\""+p.name+"\"<\/a><\/h4>";
+                if(p.outOfItem==false) {
+                    productListHtml += "                <h4 class=\"product-title\"><a href=\"" + link_p + "\" class=\"pr-name\">\"" + p.name + "\"<p class='shipping-day' style='color:red;'>hết hàng</p><\/a><\/h4>";
+                }else{
+                    productListHtml += "                <h4 class=\"product-title\"><a href=\"" + link_p + "\" class=\"pr-name\">\"" + p.name + "\"<p class='shipping-day' style='color:green;'>còn hàng</p><\/a><\/h4>";
+
+                }
                 productListHtml += "                <div class=\"price \">";
                 productListHtml += "                    <ins><span class=\"price-amount\"><span class=\"currencySymbol\"><\/span>\""+p.priceDiscount+"\"đ<\/span><\/ins>";
                 productListHtml += "                    <del><span class=\"price-amount\"><span class=\"currencySymbol\"><\/span>\""+p.price+"\"đ<\/span><\/del>";

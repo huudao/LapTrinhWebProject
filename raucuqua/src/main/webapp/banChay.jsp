@@ -27,7 +27,7 @@
     <script>
         class Product{
 
-            constructor(id,name,type,priceDiscount,percentDiscount,price,shortDescription,imgUrl,numStar,numComment) {
+            constructor(id,name,type,priceDiscount,percentDiscount,price,shortDescription,imgUrl,numStar,numComment,outOfItem) {
                 this._id = id;
                 this._name = name;
                 this._type = type;
@@ -39,9 +39,12 @@
                 this._imgUrl = imgUrl;
                 this._numStar = numStar;
                 this._numComment = numComment;
+                this._outOfItem = outOfItem;
             }
 
-
+            get outOfItem(){
+                return this._outOfItem;
+            }
             get id() {
                 return this._id;
             }
@@ -88,12 +91,20 @@
         }
         var productsJs = [];
         <%for (Product p : products ) {
+            boolean is = false;
+        if(p.getAmount_bought()>=p.getAmount_imported()){
+            //out of item
+            is = false;
+        }else{
+            //available
+            is = true;
+        }
         %>
         //(id,name,type,priceDiscount,percentDiscount,price,shortDescription,description,imgUrl,numStar,numComment) {
 
         <%--console.log("<%=p.getProduct_name()%>, <%=p.getNumberComment()%>");--%>
         productsJs[productsJs.length] = new Product("<%=p.getId_product()%>","<%=p.getProduct_name()%>","<%=p.getProduct_type()%>"
-            ,<%=p.getPriceDiscount()%>,<%=p.getPercent_discount()%>,<%=p.getPrice()%>,"<%=p.getShort_description()%>","<%=p.getImg_url()%>",<%=p.getNumstar()%>,<%=p.getNumberComment()%>);
+            ,<%=p.getPriceDiscount()%>,<%=p.getPercent_discount()%>,<%=p.getPrice()%>,"<%=p.getShort_description()%>","<%=p.getImg_url()%>",<%=p.getNumstar()%>,<%=p.getNumberComment()%>,<%=is%>);
 
         <%}%>
         console.log("run me")
@@ -237,8 +248,12 @@
             productListHtml += "                <a class=\"lookup btn_call_quickview\" href=\""+link_p+"\"><i class=\"biolife-icon icon-search\"><\/i><\/a>";
             productListHtml += "            <\/div>";
             productListHtml += "            <div class=\"info\">";
-            productListHtml += "                <h4 class=\"product-title\"><a href=\""+link_p+"\" class=\"pr-name\">\""+p.name+"\"<\/a><\/h4>";
-            productListHtml += "                <div class=\"price \">";
+            if(p.outOfItem==false) {
+                productListHtml += "                <h4 class=\"product-title\"><a href=\"" + link_p + "\" class=\"pr-name\">\"" + p.name + "\"<p class='shipping-day' style='color:red;'>hết hàng</p><\/a><\/h4>";
+            }else{
+                productListHtml += "                <h4 class=\"product-title\"><a href=\"" + link_p + "\" class=\"pr-name\">\"" + p.name + "\"<p class='shipping-day' style='color:green;'>còn hàng</p><\/a><\/h4>";
+
+            }            productListHtml += "                <div class=\"price \">";
             productListHtml += "                    <ins><span class=\"price-amount\"><span class=\"currencySymbol\"><\/span>\""+p.priceDiscount+"\"đ<\/span><\/ins>";
             productListHtml += "                    <del><span class=\"price-amount\"><span class=\"currencySymbol\"><\/span>\""+p.price+"\"đ<\/span><\/del>";
             productListHtml += "                <\/div>";

@@ -5,6 +5,7 @@ import com.laptrinhweb.raucuqua.beans.UserAccount;
 import com.laptrinhweb.raucuqua.beans.UserAddress;
 import com.laptrinhweb.raucuqua.dao.CartFuntions;
 import com.laptrinhweb.raucuqua.dao.Payment;
+import com.laptrinhweb.raucuqua.services.MailService;
 import com.laptrinhweb.raucuqua.services.billPdfCreator;
 
 import javax.servlet.*;
@@ -60,7 +61,8 @@ public class DatHang extends HttpServlet {
         //getting the current year
         int currentYear = currentdate.getYear();
         System.out.println("Current month: "+currentYear);
-        billPdfCreator.exportBill(id_bill,currentYear,currentMonth.toString(),currentDay,ua.getUser_name(),"chưa thanh toán","offline",ship_fee,phone_number,house_address,xx.getEmail(),products);
+        String file = billPdfCreator.exportBill(id_bill,currentYear,currentMonth.toString(),currentDay,ua.getUser_name(),"chưa thanh toán","offline",ship_fee,phone_number,house_address,xx.getEmail(),products);
+        MailService.sendMail(xx.getEmail(),"bill thanh toan hoa don","đây là bill thanh toán hóa đơn",true,file);
         response.sendRedirect("ListBill");
     }
 }
