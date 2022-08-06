@@ -18,7 +18,7 @@ public class Payment {
         }
 //        System.out.println("[VALID DATA] -remove this notification if needed!");
     }
-    public static synchronized void payment(String id_user,String address,String state,double total_money,String phone_number)  {
+    public static synchronized void payment(String id_user,String address,String state,double total_money,String phone_number,double ship_fee,String ship_state,String payment)  {
         try {
             Connection con = GetConnection.getCon();
             List<Cart> products = CartFuntions.watch(id_user);
@@ -29,7 +29,7 @@ public class Payment {
             String id = Util.nextID(con, "bill", "id_bill", "BI");
             System.out.println(id);
             //do it bill infor.
-            String sql = "insert into bill values(?,?,?,?,?,?,?)";
+            String sql = "insert into bill(id_bill,id_user,address,state ,total_money,date_time,phone_number,ship_fee,ship_state,payment) values(?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, id);
             ps.setString(2, id_user);
@@ -39,6 +39,9 @@ public class Payment {
             java.sql.Timestamp date = new java.sql.Timestamp(new java.util.Date().getTime());
             ps.setTimestamp(6, date);
             ps.setString(7, phone_number);
+            ps.setDouble(8,ship_fee);
+            ps.setString(9,ship_state);
+            ps.setString(10,payment);
             int scalar = ps.executeUpdate();
 
             //deal with bill_detail
@@ -76,6 +79,6 @@ public class Payment {
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         String id_user = "UA0004";
-        payment(id_user,"java ranch 123s","đã thanh toán",CartFuntions.totalMoney(id_user),"0123445679");
+        payment(id_user,"java ranch 123s","đã thanh toán",CartFuntions.totalMoney(id_user),"0123445679",2000,"chưa giao hàng","offline");
     }
 }
