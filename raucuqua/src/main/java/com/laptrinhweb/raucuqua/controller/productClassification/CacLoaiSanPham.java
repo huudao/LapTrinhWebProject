@@ -1,6 +1,7 @@
 package com.laptrinhweb.raucuqua.controller.productClassification;
 
 import com.laptrinhweb.raucuqua.beans.Product;
+import com.laptrinhweb.raucuqua.controller.lazyLoading.LazyLoadingProduct;
 import com.laptrinhweb.raucuqua.dao.ProductClassification;
 
 import javax.servlet.*;
@@ -9,6 +10,7 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 @WebServlet(name = "CacLoaiSanPham", value = "/CacLoaiSanPham")
 public class CacLoaiSanPham extends HttpServlet {
@@ -36,8 +38,17 @@ public class CacLoaiSanPham extends HttpServlet {
 //                productsKhuyenMai) {
 //            p.loadComment();
 //        }
+        Random rand = new Random();
+        int seed = rand.nextInt();
+
+        LazyLoadingProduct lazy = LazyLoadingProduct.getInstance();
+        lazy.add(seed,productsKhuyenMai);
+
+        request.setAttribute("seed",seed);
+        System.out.println("[SIZE]"+ productsKhuyenMai.subList(0,(productsKhuyenMai.size()>=10)?10:productsKhuyenMai.size()));
+        request.setAttribute("originNumberProduct",(productsKhuyenMai.size()>=10)?10:productsKhuyenMai.size());
         request.setAttribute("productsHot",productsHot);
-        request.setAttribute("productsKhuyenMai",productsKhuyenMai);
+        request.setAttribute("productsKhuyenMai",productsKhuyenMai.subList(0,(productsKhuyenMai.size()>=10)?10:productsKhuyenMai.size()));
         request.setAttribute("type",type);
         System.out.println("[HOT] "+productsHot.size());
         System.out.println("[KHUYEN MAI] "+productsKhuyenMai.size());

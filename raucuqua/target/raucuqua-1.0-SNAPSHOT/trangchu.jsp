@@ -93,6 +93,15 @@
                                 </div>
                                 <ul class="products biolife-carousel nav-top-right nav-none-on-mobile" data-slick='{"arrows":true, "dots":false, "infinite":false, "speed":400, "slidesMargin":30, "slidesToShow":1}'>
                                     <% Product firstDiscountProduct = (Product)request.getAttribute("firstProduct");
+                                        String firstnotice = "";
+                                        String firstcolor_notice ="color:black;";
+                                        if(firstDiscountProduct.getAmount_bought()>=firstDiscountProduct.getAmount_imported()){
+                                            firstnotice = "hết hàng";
+                                            firstcolor_notice = "color:red;";
+                                        }else{
+                                            firstnotice = "còn hàng";
+                                            firstcolor_notice = "color:green;";
+                                        }
                                         if(firstDiscountProduct ==null)
                                             firstDiscountProduct = new Product();
                                         String firstLink = "dangNhap.jsp";
@@ -115,10 +124,11 @@
                                             <div class="info">
 
                                                 <b class="categories"></b>
-                                                <h4 class="product-title"><a href=<%=linkProductDetail%> class="pr-name"><%=firstDiscountProduct.getProduct_name()%></a></h4>
+                                                <h4 class="product-title"><a href=<%=linkProductDetail%> class="pr-name"><%=firstDiscountProduct.getProduct_name()%> <p class="shipping-day" style=<%=firstcolor_notice%><%=firstnotice%>></p></a></h4>
                                                 <div class="price ">
-                                                    <ins><span class="price-amount"><span class="currencySymbol"></span><%=firstDiscountProduct.getPriceDiscount()%>đ</span></ins>
+                                                    <ins><span class="price-amount"><span class="currencySymbol"></span> <%=firstDiscountProduct.getPriceDiscount()%>đ</span></ins>
                                                     <del><span class="price-amount"><span class="currencySymbol"></span><%=firstDiscountProduct.getPrice()%>đ</span></del>
+                                                    <p class="shipping-day" style=<%=firstcolor_notice%>><%=firstnotice%>></p>
                                                 </div>
                                                 <div class="slide-down-box">
                                                     <p class="message"><%=firstDiscountProduct.getShort_description()%></p>
@@ -145,6 +155,16 @@
                                     <%=((List<Product>)request.getAttribute("hotProducts")).size()%>
                                     <% for (Product p :(List<Product>)request.getAttribute("hotProducts")
                                             ) {
+                                        String pnotice = "";
+                                        String pcolor_notice ="color:black;";
+                                        if(p.getAmount_bought()>=p.getAmount_imported()){
+                                            pnotice = "hết hàng";
+                                            pcolor_notice = "color:red;";
+                                        }else{
+                                            pnotice = "còn hàng";
+                                            pcolor_notice = "color:green;";
+                                        }
+
                                     %>
                                     <li class="product-item">
                                         <div class="contain-product right-info-layout contain-product__right-info-layout">
@@ -156,7 +176,7 @@
                                                 </a>
                                             </div>
                                             <div class="info">
-                                                <h4 class="product-title"><a href=<%=link_p%> class="pr-name"><%=p.getProduct_name()%></a></h4>
+                                                <h4 class="product-title"><a href=<%=link_p%> class="pr-name"><%=p.getProduct_name()%> <p class="shipping-day" style=<%=pcolor_notice%>><%=pnotice%></p></a></h4>
                                                 <div class="price ">
                                                     <ins><span class="price-amount"><span class="currencySymbol"></span><%=p.getPrice()%>đ</span></ins>
                                                     <del><span class="price-amount"><span class="currencySymbol"></span><%=p.getPriceDiscount()%>đ</span></del>
@@ -166,6 +186,7 @@
                                                     <p class="star-rating"><span class=<%=percent%>></span></p>
                                                     <span class="review-count"> (<%=p.getNumberComment()%> Đánh giá)</span>
                                                 </div>
+
                                             </div>
                                         </div>
 
@@ -202,7 +223,15 @@
                                 <ul class="products-list biolife-carousel nav-center-02 nav-none-on-mobile eq-height-contain" data-slick='{"rows":2 ,"arrows":true,"dots":false,"infinite":true,"speed":400,"slidesMargin":10,"slidesToShow":4, "responsive":[{"breakpoint":1200, "settings":{ "slidesToShow": 4}},{"breakpoint":992, "settings":{ "slidesToShow": 3, "slidesMargin":25 }},{"breakpoint":768, "settings":{ "slidesToShow": 2, "slidesMargin":15}}]}'>
                                     <% for (Product p :(List<Product>)request.getAttribute("discountProducts")
                                     ) {
-
+                                        String pnotice = "";
+                                        String pcolor_notice ="color:black;";
+                                        if(p.getAmount_bought()>=p.getAmount_imported()){
+                                            pnotice = "hết hàng";
+                                            pcolor_notice = "color:red;";
+                                        }else{
+                                            pnotice = "còn hàng";
+                                            pcolor_notice = "color:green;";
+                                        }
                                     %>
                                     <%String link_p = "ChiTietSanPham?id_product="+p.getId_product();%>
 
@@ -215,7 +244,7 @@
                                                 <a class="lookup btn_call_quickview" href=<%=link_p%>><i class="biolife-icon icon-search"></i></a>
                                             </div>
                                             <div class="info">
-                                                <h4 class="product-title"><a href=<%=link_p%> class="pr-name"><%=p.getProduct_name()%></a></h4>
+                                                <h4 class="product-title"><a href=<%=link_p%> class="pr-name"><%=p.getProduct_name()%> <p class="shipping-day" style=<%=pcolor_notice%>><%=pnotice%></p></a></h4>
                                                 <div class="price ">
                                                     <ins><span class="price-amount"><span class="currencySymbol"></span><%=p.getPriceDiscount()%>đ</span></ins>
                                                     <del><span class="price-amount"><span class="currencySymbol"></span><%=p.getPrice()%>đ</span></del>

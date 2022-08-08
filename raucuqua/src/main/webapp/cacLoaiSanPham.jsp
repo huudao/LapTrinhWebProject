@@ -38,7 +38,7 @@
     <script>
         class Product{
 
-            constructor(id,name,type,priceDiscount,percentDiscount,price,shortDescription,imgUrl,numStar,numComment) {
+            constructor(id,name,type,priceDiscount,percentDiscount,price,shortDescription,imgUrl,numStar,numComment,outOfItem) {
                 this._id = id;
                 this._name = name;
                 this._type = type;
@@ -50,9 +50,12 @@
                 this._imgUrl = imgUrl;
                 this._numStar = numStar;
                 this._numComment = numComment;
+                this._outOfItem = outOfItem;
             }
 
-
+            get outOfItem(){
+                return this._outOfItem;
+            }
             get id() {
                 return this._id;
             }
@@ -98,13 +101,24 @@
             }
         }
         var productsJs = [];
+        let seed = <%=request.getAttribute("seed")%>;
+        let number = <%=request.getAttribute("originNumberProduct")%>;
+
         <%for (Product p : productsHot ) {
+            boolean is = false;
+        if(p.getAmount_bought()>=p.getAmount_imported()){
+            //out of item
+            is = false;
+        }else{
+            //available
+            is = true;
+        }
         %>
         //(id,name,type,priceDiscount,percentDiscount,price,shortDescription,description,imgUrl,numStar,numComment) {
 
         <%--console.log("<%=p.getProduct_name()%>, <%=p.getNumberComment()%>");--%>
         productsJs[productsJs.length] = new Product("<%=p.getId_product()%>","<%=p.getProduct_name()%>","<%=p.getProduct_type()%>"
-            ,<%=p.getPriceDiscount()%>,<%=p.getPercent_discount()%>,<%=p.getPrice()%>,"<%=p.getShort_description()%>","<%=p.getImg_url()%>",<%=p.getNumstar()%>,<%=p.getNumberComment()%>);
+            ,<%=p.getPriceDiscount()%>,<%=p.getPercent_discount()%>,<%=p.getPrice()%>,"<%=p.getShort_description()%>","<%=p.getImg_url()%>",<%=p.getNumstar()%>,<%=p.getNumberComment()%>,<%=is%>);
 
         <%}%>
         // console.log(productsJs);
@@ -165,7 +179,15 @@
                                 <ul class="products-list biolife-carousel nav-center-02 nav-none-on-mobile eq-height-contain" data-slick='{"rows":1 ,"arrows":true,"dots":false,"infinite":true,"speed":400,"slidesMargin":10,"slidesToShow":4, "responsive":[{"breakpoint":1200, "settings":{ "slidesToShow": 4}},{"breakpoint":992, "settings":{ "slidesToShow": 3, "slidesMargin":25 }},{"breakpoint":768, "settings":{ "slidesToShow": 2, "slidesMargin":15}}]}'>
                                     <% for (Product p :productsKhuyenMai
                                     ) {
-
+                                        String pnotice = "";
+                                        String pcolor_notice ="color:black;";
+                                        if(p.getAmount_bought()>=p.getAmount_imported()){
+                                            pnotice = "hết hàng";
+                                            pcolor_notice = "color:red;";
+                                        }else{
+                                            pnotice = "còn hàng";
+                                            pcolor_notice = "color:green;";
+                                        }
                                     %>
                                     <%String link_p = "ChiTietSanPham?id_product="+p.getId_product();%>
 
@@ -178,7 +200,7 @@
                                                 <a class="lookup btn_call_quickview" href=<%=link_p%>><i class="biolife-icon icon-search"></i></a>
                                             </div>
                                             <div class="info">
-                                                <h4 class="product-title"><a href=<%=link_p%> class="pr-name"><%=p.getProduct_name()%></a></h4>
+                                                <h4 class="product-title"><a href=<%=link_p%> class="pr-name"><%=p.getProduct_name()%> <p class="shipping-day" style=<%=pcolor_notice%>><%=pnotice%></p></a></h4>
                                                 <div class="price ">
                                                     <ins><span class="price-amount"><span class="currencySymbol"></span><%=p.getPriceDiscount()%>đ</span></ins>
                                                     <del><span class="price-amount"><span class="currencySymbol"></span><%=p.getPrice()%>đ</span></del>
@@ -299,7 +321,12 @@
                 productListHtml += "                <a class=\"lookup btn_call_quickview\" href=\""+link_p+"\"><i class=\"biolife-icon icon-search\"><\/i><\/a>";
                 productListHtml += "            <\/div>";
                 productListHtml += "            <div class=\"info\">";
-                productListHtml += "                <h4 class=\"product-title\"><a href=\""+link_p+"\" class=\"pr-name\">\""+p.name+"\"<\/a><\/h4>";
+                if(p.outOfItem==false) {
+                    productListHtml += "                <h4 class=\"product-title\"><a href=\"" + link_p + "\" class=\"pr-name\">\"" + p.name + "\"<p class='shipping-day' style='color:red;'>hết hàng</p><\/a><\/h4>";
+                }else{
+                    productListHtml += "                <h4 class=\"product-title\"><a href=\"" + link_p + "\" class=\"pr-name\">\"" + p.name + "\"<p class='shipping-day' style='color:green;'>còn hàng</p><\/a><\/h4>";
+
+                }
                 productListHtml += "                <div class=\"price \">";
                 productListHtml += "                    <ins><span class=\"price-amount\"><span class=\"currencySymbol\"><\/span>\""+p.priceDiscount+"\"đ<\/span><\/ins>";
                 productListHtml += "                    <del><span class=\"price-amount\"><span class=\"currencySymbol\"><\/span>\""+p.price+"\"đ<\/span><\/del>";
@@ -322,6 +349,58 @@
         //
         displayProduct(productsJs);
 
+        var loadInterval = null;
+        // var flag = true;
+        $(window).scroll(function() {
+
+            // console.log('run me: ',rect.top, rect.right, rect.bottom, rect.left);
+            var scroll = $(window).scrollTop();
+            var x = $(window).height();
+            let bound = $(document).height() * 0.95;
+            if (loadInterval==null && scroll + x > bound) {
+                // flag = false;
+                let next_num = number + 10;
+                lazyNextLoad(seed, number, next_num);
+                number = next_num;
+                displayProduct(productsJs);
+                loadInterval = setTimeout(function(){
+                        //Nullified interval after 5 seconds
+                        loadInterval = null;}
+                    , 1000);
+                // flag = true;
+            }
+        });
+        function lazyNextLoad(seed,origin,next){
+            const xhttp = new XMLHttpRequest();
+            xhttp.onload = function() {
+                try {
+                    let mydata = JSON.parse(this.responseText);
+                    // alert('run');
+                    console.log(mydata);
+                    for (let i = 0; i < mydata.length; i++) {
+
+                        let v = mydata[i].price * ((100 - mydata[i].percent_discount) / 100.0);
+                        let is = false;
+                        if (mydata[i].amount_bought >= mydata[i].amount_imported) {
+                            //out of item
+                            is = false;
+                        } else {
+                            //available
+                            is = true;
+                        }
+                        console.log('run me please', mydata[i].id_product, mydata[i].product_name);
+                        productsJs[productsJs.length] = new Product(mydata[i].id_product, mydata[i].product_name, mydata[i].product_type, v, mydata[i].percent_discount, mydata[i].price, mydata[i].short_description, mydata[i].img_url, mydata[i].numstar, mydata[i].numberComment, is);
+                    }
+                }catch (e) {
+                    console.log('finish upload'+productsJs.length);
+                }
+            }
+            xhttp.open("GET", "GetNextDataJsonProduct?seed="+seed+"&origin="+origin+"&next="+next, true);
+            xhttp.send();
+        }
+
+
+
         function arrange() {
             //shallow copy
             let arr = productsJs.slice();
@@ -341,6 +420,7 @@
 
             displayProduct(arr);
         }
+
     </script>
         <script>
 

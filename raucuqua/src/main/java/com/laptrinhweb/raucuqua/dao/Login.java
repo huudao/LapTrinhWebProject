@@ -12,7 +12,7 @@ public class Login {
     public static UserAccount login(String username,String password){
         try {
             Connection con = GetConnection.getCon();
-            String sql ="SELECT id_user,user_name,email,password,role FROM user_account" +
+            String sql ="SELECT id_user,user_name,email,password,img_url,role FROM user_account" +
                     " WHERE user_name = ? AND password = ?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1,username);
@@ -26,6 +26,7 @@ public class Login {
                 user.setId_user(rs.getString(1));
                 user.setUser_name(rs.getString(2));
                 user.setEmail(rs.getString(3));
+                user.setImg_url(rs.getString("img_url"));
                 user.setRole(rs.getInt("role"));
                 if(!rs.getString(2).equals(username)) return null;
                 if(!rs.getString(4).equals(Util.hashPassword(password))) return null;
