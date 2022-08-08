@@ -117,7 +117,7 @@ public static boolean sendMail(String to, String subject, String content,boolean
     }
 
     public static void main(String[] args) {
-        String email = "thuan0373535207@gmail.com";
+        String email = "huudao805@gmail.com";
         String content = "xin chao user 123, day la duong link de lay lai mat khau";
         MailService.sendMail(email,"xác nhận lấy mật khẩu từ trang raucuqua jdk 7",content);
     }

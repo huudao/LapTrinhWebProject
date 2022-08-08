@@ -144,18 +144,18 @@ public class BillFuntions {
     }
 
     public static void main(String[] args) {
-        System.out.println(income(8,2022));
-        System.out.println("---------------------------");
+//        System.out.println(income(8,2022));
+//        System.out.println("---------------------------");
         for(Bill b : listBill(8,2022) ){
             System.out.println(b);
         }
-        System.out.println("---------------------------");
-        for(Bill b : listBillNotPay(8,2022) ){
-            System.out.println(b);
-        }
-        System.out.println("---------------------------");
-        for(Bill b : listBillNotShip(8,2022) ){
-            System.out.println(b);
-        }
+//        System.out.println("---------------------------");
+//        for(Bill b : listBillNotPay(8,2022) ){
+//            System.out.println(b);
+//        }
+//        System.out.println("---------------------------");
+//        for(Bill b : listBillNotShip(8,2022) ){
+//            System.out.println(b);
+//        }
     }
 }

@@ -120,7 +120,7 @@ public class AdminDao {
 
         try {
             Connection conn = GetConnection.getCon();
-            String sql = "SELECT id_contact,email,name,phone_name,content,date_up_contact FROM contact WHERE MONTH(date_up_contact) = ? AND YEAR(date_up_contact) = ? ORDER BY date_up_contact DESC";
+            String sql = "SELECT id_contact,email,name,phone_name,content,date_up_contact,ischeck FROM contact WHERE MONTH(date_up_contact) = ? AND YEAR(date_up_contact) = ? ORDER BY date_up_contact DESC";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, month);
             ps.setInt(2, year);
@@ -134,6 +134,49 @@ public class AdminDao {
                 contact.setPhone_name(rs.getString("phone_name"));
                 contact.setContent(rs.getString("content"));
                 contact.setDate_up_contact(rs.getDate("date_up_contact"));
+                int ischeck = rs.getInt("ischeck");
+                if(ischeck==1){
+                    contact.setIscheck(true);
+                }else{
+                    contact.setIscheck(false);
+                }
+                listContact.add(contact);
+            }
+            GetConnection.releaseConection(conn);
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        return listContact;
+    }
+
+    public static List<Contact> listContact() {
+        List<Contact> listContact = new ArrayList<Contact>();
+
+        try {
+            Connection conn = GetConnection.getCon();
+            String sql = "SELECT id_contact,email,name,phone_name,content,date_up_contact,ischeck FROM contact ORDER BY date_up_contact DESC";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            Contact contact = null;
+            while (rs.next()) {
+                contact = new Contact();
+                contact.setId_contact(rs.getString("id_contact"));
+                contact.setEmail(rs.getString("email"));
+                contact.setName(rs.getString("name"));
+                contact.setPhone_name(rs.getString("phone_name"));
+                contact.setContent(rs.getString("content"));
+                contact.setDate_up_contact(rs.getDate("date_up_contact"));
+                int ischeck = rs.getInt("ischeck");
+                if(ischeck==1){
+                    contact.setIscheck(true);
+                }else{
+                    contact.setIscheck(false);
+                }
 
                 listContact.add(contact);
             }
@@ -147,6 +190,26 @@ public class AdminDao {
         }
 
         return listContact;
+    }
+
+    public static boolean updateCheckState(String id_contact) {
+        try {
+            Connection conn = GetConnection.getCon();
+            String sql = "UPDATE contact SET ischeck = 1 WHERE id_contact = ?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1,id_contact);
+            int res = ps.executeUpdate();
+            GetConnection.releaseConection(conn);
+
+            if(res == 1) return true;
+
+            return false;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     public static boolean addProduct(String product_name, String product_type, int amount_bought, int amount_imported, int percent_discount, double price, String short_description, String description, String img_url) {
@@ -238,8 +301,9 @@ public class AdminDao {
 
     public static void main(String[] args) {
 //        System.out.println(updateProduct("PD0010","afasgsf", "bc",15, 15,20,12,"asfaefwa","abasafsadfdsf",""));
+//        updateCheckState("CT0001");
 
-//        System.out.println(addProduct("abc", "bc",15, 15,20,12,"asfaefwa","abasafsadfdsf",""));
+//       addProduct("abc", "bc",15, 15,20,12,"asfaefwa","abasafsadfdsf","");
 //        System.out.println(deleteProduct("PD0010"));
 
 //        for (UserAccount u : listAccount()) {
@@ -258,5 +322,6 @@ public class AdminDao {
 //            System.out.println(c);
 //        }
     }
+
 
 }
