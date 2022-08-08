@@ -50,7 +50,7 @@
 </div>
 
 <!-- HEADER -->
-<jsp:include page="../header.jsp"/>
+<jsp:include page="header.jsp"/>
 
 <!--Hero Section-->
 <div class="hero-section hero-background">

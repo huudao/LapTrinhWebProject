@@ -9,14 +9,24 @@ public class Contact {
     private String phone_name;
     private String content;
     private Date date_up_contact;
+    private boolean ischeck;
 
-    public Contact(String id_contact, String email, String name, String phone_name, String content, Date date_up_contact) {
+    public Contact(String id_contact, String email, String name, String phone_name, String content, Date date_up_contact, boolean ischeck) {
         this.id_contact = id_contact;
         this.email = email;
         this.name = name;
         this.phone_name = phone_name;
         this.content = content;
         this.date_up_contact = date_up_contact;
+        this.ischeck = ischeck;
+    }
+
+    public boolean isIscheck() {
+        return ischeck;
+    }
+
+    public void setIscheck(boolean ischeck) {
+        this.ischeck = ischeck;
     }
 
     public Contact(){
@@ -79,6 +89,7 @@ public class Contact {
                 ", phone_name=" + phone_name +
                 ", content='" + content + '\'' +
                 ", date_up_contact=" + date_up_contact +
+                ", ischeck= "+ischeck+
                 '}';
     }
 }

@@ -6550,7 +6550,8 @@ body.open-overlay #overlay{
     line-height: 0;
 }
 .main-content .main-post-list{
-    display: inline-block;
+    display: flex;
+    flex-wrap: wrap;
     width: 100%;
     margin: -10px 0 0 0;
     padding: 0;
