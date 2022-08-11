@@ -1,7 +1,8 @@
-
 <%@ page import="com.laptrinhweb.raucuqua.beans.UserAccount" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.time.LocalDate" %>
+<%@ page import="com.laptrinhweb.raucuqua.beans.Bill" %>
+<%@ page import="com.laptrinhweb.raucuqua.dao.BillFuntions" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -38,6 +39,7 @@
 </head>
 <body>
 <jsp:include page="header.jsp"/>
+<% Bill bill = new Bill(); %>
 
 <div class="main">
     <div class="menu-side-bar">
@@ -54,7 +56,8 @@
             <i class="fa-solid fa-comment"></i>
             Email FeedBack
         </a>
-        <a href="javascript:void(0)" class="m4" onclick="loadDataBill() ; computeIncome()">
+        <a href="javascript:void(0)" class="m4" onclick="loadDataBill() ">
+            <%--        <a href="javascript:void(0)" class="m4" onclick="loadDataBill(); computeIncome()">--%>
             <i class="fa-solid fa-money-bill"></i>
             Quản lý hóa đơn
         </a>
@@ -103,7 +106,19 @@
         <div id="div-datatable">
 
         </div>
-
+        <div id="search-income" style="display: none">
+            <form action="IncomBill" method="post">
+                <div class="frame-income">
+                    Tổng doan thu tháng:
+                    <input type="text" name="month" id="month">
+                    , năm:
+                    <input type="text" name="year" id="year">
+                    là:
+                    <p class="total-income" id="income"></p>
+                    <button type="button" value="Tra cứu" onclick="computeIncome2()">Tra cứu</button>
+                </div>
+            </form>
+        </div>
         <div id="add-product" style="display: none">
             <h3>Thêm sản phẩm</h3>
 
@@ -161,15 +176,18 @@
 <%--<script type="text/javascript" src="assets/js/dataTable/datatables.js"></script>--%>
 
 <script>
+
     var title = document.getElementById("title-page");
     var qlTaiKhoan = document.querySelector(".m1");
     var qlProduct = document.querySelector(".m2");
     var qlFeedBack = document.querySelector(".m3");
     var qlBill = document.querySelector(".m4");
     var qlUnDeliveryBill = document.querySelector(".m5");
+
     function closePop() {
         $("#pop-up").css("display", "none");
     }
+
     // function makeChangeButton() {
     //     var siblings = ($(this).siblings());
     //     siblings.each(function (sibling) {
@@ -177,6 +195,7 @@
     //     })
     //     $(this).addClass('active');
     // }
+
     function loadDataAccount() {
         title.innerHTML = "Quản lý tài khoản";
         qlTaiKhoan.classList.add("active");
@@ -184,8 +203,11 @@
         qlFeedBack.classList.remove("active");
         qlBill.classList.remove("active");
         qlUnDeliveryBill.classList.remove("active");
+
+
         $("#userDataTable").remove();
         $("#div-datatable").html("<table id=\"userDataTable\" style=\"width:100%\"> </table>")
+
         const xhttp = new XMLHttpRequest();
         xhttp.onload = function () {
             let data = JSON.parse(this.responseText);
@@ -219,10 +241,13 @@
         }
         xhttp.open("GET", "QuanLyTaiKhoan");
         xhttp.send();
+
         $("#add-product").css("display", "none");
         $('.total-income-p').css("display", "none");
     }
+
     loadDataAccount();
+
     function loadDataProduct() {
         title.innerHTML = "Quản lý sản phẩm"
         qlTaiKhoan.classList.remove("active");
@@ -230,12 +255,14 @@
         qlFeedBack.classList.remove("active");
         qlBill.classList.remove("active");
         qlUnDeliveryBill.classList.remove("active");
+
         $("#userDataTable").remove();
         $("#div-datatable").html("<table id=\"userDataTable\"> </table>")
         const xhttp = new XMLHttpRequest();
         xhttp.onload = function () {
             let data = JSON.parse(this.responseText);
             console.log(data);
+
             $('#userDataTable').dataTable({
                 "data": data,
                 "columns": [
@@ -278,18 +305,24 @@
                         }
                     },
                     {
+
                         "mRender": function (data, type, row) {
                             return '<a id="table-delete" href="XoaSanPham?id_product=' + row.id_product + '" onClick="return confirmSubmit()">DELETE</a>'
                         }
                     }
                 ], "bDestroy": true
             });
+
+
         }
         xhttp.open("GET", "QuanLySanPham");
         xhttp.send();
+
         $("#add-product").css("display", "block");
         $('.total-income-p').css("display", "none");
     }
+
+
     function confirmSubmit() {
         var agree = confirm("Bạn chắc chắn chứ?");
         if (agree)
@@ -297,15 +330,19 @@
         else
             return false;
     }
+
     function loadDataFeedBack() {
         title.innerHTML = "Email FeedBack"
+
         qlTaiKhoan.classList.remove("active");
         qlProduct.classList.remove("active");
         qlFeedBack.classList.add("active");
         qlBill.classList.remove("active");
         qlUnDeliveryBill.classList.remove("active");
+
         $("#userDataTable").remove();
         $("#div-datatable").html("<table id=\"userDataTable\" style=\"width:100%\"> </table>")
+
         const xhttp = new XMLHttpRequest();
         xhttp.onload = function () {
             let data = JSON.parse(this.responseText);
@@ -350,6 +387,7 @@
                     }
                 ], "bDestroy": true
             });
+
             $("#userDataTable tbody").on('click', '.abc', function () {
                 var data = table.row($(this).parents('tr')).data();
                 $("#feedback-to-user").html('<div id="pop-up"> <form action="GuiMailPhanHoi"> <h3>Email tới người phản hổi</h3> <i class="fa-solid fa-xmark" onclick="closePop()"></i> <div> <div> <label for="emailTo">Email To:</label><br> <input type="text" id="emailTo" name="emailTo" value="' + data.email + '"> </div> <div> <label>Nội dung phản hồi của người dùng :</label><br> <textarea disabled="true" rows="4">' + data.content + '</textarea> </div><div><label for="title-email">Title email:</label><br> <input type="text" id="title-email" name="title-email" value=""></div><div><label for="content">Nội dung email phản hồi:</label><br> <textarea id="content" name="content" rows="4"></textarea> </div></div> <button type="submit" onclick="confirmSubmit()">Gửi phản hồi</button><input type="hidden" name="id-contact" value="' + data.id_contact + '"></form> </div>')
@@ -357,16 +395,21 @@
         }
         xhttp.open("GET", "QuanLyFeedBack");
         xhttp.send();
+
+
         $("#add-product").css("display", "none");
         $('.total-income-p').css("display", "none");
     }
+
     function loadDataBill() {
         title.innerHTML = "Quản lý hóa đơn"
+
         qlTaiKhoan.classList.remove("active");
         qlProduct.classList.remove("active");
         qlFeedBack.classList.remove("active");
         qlBill.classList.add("active");
         qlUnDeliveryBill.classList.remove("active");
+
         $("#userDataTable").remove();
         $("#div-datatable").html("<table id=\"userDataTable\"> </table>")
         const xhttp = new XMLHttpRequest();
@@ -418,19 +461,39 @@
                     }
                 ], "bDestroy": true
             });
+
+
         }
         xhttp.open("GET", "QuanLyHoaDon");
         xhttp.send();
+        $("#search-income").css("display","block");
         $("#add-product").css("display", "none");
     }
+
     function computeIncome() {
         const xhttp = new XMLHttpRequest();
         xhttp.onload = function () {
             let data = JSON.parse(this.responseText);
+            document.getElementById("myP").innerHTML =data;
             console.log(data);
-            $('#total-income').html('<p class="total-income-p"> Tổng doanh thu tháng '+ <%=currentDate.getMonthValue()%> + ', năm '+ <%=currentDate.getYear()%> +' là: <span style="color: #E73918">'+data+'</span></p>');
+            $('#total-income').html('<p class="total-income-p"> Tổng doanh thu tháng ' + <%=currentDate.getMonthValue()%> +', năm ' + <%=currentDate.getYear()%> +' là: <span style="color: #E73918">' + data + '</span></p>');
+
         }
-        xhttp.open("GET", "TinhDoanhThu");
+        xhttp.open("GET", "TinhDoanhThu?");
+        xhttp.send();
+    }
+    function computeIncome2() {
+        const xhttp = new XMLHttpRequest();
+        xhttp.onload = function () {
+            let realData ="";
+            let data = JSON.parse(this.responseText);
+            document.getElementById("income").innerHTML =data;
+            console.log(data);
+        }
+        let month =$( "#month" ).val();
+        let year =$( "#year" ).val();
+        console.log("month"+month+", year"+year);
+        xhttp.open("GET", "IncomeBill?month="+month+"&year="+year);
         xhttp.send();
     }
     function loadDataUnDeliveryBill() {
@@ -440,13 +503,16 @@
         qlFeedBack.classList.remove("active");
         qlBill.classList.remove("active");
         qlUnDeliveryBill.classList.add("active");
+
         $('#total-income').html('<p class="total-income-p"> Danh sách hóa đơn chưa được giao tháng '+ <%=currentDate.getMonthValue()%> + ', năm '+ <%=currentDate.getYear()%> +' là:');
+
         $("#userDataTable").remove();
         $("#div-datatable").html("<table id=\"userDataTable\"> </table>")
         const xhttp = new XMLHttpRequest();
         xhttp.onload = function () {
             let data = JSON.parse(this.responseText);
             console.log(data);
+
             $('#userDataTable').dataTable({
                 "data": data,
                 "columns": [
@@ -492,11 +558,15 @@
                     }
                 ], "bDestroy": true
             });
+
+
         }
         xhttp.open("GET", "QuanLyHoaDonChuaGiao");
         xhttp.send();
+
         $("#add-product").css("display", "none");
     }
+
 </script>
 <script>
     <% if(pageTo!=null){
