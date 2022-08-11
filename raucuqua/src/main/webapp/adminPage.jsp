@@ -1,3 +1,4 @@
+
 <%@ page import="com.laptrinhweb.raucuqua.beans.UserAccount" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.time.LocalDate" %>
@@ -5,10 +6,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%
-
     UserAccount ua = (UserAccount) session.getAttribute("auth");
     String pageTo = (String) request.getAttribute("page");
-
     LocalDate currentDate = LocalDate.now();
 %>
 
@@ -162,18 +161,15 @@
 <%--<script type="text/javascript" src="assets/js/dataTable/datatables.js"></script>--%>
 
 <script>
-
     var title = document.getElementById("title-page");
     var qlTaiKhoan = document.querySelector(".m1");
     var qlProduct = document.querySelector(".m2");
     var qlFeedBack = document.querySelector(".m3");
     var qlBill = document.querySelector(".m4");
     var qlUnDeliveryBill = document.querySelector(".m5");
-
     function closePop() {
         $("#pop-up").css("display", "none");
     }
-
     // function makeChangeButton() {
     //     var siblings = ($(this).siblings());
     //     siblings.each(function (sibling) {
@@ -181,7 +177,6 @@
     //     })
     //     $(this).addClass('active');
     // }
-
     function loadDataAccount() {
         title.innerHTML = "Quản lý tài khoản";
         qlTaiKhoan.classList.add("active");
@@ -189,11 +184,8 @@
         qlFeedBack.classList.remove("active");
         qlBill.classList.remove("active");
         qlUnDeliveryBill.classList.remove("active");
-
-
         $("#userDataTable").remove();
         $("#div-datatable").html("<table id=\"userDataTable\" style=\"width:100%\"> </table>")
-
         const xhttp = new XMLHttpRequest();
         xhttp.onload = function () {
             let data = JSON.parse(this.responseText);
@@ -227,13 +219,10 @@
         }
         xhttp.open("GET", "QuanLyTaiKhoan");
         xhttp.send();
-
         $("#add-product").css("display", "none");
         $('.total-income-p').css("display", "none");
     }
-
     loadDataAccount();
-
     function loadDataProduct() {
         title.innerHTML = "Quản lý sản phẩm"
         qlTaiKhoan.classList.remove("active");
@@ -241,14 +230,12 @@
         qlFeedBack.classList.remove("active");
         qlBill.classList.remove("active");
         qlUnDeliveryBill.classList.remove("active");
-
         $("#userDataTable").remove();
         $("#div-datatable").html("<table id=\"userDataTable\"> </table>")
         const xhttp = new XMLHttpRequest();
         xhttp.onload = function () {
             let data = JSON.parse(this.responseText);
             console.log(data);
-
             $('#userDataTable').dataTable({
                 "data": data,
                 "columns": [
@@ -291,24 +278,18 @@
                         }
                     },
                     {
-
                         "mRender": function (data, type, row) {
                             return '<a id="table-delete" href="XoaSanPham?id_product=' + row.id_product + '" onClick="return confirmSubmit()">DELETE</a>'
                         }
                     }
                 ], "bDestroy": true
             });
-
-
         }
         xhttp.open("GET", "QuanLySanPham");
         xhttp.send();
-
         $("#add-product").css("display", "block");
         $('.total-income-p').css("display", "none");
     }
-
-
     function confirmSubmit() {
         var agree = confirm("Bạn chắc chắn chứ?");
         if (agree)
@@ -316,19 +297,15 @@
         else
             return false;
     }
-
     function loadDataFeedBack() {
         title.innerHTML = "Email FeedBack"
-
         qlTaiKhoan.classList.remove("active");
         qlProduct.classList.remove("active");
         qlFeedBack.classList.add("active");
         qlBill.classList.remove("active");
         qlUnDeliveryBill.classList.remove("active");
-
         $("#userDataTable").remove();
         $("#div-datatable").html("<table id=\"userDataTable\" style=\"width:100%\"> </table>")
-
         const xhttp = new XMLHttpRequest();
         xhttp.onload = function () {
             let data = JSON.parse(this.responseText);
@@ -373,7 +350,6 @@
                     }
                 ], "bDestroy": true
             });
-
             $("#userDataTable tbody").on('click', '.abc', function () {
                 var data = table.row($(this).parents('tr')).data();
                 $("#feedback-to-user").html('<div id="pop-up"> <form action="GuiMailPhanHoi"> <h3>Email tới người phản hổi</h3> <i class="fa-solid fa-xmark" onclick="closePop()"></i> <div> <div> <label for="emailTo">Email To:</label><br> <input type="text" id="emailTo" name="emailTo" value="' + data.email + '"> </div> <div> <label>Nội dung phản hồi của người dùng :</label><br> <textarea disabled="true" rows="4">' + data.content + '</textarea> </div><div><label for="title-email">Title email:</label><br> <input type="text" id="title-email" name="title-email" value=""></div><div><label for="content">Nội dung email phản hồi:</label><br> <textarea id="content" name="content" rows="4"></textarea> </div></div> <button type="submit" onclick="confirmSubmit()">Gửi phản hồi</button><input type="hidden" name="id-contact" value="' + data.id_contact + '"></form> </div>')
@@ -381,28 +357,22 @@
         }
         xhttp.open("GET", "QuanLyFeedBack");
         xhttp.send();
-
-
         $("#add-product").css("display", "none");
         $('.total-income-p').css("display", "none");
     }
-
     function loadDataBill() {
         title.innerHTML = "Quản lý hóa đơn"
-
         qlTaiKhoan.classList.remove("active");
         qlProduct.classList.remove("active");
         qlFeedBack.classList.remove("active");
         qlBill.classList.add("active");
         qlUnDeliveryBill.classList.remove("active");
-
         $("#userDataTable").remove();
         $("#div-datatable").html("<table id=\"userDataTable\"> </table>")
         const xhttp = new XMLHttpRequest();
         xhttp.onload = function () {
             let data = JSON.parse(this.responseText);
             console.log(data);
-
             $('#userDataTable').dataTable({
                 "data": data,
                 "columns": [
@@ -448,15 +418,11 @@
                     }
                 ], "bDestroy": true
             });
-
-
         }
         xhttp.open("GET", "QuanLyHoaDon");
         xhttp.send();
-
         $("#add-product").css("display", "none");
     }
-
     function computeIncome() {
         const xhttp = new XMLHttpRequest();
         xhttp.onload = function () {
@@ -467,7 +433,6 @@
         xhttp.open("GET", "TinhDoanhThu");
         xhttp.send();
     }
-
     function loadDataUnDeliveryBill() {
         title.innerHTML = "Quản lý hóa đơn chưa giao hàng"
         qlTaiKhoan.classList.remove("active");
@@ -475,16 +440,13 @@
         qlFeedBack.classList.remove("active");
         qlBill.classList.remove("active");
         qlUnDeliveryBill.classList.add("active");
-
         $('#total-income').html('<p class="total-income-p"> Danh sách hóa đơn chưa được giao tháng '+ <%=currentDate.getMonthValue()%> + ', năm '+ <%=currentDate.getYear()%> +' là:');
-
         $("#userDataTable").remove();
         $("#div-datatable").html("<table id=\"userDataTable\"> </table>")
         const xhttp = new XMLHttpRequest();
         xhttp.onload = function () {
             let data = JSON.parse(this.responseText);
             console.log(data);
-
             $('#userDataTable').dataTable({
                 "data": data,
                 "columns": [
@@ -530,15 +492,11 @@
                     }
                 ], "bDestroy": true
             });
-
-
         }
         xhttp.open("GET", "QuanLyHoaDonChuaGiao");
         xhttp.send();
-
         $("#add-product").css("display", "none");
     }
-
 </script>
 <script>
     <% if(pageTo!=null){
