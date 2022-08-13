@@ -105,8 +105,6 @@
         if(chooseAddress==-1 && addresses.length!=0){
             chooseAddress =0;
         }
-        console.log(addresses)
-        console.log(chooseAddress)
     </script>
 </head>
 <body class="biolife-body">
@@ -385,15 +383,10 @@
         }
         getAddresses();
         function chooseAddress1(id){
-            // console.log("run me "+id)
             let i =-1
             try{          i  = parseInt(id);
                 if(i <0) return;
                 let choose = addresses[i];
-                console.log(i)
-                console.log(i)
-                console.log(typeof i)
-                console.log(choose)
                 document.getElementById("firstname").value = choose.user_name;
                 document.getElementById("my_phone_number").value = choose.phone_number;
                 document.getElementById("city-province").value = choose.city_province;

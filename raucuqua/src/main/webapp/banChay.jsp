@@ -105,13 +105,12 @@
         %>
         //(id,name,type,priceDiscount,percentDiscount,price,shortDescription,description,imgUrl,numStar,numComment) {
 
-        <%--console.log("<%=p.getProduct_name()%>, <%=p.getNumberComment()%>");--%>
+
         productsJs[productsJs.length] = new Product("<%=p.getId_product()%>","<%=p.getProduct_name()%>","<%=p.getProduct_type()%>"
             ,<%=p.getPriceDiscount()%>,<%=p.getPercent_discount()%>,<%=p.getPrice()%>,"<%=p.getShort_description()%>","<%=p.getImg_url()%>",<%=p.getNumstar()%>,<%=p.getNumberComment()%>,<%=is%>);
 
         <%}%>
-        console.log("run me")
-        console.log(productsJs);
+
     </script>
 </head>
 <body class="biolife-body">
@@ -280,7 +279,6 @@
     // var flag = true;
     $(window).scroll(function() {
 
-            // console.log('run me: ',rect.top, rect.right, rect.bottom, rect.left);
             var scroll = $(window).scrollTop();
             var x = $(window).height();
             let bound = $(document).height() * 0.95;
@@ -302,8 +300,7 @@
         xhttp.onload = function() {
             try {
                 let mydata = JSON.parse(this.responseText);
-                // alert('run');
-                console.log(mydata);
+
                 for (let i = 0; i < mydata.length; i++) {
 
                     let v = mydata[i].price * ((100 - mydata[i].percent_discount) / 100.0);
@@ -315,11 +312,10 @@
                         //available
                         is = true;
                     }
-                    console.log('run me please', mydata[i].id_product, mydata[i].product_name);
                     productsJs[productsJs.length] = new Product(mydata[i].id_product, mydata[i].product_name, mydata[i].product_type, v, mydata[i].percent_discount, mydata[i].price, mydata[i].short_description, mydata[i].img_url, mydata[i].numstar, mydata[i].numberComment, is);
                 }
             }catch (e) {
-                console.log('finish upload'+productsJs.length);
+
             }
         }
         xhttp.open("GET", "GetNextDataJsonProduct?seed="+seed+"&origin="+origin+"&next="+next, true);
@@ -380,7 +376,6 @@ if(session.getAttribute("auth")!=null) {
     function addCart(id_product,amount,name_product){
         // alert(id_product+", "+amount+", "+name_product);
         const xhttp = new XMLHttpRequest();
-        console.log(id_product+", amount: "+amount+", name_product: "+name_product);
         xhttp.onload = function() {
             let rawResult = xhttp.response;
             let result = rawResult.substring(0,rawResult.length-2);
