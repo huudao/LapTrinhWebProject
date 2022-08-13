@@ -159,7 +159,6 @@
             try {
                 let va = JSON.parse(this.responseText);
                 let searchResult = "";
-                console.log(va);
                 if (this.readyState==4 && this.status==200) {
                     for(let i =0;i<va.length;i++) {
                         // searchResult += "<option type='submit'  value=\"\">";
@@ -167,7 +166,6 @@
 
                         // document.getElementById("livesearch").style.border="1px solid #A5ACB2";
                     }
-                    console.log(searchResult)
                     document.getElementById("livesearch").innerHTML = searchResult;
 
                 }

@@ -39,7 +39,6 @@
 </head>
 <body>
 <jsp:include page="header.jsp"/>
-<% Bill bill = new Bill(); %>
 
 <div class="main">
     <div class="menu-side-bar">
@@ -211,7 +210,6 @@
         const xhttp = new XMLHttpRequest();
         xhttp.onload = function () {
             let data = JSON.parse(this.responseText);
-            console.log(data);
             $('#userDataTable').dataTable({
                 "data": data,
                 "bDestroy": true,
@@ -261,7 +259,6 @@
         const xhttp = new XMLHttpRequest();
         xhttp.onload = function () {
             let data = JSON.parse(this.responseText);
-            console.log(data);
 
             $('#userDataTable').dataTable({
                 "data": data,
@@ -346,7 +343,7 @@
         const xhttp = new XMLHttpRequest();
         xhttp.onload = function () {
             let data = JSON.parse(this.responseText);
-            console.log(data);
+
             var table = $('#userDataTable').DataTable({
                 "data": data,
                 "bDestroy": true,
@@ -415,7 +412,7 @@
         const xhttp = new XMLHttpRequest();
         xhttp.onload = function () {
             let data = JSON.parse(this.responseText);
-            console.log(data);
+
             $('#userDataTable').dataTable({
                 "data": data,
                 "columns": [
@@ -475,7 +472,7 @@
         xhttp.onload = function () {
             let data = JSON.parse(this.responseText);
             document.getElementById("myP").innerHTML =data;
-            console.log(data);
+
             $('#total-income').html('<p class="total-income-p"> Tổng doanh thu tháng ' + <%=currentDate.getMonthValue()%> +', năm ' + <%=currentDate.getYear()%> +' là: <span style="color: #E73918">' + data + '</span></p>');
 
         }
@@ -488,11 +485,11 @@
             let realData ="";
             let data = JSON.parse(this.responseText);
             document.getElementById("income").innerHTML =data;
-            console.log(data);
+
         }
         let month =$( "#month" ).val();
         let year =$( "#year" ).val();
-        console.log("month"+month+", year"+year);
+
         xhttp.open("GET", "IncomeBill?month="+month+"&year="+year);
         xhttp.send();
     }
@@ -511,7 +508,6 @@
         const xhttp = new XMLHttpRequest();
         xhttp.onload = function () {
             let data = JSON.parse(this.responseText);
-            console.log(data);
 
             $('#userDataTable').dataTable({
                 "data": data,

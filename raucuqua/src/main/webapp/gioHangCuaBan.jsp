@@ -359,7 +359,6 @@
                 try {
                     let va = JSON.parse(this.responseText);
                     let searchResult = "";
-                    console.log(va);
                     if (this.readyState==4 && this.status==200) {
                         for(let i =0;i<va.length;i++) {
                             // searchResult += "<option type='submit'  value=\"\">";
@@ -367,7 +366,6 @@
 
                             // document.getElementById("livesearch").style.border="1px solid #A5ACB2";
                         }
-                        console.log(searchResult)
                         document.getElementById("livesearch").innerHTML = searchResult;
 
                     }
@@ -420,7 +418,6 @@
         }
         function updateCart(id_product,amount,name_product){
             const xhttp = new XMLHttpRequest();
-            console.log(id_product+", amount: "+amount+", name_product: "+name_product);
             xhttp.onload = function() {
                 let rawResult = xhttp.response;
                 let result = rawResult.substring(0,rawResult.length-2);
@@ -452,10 +449,8 @@
             xhttp.onload = function() {
                 let realData = "";
                 let mydata = JSON.parse(this.responseText);
-                console.log(mydata);
                 let totalmoney = 0.0;
                 for(let i =0;i<mydata.length;i++){
-                    // console.log("");
                     let line = "ChiTietSanPham?id_product="+mydata[i].product.id_product;
                     realData += "<tr class=\"cart_item\">";
                     realData += "                                        <td class=\"product-thumbnail\" data-title=\"Product Name\">";

@@ -39,7 +39,6 @@
 </head>
 <body>
 <jsp:include page="header.jsp"/>
-<% Bill bill = new Bill(); %>
 
 <div class="main">
     <div class="menu-side-bar">
@@ -56,8 +55,8 @@
             <i class="fa-solid fa-comment"></i>
             Email FeedBack
         </a>
-        <a href="javascript:void(0)" class="m4" onclick="loadDataBill() ; computeIncome()">
-<%--        <a href="javascript:void(0)" class="m4" onclick="loadDataBill()">--%>
+        <a href="javascript:void(0)" class="m4" onclick="loadDataBill() ">
+            <%--        <a href="javascript:void(0)" class="m4" onclick="loadDataBill(); computeIncome()">--%>
             <i class="fa-solid fa-money-bill"></i>
             Quản lý hóa đơn
         </a>
@@ -211,7 +210,6 @@
         const xhttp = new XMLHttpRequest();
         xhttp.onload = function () {
             let data = JSON.parse(this.responseText);
-            console.log(data);
             $('#userDataTable').dataTable({
                 "data": data,
                 "bDestroy": true,
@@ -261,7 +259,6 @@
         const xhttp = new XMLHttpRequest();
         xhttp.onload = function () {
             let data = JSON.parse(this.responseText);
-            console.log(data);
 
             $('#userDataTable').dataTable({
                 "data": data,
@@ -346,7 +343,7 @@
         const xhttp = new XMLHttpRequest();
         xhttp.onload = function () {
             let data = JSON.parse(this.responseText);
-            console.log(data);
+
             var table = $('#userDataTable').DataTable({
                 "data": data,
                 "bDestroy": true,
@@ -415,7 +412,7 @@
         const xhttp = new XMLHttpRequest();
         xhttp.onload = function () {
             let data = JSON.parse(this.responseText);
-            console.log(data);
+
             $('#userDataTable').dataTable({
                 "data": data,
                 "columns": [
@@ -473,31 +470,13 @@
     function computeIncome() {
         const xhttp = new XMLHttpRequest();
         xhttp.onload = function () {
-            let realData ="";
             let data = JSON.parse(this.responseText);
             document.getElementById("myP").innerHTML =data;
-            console.log(data);
-            <%--let count =0;--%>
-             <%--for ( let i=0;i<data.length;i++) {--%>
-             <%--    &lt;%&ndash;$('#total-income').html('<p class="total-income-p"> Tổng doanh thu tháng ' + <%=currentDate.getMonthValue()%> +', năm ' + <%=currentDate.getYear()%> +' là: <span style="color: #E73918">' + data + '</span></p>');&ndash;%&gt;--%>
-             <%--    if (count == 1) {--%>
-             <%--        realData += "<div class=\"frame-income\">";--%>
-             <%--        realData += " Tổng doan thu tháng:";--%>
-             <%--        realData += "<input type=\"text\">";--%>
-             <%--        realData += ", năm:";--%>
-             <%--        realData += "<input type=\"text\">";--%>
-             <%--        realData += "là:";--%>
-             <%--        realData += " <p class=\"income\"><%=bill.total_income()%><\/p>";--%>
-             <%--        // realData+="";--%>
-             <%--        realData += "<input type=\"submit\" value=\"Tra cứu\" onclick='computeIncome()'>";--%>
-             <%--        realData += "<\/div>";--%>
-             <%--    }--%>
-             // }
+
+            $('#total-income').html('<p class="total-income-p"> Tổng doanh thu tháng ' + <%=currentDate.getMonthValue()%> +', năm ' + <%=currentDate.getYear()%> +' là: <span style="color: #E73918">' + data + '</span></p>');
+
         }
-        let month =$( "#month" ).val();
-        let year =$( "#year" ).val();
-        console.log("month"+month+", year"+year)
-        xhttp.open("GET", "TinhDoanhThu?month="+month+"&year="+year);
+        xhttp.open("GET", "TinhDoanhThu?");
         xhttp.send();
     }
     function computeIncome2() {
@@ -506,27 +485,11 @@
             let realData ="";
             let data = JSON.parse(this.responseText);
             document.getElementById("income").innerHTML =data;
-            console.log(data);
-            <%--let count =0;--%>
-            <%--for ( let i=0;i<data.length;i++) {--%>
-            <%--    &lt;%&ndash;$('#total-income').html('<p class="total-income-p"> Tổng doanh thu tháng ' + <%=currentDate.getMonthValue()%> +', năm ' + <%=currentDate.getYear()%> +' là: <span style="color: #E73918">' + data + '</span></p>');&ndash;%&gt;--%>
-            <%--    if (count == 1) {--%>
-            <%--        realData += "<div class=\"frame-income\">";--%>
-            <%--        realData += " Tổng doan thu tháng:";--%>
-            <%--        realData += "<input type=\"text\">";--%>
-            <%--        realData += ", năm:";--%>
-            <%--        realData += "<input type=\"text\">";--%>
-            <%--        realData += "là:";--%>
-            <%--        realData += " <p class=\"income\"><%=bill.total_income()%><\/p>";--%>
-            <%--        // realData+="";--%>
-            <%--        realData += "<input type=\"submit\" value=\"Tra cứu\" onclick='computeIncome()'>";--%>
-            <%--        realData += "<\/div>";--%>
-            <%--    }--%>
-            // }
+
         }
         let month =$( "#month" ).val();
         let year =$( "#year" ).val();
-        console.log("month"+month+", year"+year)
+
         xhttp.open("GET", "IncomeBill?month="+month+"&year="+year);
         xhttp.send();
     }
@@ -545,7 +508,6 @@
         const xhttp = new XMLHttpRequest();
         xhttp.onload = function () {
             let data = JSON.parse(this.responseText);
-            console.log(data);
 
             $('#userDataTable').dataTable({
                 "data": data,
