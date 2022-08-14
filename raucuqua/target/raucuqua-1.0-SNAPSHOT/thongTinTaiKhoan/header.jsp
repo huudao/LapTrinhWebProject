@@ -23,7 +23,7 @@
                         if(ua==null){%>
                     <li><a href="../dangNhap.jsp" class="login-link"><i class="biolife-icon icon-login"></i>Đăng nhập/</a> <a href="dangKy.jsp"> Đăng ký</a></li>
                     <%}else {%>
-                    <li><a href="thongTinTaiKhoan.jsp" class="login-link"><i class="biolife-icon icon-login"></i>xin chào <%=ua.getUser_name()%> <a href="LogOut">/ Thoát</a></li>
+                    <li><a href="thongTinTaiKhoan.jsp" class="login-link"><i class="biolife-icon icon-login"></i>xin chào <%=ua.getUser_name()%> <a href="../LogOut">/ Thoát</a></li>
                     <%}%>
                 </ul>
             </div>
