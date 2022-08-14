@@ -37,4 +37,8 @@ public class LazyLoadingProduct {
     public void add(Integer id,List<Product> products){
         lazy.put(id,products);
     }
+
+    public void removeseed(int seed) {
+        lazy.put(seed,null);
+    }
 }

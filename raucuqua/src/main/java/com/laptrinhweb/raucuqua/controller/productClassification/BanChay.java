@@ -15,7 +15,7 @@ import java.util.Random;
 public class BanChay extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Product> products = ProductClassification.productHot(100);
+        List<Product> products = ProductClassification.productHot(1000);
         for (Product p :
                 products) {
             p.loadComment();

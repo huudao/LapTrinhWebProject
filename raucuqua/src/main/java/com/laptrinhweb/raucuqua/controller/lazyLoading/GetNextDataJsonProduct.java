@@ -23,6 +23,7 @@ public class GetNextDataJsonProduct extends HttpServlet {
             String gson = new Gson().toJson(psub);
             response.getWriter().println(gson);
         }catch (Exception e){
+            LazyLoadingProduct.getInstance().removeseed(seed);
             response.getWriter().println("end product.");
         }
 

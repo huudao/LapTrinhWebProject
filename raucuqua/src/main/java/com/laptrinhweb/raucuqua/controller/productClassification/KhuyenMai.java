@@ -15,7 +15,7 @@ import java.util.Random;
 public class KhuyenMai extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Product> products = ProductClassification.productForSale(10);
+        List<Product> products = ProductClassification.productForSale(1000);
         for (Product p :
                 products) {
             p.loadComment();
