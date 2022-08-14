@@ -13,8 +13,8 @@ import java.io.InputStream;
 import java.util.Properties;
 
 public class MailService {
-//    private static String from = "raucuqua111@gmail.com";
-//    private static String password = "gcmwycbdfrvorhpp";
+    private static String from = "raucuqua111@gmail.com";
+    private static String password = "gcmwycbdfrvorhpp";
 public static boolean sendMail(String to, String subject, String content,boolean isBill,String bill){
     Session session = connect();
     try {
@@ -90,19 +90,21 @@ public static boolean sendMail(String to, String subject, String content,boolean
         //ssl to starttls
         properties.put("mail.smtp.starttls.enable", "true");
         properties.put("mail.smtp.auth", "true");
-        InputStream reader = GetConnection.class.getClassLoader().getResourceAsStream("email.properties");
-        Properties myProp = new Properties();
-        try {
-            myProp.load(reader);
+//        InputStream reader = GetConnection.class.getClassLoader().getResourceAsStream("email.properties");
+//        Properties myProp = new Properties();
+//        try {
+//            myProp.load(reader);
 
-            System.out.println(myProp.getProperty("email"));
-            System.out.println(myProp.getProperty("password"));
+//            System.out.println(myProp.getProperty("email"));
+//            System.out.println(myProp.getProperty("password"));
         // Get the Session object.// and pass username and password
         Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
 
             protected PasswordAuthentication getPasswordAuthentication() {
                 //pass: rau1@haha
-                return new PasswordAuthentication(myProp.getProperty("email"), myProp.getProperty("password"));
+//                return new PasswordAuthentication(myProp.getProperty("email"), myProp.getProperty("password"));
+                return new PasswordAuthentication(from, password);
+
 
             }
 
@@ -111,14 +113,17 @@ public static boolean sendMail(String to, String subject, String content,boolean
         // Used to debug SMTP issues
         session.setDebug(true);
         return session;
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
     }
 
     public static void main(String[] args) {
         String email = "huudao805@gmail.com";
         String content = "xin chao user 123, day la duong link de lay lai mat khau";
-        MailService.sendMail(email,"xác nhận lấy mật khẩu từ trang raucuqua jdk 7",content);
+        File path = new File("C:\\Users\\huuda\\.jdks\\corretto-11.0.15\\bin\\bill\\BI0014.pdf");
+        System.out.println(path.getAbsolutePath());
+//        MailService.sendMail(email,"xác nhận lấy mật khẩu từ trang raucuqua jdk 7",content);
+        MailService.sendMail(email,"xác nhận lấy mật khẩu từ trang raucuqua jdk 7",content,true,path.getAbsolutePath());
     }
 }

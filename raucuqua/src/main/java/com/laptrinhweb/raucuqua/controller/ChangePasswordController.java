@@ -9,7 +9,7 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.Enumeration;
 
-@WebServlet(name = "ChangePasswordController", value = "/ChangePasswordController")
+@WebServlet(name = "ChangePasswordController", value = "/thongTinTaiKhoan/ChangePasswordController")
 public class ChangePasswordController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -36,6 +36,16 @@ public class ChangePasswordController extends HttpServlet {
         UserAccount ua = (UserAccount) session.getAttribute("auth");
         System.out.println("in do post s: "+s+", iduser = "+ua.getId_user()+", username = "+ua.getUser_name());
         state = ChangePassword.changePassById(ua.getId_user(),sOldPass,s);
-        response.getWriter().println(state);
+
+        String resNotify = "";
+        if(state) {
+            resNotify = "Đăng ký thành công";
+        } else {
+            resNotify = "Đăng ký thất bại";
+        }
+
+        request.setAttribute("resNotify", resNotify);
+
+        request.getRequestDispatcher("doiMatKhau.jsp").forward(request,response);
     }
 }

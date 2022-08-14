@@ -16,7 +16,9 @@ import com.laptrinhweb.raucuqua.beans.Cart;
 import com.laptrinhweb.raucuqua.beans.Product;
 
 
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,7 +29,18 @@ public class billPdfCreator {
 //        System.out.println("OSDFJOISNV: "+f.getAbsolutePath());
 public static String exportBill(String id, int year, String month, int day, String username, String state, String payby, double shipfee, String phone_number, String address, String email, List<Cart> products){
     String path = "bill\\"+id+".pdf";
+    try {
+//        FileOutputStream fos = new FileOutputStream(path);
+        File f = new File(path);
 
+        System.out.println("path: "+f.getAbsolutePath());
+        if(!f.exists()){
+//            FileOutputStream fos = new FileOutputStream(f);
+            f.createNewFile();
+        }
+    } catch (Exception e) {
+//        e.printStackTrace();
+    }
     PdfWriter pdfWriter = null;
     try {
         pdfWriter = new PdfWriter(path);
