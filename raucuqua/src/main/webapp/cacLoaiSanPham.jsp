@@ -378,6 +378,7 @@
                         productsJs[productsJs.length] = new Product(mydata[i].id_product, mydata[i].product_name, mydata[i].product_type, v, mydata[i].percent_discount, mydata[i].price, mydata[i].short_description, mydata[i].img_url, mydata[i].numstar, mydata[i].numberComment, is);
                     }
                 }catch (e) {
+                    console.log(this.responseText)
                 }
             }
             xhttp.open("GET", "GetNextDataJsonProduct?seed="+seed+"&origin="+origin+"&next="+next, true);

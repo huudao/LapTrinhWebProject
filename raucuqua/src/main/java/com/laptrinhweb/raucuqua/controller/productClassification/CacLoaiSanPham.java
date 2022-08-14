@@ -22,12 +22,12 @@ public class CacLoaiSanPham extends HttpServlet {
 
         int limit = 10;
         if(type.equals("traicay")){
-            productsHot = ProductClassification.productTypeTraiCayHot(limit);
+            productsHot = ProductClassification.productTypeTraiCayHot(1000);
             productsKhuyenMai = ProductClassification.productTypeTraiCayKhuyenMai(limit);
         }
         else{
             productsKhuyenMai = ProductClassification.productTypeRauCuKhuyenMai(limit);
-            productsHot = ProductClassification.productTypeRauCuHot(limit);
+            productsHot = ProductClassification.productTypeRauCuHot(1000);
 
         }
 //        for (Product p :
@@ -42,12 +42,12 @@ public class CacLoaiSanPham extends HttpServlet {
         int seed = rand.nextInt();
 
         LazyLoadingProduct lazy = LazyLoadingProduct.getInstance();
-        lazy.add(seed,productsKhuyenMai);
+        lazy.add(seed,productsHot);
 
         request.setAttribute("seed",seed);
         System.out.println("[SIZE]"+ productsKhuyenMai.subList(0,(productsKhuyenMai.size()>=10)?10:productsKhuyenMai.size()));
         request.setAttribute("originNumberProduct",(productsKhuyenMai.size()>=10)?10:productsKhuyenMai.size());
-        request.setAttribute("productsHot",productsHot);
+        request.setAttribute("productsHot",productsHot.subList(0,(productsHot.size()>=10)?10:productsHot.size()));
         request.setAttribute("productsKhuyenMai",productsKhuyenMai.subList(0,(productsKhuyenMai.size()>=10)?10:productsKhuyenMai.size()));
         request.setAttribute("type",type);
         System.out.println("[HOT] "+productsHot.size());

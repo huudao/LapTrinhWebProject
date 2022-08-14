@@ -319,7 +319,7 @@
         }
         displayProduct(arr);
     }
-
+    var loadInterval = null;
     $(window).scroll(function() {
 
 
@@ -344,6 +344,7 @@
         xhttp.onload = function() {
             try {
                 let mydata = JSON.parse(this.responseText);
+                console.log(mydata)
                 for (let i = 0; i < mydata.length; i++) {
 
                     let v = mydata[i].price * ((100 - mydata[i].percent_discount) / 100.0);
@@ -358,6 +359,7 @@
                     productsJs[productsJs.length] = new Product(mydata[i].id_product, mydata[i].product_name, mydata[i].product_type, v, mydata[i].percent_discount, mydata[i].price, mydata[i].short_description, mydata[i].description, mydata[i].img_url, mydata[i].numstar, mydata[i].numberComment, is);
                 }
             }catch (e) {
+                console.log(this.responseText);
             }
         }
         xhttp.open("GET", "GetNextDataJsonProduct?seed="+seed+"&origin="+origin+"&next="+next, true);
