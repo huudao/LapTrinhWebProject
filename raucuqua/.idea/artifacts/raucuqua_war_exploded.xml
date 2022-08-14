@@ -24,10 +24,7 @@
           <element id="library" level="project" name="Maven: commons-codec:commons-codec:1.11" />
           <element id="library" level="project" name="Maven: org.apache.httpcomponents:fluent-hc:4.5.13" />
           <element id="library" level="project" name="Maven: com.itextpdf:barcodes:7.0.4" />
-<<<<<<< HEAD
-=======
           <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.13" />
->>>>>>> 554e05ea2512dd6b94c86f7d2bb9f2a54ce52a0e
           <element id="library" level="project" name="Maven: com.itextpdf:font-asian:7.0.4" />
           <element id="library" level="project" name="Maven: com.itextpdf:forms:7.0.4" />
           <element id="library" level="project" name="Maven: com.itextpdf:hyph:7.0.4" />
