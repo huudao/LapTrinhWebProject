@@ -44,6 +44,9 @@
                             <li class="menu-item"><a href="../ChinhSachGiaoHang">Chính sách </a></li>
                             <li class="menu-item"><a href="../DanhSachBlog">Blog</a></li>
                             <li class="menu-item"><a href="../lienHe.jsp">Liên hệ</a></li>
+                            <% if(ua!= null && ua.getRole() == 1){%>
+                            <li class="menu-item"><a href="../QuanLyAdmin">Admin</a></li>
+                            <%}%>
                         </ul>
                     </div>
                 </div>
@@ -60,12 +63,7 @@
                             </div>
                         </div>
                         <div class="wishlist-block hidden-sm hidden-xs">
-                            <a href="#" class="link-to">
-                                <!--                                    <span class="icon-qty-combine">-->
-                                <!--                                        <i class="icon-heart-bold biolife-icon"></i>-->
-                                <!--                                        &lt;!&ndash;                                    <span class="qty">4</span>&ndash;&gt;-->
-                                <!--                                    </span>-->
-                            </a>
+                            <a href="#" class="link-to"></a>
                         </div>
                         <div class="minicart-block" onmouseover="executeData()">
                             <div class="minicart-contain">
@@ -142,15 +140,6 @@
                                 <li class="menu-item menu-item-has-children has-megamenu">
                                     <a href="../CacLoaiSanPham?type=raucu" class="menu-name" data-title="Vegetables"><i class="biolife-icon icon-fruits"></i>Rau củ</a>
                                 </li>
-                                <!--                                    <li class="menu-item menu-item-has-children has-megamenu">-->
-                                <!--                                        <a href="cacLoaiSanPham.jsp" class="menu-name" data-title="Fresh Berries"><i class="biolife-icon icon-grape"></i>Qủa mọng</a>-->
-                                <!--                                    </li>-->
-                                <!--                                    <li class="menu-item menu-item-has-children has-megamenu">-->
-                                <!--                                        <a href="cacLoaiSanPham.jsp" class="menu-name" data-title="Vegetables"><i class="biolife-icon icon-fruits"></i>Rau củ quả gia vị</a>-->
-                                <!--                                    </li>-->
-                                <!--                                    <li class="menu-item menu-item-has-children has-megamenu">-->
-                                <!--                                        <a href="cacLoaiSanPham.jsp" class="menu-name" data-title="Fruit"><i class="biolife-icon icon-fruits"></i>Các loại quả nhập khẩu</a>-->
-                                <!--                                    </li>-->
                             </ul>
                         </div>
                     </div>
@@ -159,9 +148,7 @@
                     <div class="header-search-bar layout-01">
                         <form action="#" class="form-search" name="desktop-seacrh" method="get">
                             <input list="livesearch" type="text" name="s" class="input-text" value="" onkeyup="showResult(this.value)" placeholder="Tìm kiếm sản phẩm...">
-                            <%--                                <button type="submit" class="btn-submit"><i class="biolife-icon icon-search"></i></button>--%>
                             <ul id="livesearch">
-
                             </ul>
                         </form>
 
@@ -187,7 +174,6 @@
             try {
                 let va = JSON.parse(this.responseText);
                 let searchResult = "";
-                console.log(va);
                 if (this.readyState==4 && this.status==200) {
                     for(let i =0;i<va.length;i++) {
                         // searchResult += "<option type='submit'  value=\"\">";
@@ -195,7 +181,6 @@
 
                         // document.getElementById("livesearch").style.border="1px solid #A5ACB2";
                     }
-                    console.log(searchResult)
                     document.getElementById("livesearch").innerHTML = searchResult;
 
                 }
@@ -242,10 +227,8 @@
         xhttp.onload = function() {
             let realData = "";
             let mydata = JSON.parse(this.responseText);
-            console.log(mydata);
             let totalmoney = 0.0;
             for(let i =0;i<mydata.length;i++){
-                // console.log("");
                 let line = "ChiTietSanPham?id_product="+mydata[i].product.id_product;
                 realData += "<li>";
                 realData += "                                                    <div class=\"minicart-item\">";

@@ -13,9 +13,14 @@ import java.util.List;
 public class QuanLyAdmin extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<UserAccount> accounts = AdminDao.listAccount();
-        request.setAttribute("accounts", accounts);
-        request.getRequestDispatcher("/adminPage.jsp").forward(request,response);
+        UserAccount ua = (UserAccount) request.getSession().getAttribute("auth");
+        if (ua==null || ua.getRole()!=1) {
+            response.getWriter().println("Usẻ này k phải admin");
+            return;
+        }
+            List<UserAccount> accounts = AdminDao.listAccount();
+            request.setAttribute("accounts", accounts);
+            request.getRequestDispatcher("/adminPage.jsp").forward(request, response);
     }
 
     @Override

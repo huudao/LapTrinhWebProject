@@ -91,9 +91,6 @@
                             <li>
                                 <a class="title-info" href="../ShowDiaChi">Sổ địa chỉ (0)</a>
                             </li>
-<!--                            <li>-->
-<!--                                <a class="title-info" href="./sanPhamYeuThich.jsp">Các sản phẩm yêu thích</a>-->
-<!--                            </li>-->
                         </ul>
                     </div>
                 </div>
@@ -182,39 +179,7 @@
                 alert("Data: " + data + "\nStatus: " + status);
             });
     });
-    <%--function changePassx(pass){--%>
-    <%--    const xhttp = new XMLHttpRequest();--%>
-    <%--    xhttp.onload = function() {--%>
-    <%--        let rawResult = xhttp.response;--%>
-    <%--        let result = rawResult.substring(0,rawResult.length-2);--%>
-    <%--        if(result === 'true'){--%>
-    <%--            document.getElementById("notice").innerHTML = "đổi mật khẩu thành công";--%>
-    <%--        }else{--%>
-    <%--            document.getElementById("notice").innerHTML = "đổi mật khẩu thất bại";--%>
-    <%--        }--%>
-    <%--    }--%>
-    <%--    // "password="+pass--%>
-    <%--    &lt;%&ndash;xhttp.open("GET", "<%=request.getContextPath()%>"+"/ChangePassword?password="+pass);&ndash;%&gt;--%>
-    <%--    &lt;%&ndash;xhttp.open("POST", "<%=request.getContextPath()%>"+"/ChangePassword);&ndash;%&gt;--%>
 
-    <%--    // let data = {password:pass};--%>
-    <%--    // console.log(data);--%>
-    <%--    // xhttp.send(JSON.stringify(data));--%>
-    <%--    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");--%>
-    <%--    xhttp.send("password="+pass);--%>
-    <%--}--%>
-    <%--function my_function(){--%>
-    <%--    var confirmPass = document.getElementById("confirmPass").value;--%>
-    <%--    if(changePass.length<0){--%>
-    <%--        document.getElementById("notice").innerHTML = "mật khẩu phải ít nhất 8 kí tự";--%>
-    <%--        return;--%>
-    <%--    }--%>
-    <%--    if(changePass===confirmPass) {--%>
-    <%--        changePassx(changePass);--%>
-    <%--    }else{--%>
-    <%--        document.getElementById("notice").innerHTML = "đổi mật khẩu thất bại";--%>
-    <%--    }--%>
-    <%--}--%>
 </script>
 </body>
 

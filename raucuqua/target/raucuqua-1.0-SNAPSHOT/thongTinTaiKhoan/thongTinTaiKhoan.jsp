@@ -83,9 +83,6 @@
               <li>
                 <a class="title-info" href="../ShowDiaChi">>Sổ địa chỉ (0)</a>
               </li>
-<!--              <li>-->
-<!--                <a class="title-info" href="./sanPhamYeuThich.jsp">Các sản phẩm yêu thích</a>-->
-<!--              </li>-->
             </ul>
           </div>
         </div>

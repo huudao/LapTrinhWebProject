@@ -135,12 +135,6 @@
                         </td><td>
                             <a href="<%=link_p%>">link</a>
                         </td>
-<%--                            <td href="">--%>
-<%--                                <form method="post" action="DetailBill">--%>
-<%--                                    <input type="hidden" name="id_bill" value="<%=b.getId_bill()%>">--%>
-<%--                                    <button type="submit" >detail bill</button>--%>
-<%--                                </form>--%>
-<%--                            </td>--%>
                         </tr>
                         <%}%>
                         </tbody>
@@ -171,10 +165,6 @@
 <script src="assets/js/biolife.framework.js"></script>
 <script src="assets/js/functions.js"></script>
 <script src="assets/js/jquery-3.6.0.min.js"></script>
-
-<%--<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">--%>
-
-<%--<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>--%>
 <link rel="stylesheet" type="text/css" href="assets/js/dataTable/datatables.css"/>
 
 <script type="text/javascript" src="assets/js/dataTable/datatables.js"></script>

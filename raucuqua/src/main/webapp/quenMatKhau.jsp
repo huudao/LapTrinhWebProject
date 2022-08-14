@@ -119,15 +119,6 @@
                                 <span>037-353-5207</span>
                             </p>
                         </div>
-                        <!--                            <div class="newsletter-block layout-01">-->
-                        <!--                                <h4 class="title">Đăng kí nhận tin</h4>-->
-                        <!--                                <div class="form-content">-->
-                        <!--                                    <form action="#" name="new-letter-foter">-->
-                        <!--                                        <input type="email" class="input-text email" value="" placeholder="nhập email ở đây...">-->
-                        <!--                                        <button type="submit" class="bnt-submit" name="ok">Đăng kí</button>-->
-                        <!--                                    </form>-->
-                        <!--                                </div>-->
-                        <!--                            </div>-->
                     </section>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-6 md-margin-top-5px sm-margin-top-50px xs-margin-top-40px">
@@ -137,10 +128,6 @@
                             <div class="col-lg-6 col-sm-6 col-xs-6">
                                 <div class="wrap-custom-menu vertical-menu-2">
                                     <ul class="menu">
-                                        <!--                                            <li><a href="trangchu.jsp">Trang chủ</a></li>-->
-                                        <!--                                            <li><a href="danhSachBlog.jsp">Blog</a></li>-->
-                                        <!--                                            <li><a href="chinhSachGiaoHang.jsp">Chích sách giao hàng</a></li>-->
-                                        <!--                                            <li><a href=" lienHe.jsp">liên hệ</a></li>-->
                                         <li ><a href="trangchu.jsp">Trang chủ</a></li>
                                         <li ><a href="khuyenMai.jsp">Sản phẩm khuyễn mãi</a></li>
                                         <li ><a href="banChay.jsp">Các ản phẩm HOT</a></li>

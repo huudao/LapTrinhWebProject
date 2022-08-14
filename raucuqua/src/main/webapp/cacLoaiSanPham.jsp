@@ -116,12 +116,12 @@
         %>
         //(id,name,type,priceDiscount,percentDiscount,price,shortDescription,description,imgUrl,numStar,numComment) {
 
-        <%--console.log("<%=p.getProduct_name()%>, <%=p.getNumberComment()%>");--%>
+
         productsJs[productsJs.length] = new Product("<%=p.getId_product()%>","<%=p.getProduct_name()%>","<%=p.getProduct_type()%>"
             ,<%=p.getPriceDiscount()%>,<%=p.getPercent_discount()%>,<%=p.getPrice()%>,"<%=p.getShort_description()%>","<%=p.getImg_url()%>",<%=p.getNumstar()%>,<%=p.getNumberComment()%>,<%=is%>);
 
         <%}%>
-        // console.log(productsJs);
+
     </script>
 </head>
 <body class="biolife-body">
@@ -145,16 +145,6 @@
         <h1 class="page-title">Các loại sản phẩm loại <%=type%></h1>
     </div>
 
-    <!--Navigation section-->
-<!--    <div class="container">-->
-<!--        <nav class="biolife-nav">-->
-<!--            <ul>-->
-<!--                <li class="nav-item"><a href="index-2.jsp" class="permal-link">Trang chủ</a></li>-->
-<!--                <li class="nav-item"><a href="#" class="permal-link">danh sách sản phẩm</a></li>-->
-<!--                <li class="nav-item"><span class="current-page">Trái cây</span></li>-->
-<!--            </ul>-->
-<!--        </nav>-->
-<!--    </div>-->
     <div>
         <br>
     </div>
@@ -353,7 +343,6 @@
         // var flag = true;
         $(window).scroll(function() {
 
-            // console.log('run me: ',rect.top, rect.right, rect.bottom, rect.left);
             var scroll = $(window).scrollTop();
             var x = $(window).height();
             let bound = $(document).height() * 0.95;
@@ -375,8 +364,6 @@
             xhttp.onload = function() {
                 try {
                     let mydata = JSON.parse(this.responseText);
-                    // alert('run');
-                    console.log(mydata);
                     for (let i = 0; i < mydata.length; i++) {
 
                         let v = mydata[i].price * ((100 - mydata[i].percent_discount) / 100.0);
@@ -388,11 +375,9 @@
                             //available
                             is = true;
                         }
-                        console.log('run me please', mydata[i].id_product, mydata[i].product_name);
                         productsJs[productsJs.length] = new Product(mydata[i].id_product, mydata[i].product_name, mydata[i].product_type, v, mydata[i].percent_discount, mydata[i].price, mydata[i].short_description, mydata[i].img_url, mydata[i].numstar, mydata[i].numberComment, is);
                     }
                 }catch (e) {
-                    console.log('finish upload'+productsJs.length);
                 }
             }
             xhttp.open("GET", "GetNextDataJsonProduct?seed="+seed+"&origin="+origin+"&next="+next, true);
@@ -438,7 +423,6 @@
             function addCart(id_product,amount,name_product){
                 // alert(id_product+", "+amount+", "+name_product);
                 const xhttp = new XMLHttpRequest();
-                console.log(id_product+", amount: "+amount+", name_product: "+name_product);
                 xhttp.onload = function() {
                     let rawResult = xhttp.response;
                     let result = rawResult.substring(0,rawResult.length-2);
@@ -451,10 +435,6 @@
                 xhttp.open("GET", "AddCart?id_user=<%=id%>&id_product="+id_product+"&amount="+amount);
                 xhttp.send();
             }
-            // function runme(){
-            //     alert("run me finish");
-            // }
-            // alert("run this method");
         </script>
 </body>
 

@@ -175,168 +175,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!--Related Product-->
-<%--                <div class="product-related-box single-layout">--%>
-<%--                    <div class="biolife-title-box lg-margin-bottom-26px-im">--%>
-<%--                        <span class="biolife-icon icon-organic"></span>--%>
-<%--                        <span class="subtitle">tất cả đều dành cho bạn</span>--%>
-<%--                        <h3 class="main-title">các sản phẩm liên quan</h3>--%>
-<%--                    </div>--%>
-<%--                    <ul class="products-list biolife-carousel nav-center-02 nav-none-on-mobile" data-slick='{"rows":1,"arrows":true,"dots":false,"infinite":false,"speed":400,"slidesMargin":0,"slidesToShow":5, "responsive":[{"breakpoint":1200, "settings":{ "slidesToShow": 4}},{"breakpoint":992, "settings":{ "slidesToShow": 3, "slidesMargin":20}},{"breakpoint":768, "settings":{ "slidesToShow": 2, "slidesMargin":10}}]}'>--%>
-<%--                        <li class="product-item">--%>
-<%--                            <div class="contain-product layout-default">--%>
-<%--                                <div class="product-thumb">--%>
-<%--                                    <a href="chiTietSanPham.jsp" class="link-to-product">--%>
-<%--                                        <img src="assets/images/products/p-05.jpg" alt="Vegetables" width="270" height="270" class="product-thumnail">--%>
-<%--                                    </a>--%>
-<%--                                    <a class="lookup btn_call_quickview" href="#"><i class="biolife-icon icon-search"></i></a>--%>
-<%--                                </div>--%>
-<%--                                <div class="info">--%>
-<%--                                    <h4 class="product-title"><a href="#" class="pr-name">Bơ</a></h4>--%>
-<%--                                    <div class="price ">--%>
-<%--                                        <ins><span class="price-amount"><span class="currencySymbol"></span>20.000đ</span></ins>--%>
-<%--                                        <del><span class="price-amount"><span class="currencySymbol"></span>25.000đ</span></del>--%>
-<%--                                    </div>--%>
-<%--                                    <div class="slide-down-box">--%>
-<%--                                        <p class="message">Tất cả các sản phẩm đều được lựa chọn kỹ lưỡng để đảm bảo an toàn vệ sinh thực phẩm.</p>--%>
-<%--                                        <div class="buttons">--%>
-<%--                                            <a href="#" class="btn wishlist-btn"><i class="fa fa-heart" aria-hidden="true"></i></a>--%>
-<%--                                            <a href="#" class="btn add-to-cart-btn"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i>Thêm vào giỏ hàng</a>--%>
-<%--                                            <a href="#" class="btn compare-btn"><i class="fa fa-random" aria-hidden="true"></i></a>--%>
-<%--                                        </div>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                        </li>--%>
-<%--                        <li class="product-item">--%>
-<%--                            <div class="contain-product layout-default">--%>
-<%--                                <div class="product-thumb">--%>
-<%--                                    <a href="chiTietSanPham.jsp" class="link-to-product">--%>
-<%--                                        <img src="assets/images/products/p-07.jpg" alt="Vegetables" width="270" height="270" class="product-thumnail">--%>
-<%--                                    </a>--%>
-<%--                                    <a class="lookup btn_call_quickview" href="#"><i class="biolife-icon icon-search"></i></a>--%>
-<%--                                </div>--%>
-<%--                                <div class="info">--%>
-<%--                                    <h4 class="product-title"><a href="#" class="pr-name">Chanh vàng</a></h4>--%>
-<%--                                    <div class="price ">--%>
-<%--                                        <ins><span class="price-amount"><span class="currencySymbol"></span>20.000đ</span></ins>--%>
-<%--                                        <del><span class="price-amount"><span class="currencySymbol"></span>25.000đ</span></del>--%>
-<%--                                    </div>--%>
-<%--                                    <div class="slide-down-box">--%>
-<%--                                        <p class="message">Tất cả các sản phẩm đều được lựa chọn kỹ lưỡng để đảm bảo an toàn vệ sinh thực phẩm.</p>--%>
-<%--                                        <div class="buttons">--%>
-<%--                                            <a href="#" class="btn wishlist-btn"><i class="fa fa-heart" aria-hidden="true"></i></a>--%>
-<%--                                            <a href="#" class="btn add-to-cart-btn"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i>Thêm vào giỏ hàng</a>--%>
-<%--                                            <a href="#" class="btn compare-btn"><i class="fa fa-random" aria-hidden="true"></i></a>--%>
-<%--                                        </div>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                        </li>--%>
-<%--                        <li class="product-item">--%>
-<%--                            <div class="contain-product layout-default">--%>
-<%--                                <div class="product-thumb">--%>
-<%--                                    <a href="chiTietSanPham.jsp" class="link-to-product">--%>
-<%--                                        <img src="assets/images/products/p-02.jpg" alt="Vegetables" width="270" height="270" class="product-thumnail">--%>
-<%--                                    </a>--%>
-<%--                                    <a class="lookup btn_call_quickview" href="#"><i class="biolife-icon icon-search"></i></a>--%>
-<%--                                </div>--%>
-<%--                                <div class="info">--%>
-<%--                                    <h4 class="product-title"><a href="#" class="pr-name">Ớt Đà Lạt</a></h4>--%>
-<%--                                    <div class="price ">--%>
-<%--                                        <ins><span class="price-amount"><span class="currencySymbol"></span>20.000đ</span></ins>--%>
-<%--                                        <del><span class="price-amount"><span class="currencySymbol"></span>25.000đ</span></del>--%>
-<%--                                    </div>--%>
-<%--                                    <div class="slide-down-box">--%>
-<%--                                        <p class="message">Tất cả các sản phẩm đều được lựa chọn kỹ lưỡng để đảm bảo an toàn vệ sinh thực phẩm.</p>--%>
-<%--                                        <div class="buttons">--%>
-<%--                                            <a href="#" class="btn wishlist-btn"><i class="fa fa-heart" aria-hidden="true"></i></a>--%>
-<%--                                            <a href="#" class="btn add-to-cart-btn"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i>Thêm vào giỏ hàng</a>--%>
-<%--                                            <a href="#" class="btn compare-btn"><i class="fa fa-random" aria-hidden="true"></i></a>--%>
-<%--                                        </div>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                        </li>--%>
-<%--                        <li class="product-item">--%>
-<%--                            <div class="contain-product layout-default">--%>
-<%--                                <div class="product-thumb">--%>
-<%--                                    <a href="chiTietSanPham.jsp" class="link-to-product">--%>
-<%--                                        <img src="assets/images/products/p-03.jpg" alt="Vegetables" width="270" height="270" class="product-thumnail">--%>
-<%--                                    </a>--%>
-<%--                                    <a class="lookup btn_call_quickview" href="#"><i class="biolife-icon icon-search"></i></a>--%>
-<%--                                </div>--%>
-<%--                                <div class="info">--%>
-<%--                                    <h4 class="product-title"><a href="#" class="pr-name">Súp lơ xanh</a></h4>--%>
-<%--                                    <div class="price ">--%>
-<%--                                        <ins><span class="price-amount"><span class="currencySymbol"></span>20.000đ</span></ins>--%>
-<%--                                        <del><span class="price-amount"><span class="currencySymbol"></span>25.000đ</span></del>--%>
-<%--                                    </div>--%>
-<%--                                    <div class="slide-down-box">--%>
-<%--                                        <p class="message">Tất cả các sản phẩm đều được lựa chọn kỹ lưỡng để đảm bảo an toàn vệ sinh thực phẩm.</p>--%>
-<%--                                        <div class="buttons">--%>
-<%--                                            <a href="#" class="btn wishlist-btn"><i class="fa fa-heart" aria-hidden="true"></i></a>--%>
-<%--                                            <a href="#" class="btn add-to-cart-btn"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i>Thêm vào giỏ hàng</a>--%>
-<%--                                            <a href="#" class="btn compare-btn"><i class="fa fa-random" aria-hidden="true"></i></a>--%>
-<%--                                        </div>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                        </li>--%>
-<%--                        <li class="product-item">--%>
-<%--                            <div class="contain-product layout-default">--%>
-<%--                                <div class="product-thumb">--%>
-<%--                                    <a href="chiTietSanPham.jsp" class="link-to-product">--%>
-<%--                                        <img src="assets/images/products/p-06.jpg" alt="Vegetables" width="270" height="270" class="product-thumnail">--%>
-<%--                                    </a>--%>
-<%--                                    <a class="lookup btn_call_quickview" href="#"><i class="biolife-icon icon-search"></i></a>--%>
-<%--                                </div>--%>
-<%--                                <div class="info">--%>
-<%--                                    <h4 class="product-title"><a href="#" class="pr-name">Lê</a></h4>--%>
-<%--                                    <div class="price ">--%>
-<%--                                        <ins><span class="price-amount"><span class="currencySymbol"></span>20.000đ</span></ins>--%>
-<%--                                        <del><span class="price-amount"><span class="currencySymbol"></span>25.000đ</span></del>--%>
-<%--                                    </div>--%>
-<%--                                    <div class="slide-down-box">--%>
-<%--                                        <p class="message">Tất cả các sản phẩm đều được lựa chọn kỹ lưỡng để đảm bảo an toàn vệ sinh thực phẩm.</p>--%>
-<%--                                        <div class="buttons">--%>
-<%--                                            <a href="#" class="btn wishlist-btn"><i class="fa fa-heart" aria-hidden="true"></i></a>--%>
-<%--                                            <a href="#" class="btn add-to-cart-btn"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i>Thêm vào giỏ hàng</a>--%>
-<%--                                            <a href="#" class="btn compare-btn"><i class="fa fa-random" aria-hidden="true"></i></a>--%>
-<%--                                        </div>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                        </li>--%>
-<%--                        <li class="product-item">--%>
-<%--                            <div class="contain-product layout-default">--%>
-<%--                                <div class="product-thumb">--%>
-<%--                                    <a href="chiTietSanPham.jsp" class="link-to-product">--%>
-<%--                                        <img src="assets/images/products/p-20.jpg" alt="Vegetables" width="270" height="270" class="product-thumnail">--%>
-<%--                                    </a>--%>
-<%--                                    <a class="lookup btn_call_quickview" href="#"><i class="biolife-icon icon-search"></i></a>--%>
-<%--                                </div>--%>
-<%--                                <div class="info">--%>
-<%--                                    <h4 class="product-title"><a href="#" class="pr-name">Khoai lang</a></h4>--%>
-<%--                                    <div class="price ">--%>
-<%--                                        <ins><span class="price-amount"><span class="currencySymbol"></span>20.000đ</span></ins>--%>
-<%--                                        <del><span class="price-amount"><span class="currencySymbol"></span>25.000đ</span></del>--%>
-<%--                                    </div>--%>
-<%--                                    <div class="slide-down-box">--%>
-<%--                                        <p class="message">Tất cả các sản phẩm đều được lựa chọn kỹ lưỡng để đảm bảo an toàn vệ sinh thực phẩm.</p>--%>
-<%--                                        <div class="buttons">--%>
-<%--                                            <a href="#" class="btn wishlist-btn"><i class="fa fa-heart" aria-hidden="true"></i></a>--%>
-<%--                                            <a href="#" class="btn add-to-cart-btn"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i>Thêm vào giỏ hàng</a>--%>
-<%--                                            <a href="#" class="btn compare-btn"><i class="fa fa-random" aria-hidden="true"></i></a>--%>
-<%--                                        </div>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                        </li>--%>
-<%--                    </ul>--%>
-<%--                </div>--%>
-
             </div>
         </div>
     </div>
@@ -359,7 +197,6 @@
                 try {
                     let va = JSON.parse(this.responseText);
                     let searchResult = "";
-                    console.log(va);
                     if (this.readyState==4 && this.status==200) {
                         for(let i =0;i<va.length;i++) {
                             // searchResult += "<option type='submit'  value=\"\">";
@@ -367,7 +204,6 @@
 
                             // document.getElementById("livesearch").style.border="1px solid #A5ACB2";
                         }
-                        console.log(searchResult)
                         document.getElementById("livesearch").innerHTML = searchResult;
 
                     }
@@ -420,7 +256,6 @@
         }
         function updateCart(id_product,amount,name_product){
             const xhttp = new XMLHttpRequest();
-            console.log(id_product+", amount: "+amount+", name_product: "+name_product);
             xhttp.onload = function() {
                 let rawResult = xhttp.response;
                 let result = rawResult.substring(0,rawResult.length-2);
@@ -437,10 +272,6 @@
         var formatter = new Intl.NumberFormat('vi-VN', {
             style: 'currency',
             currency: 'VND',
-
-            // These options are needed to round to whole numbers if that's what you want.
-            //minimumFractionDigits: 0, // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)
-            //maximumFractionDigits: 0, // (causes 2500.99 to be printed as $2,501)
         });
         function executeData1(){
 
@@ -452,10 +283,8 @@
             xhttp.onload = function() {
                 let realData = "";
                 let mydata = JSON.parse(this.responseText);
-                console.log(mydata);
                 let totalmoney = 0.0;
                 for(let i =0;i<mydata.length;i++){
-                    // console.log("");
                     let line = "ChiTietSanPham?id_product="+mydata[i].product.id_product;
                     realData += "<tr class=\"cart_item\">";
                     realData += "                                        <td class=\"product-thumbnail\" data-title=\"Product Name\">";

@@ -94,142 +94,6 @@
                         </div>
                     </li>
                     <%}%>
-                    <%--                        <li class="post-elem col-lg-4 col-md-4 col-sm-6 col-xs-12">--%>
-                    <%--                            <div class="post-item effect-04 style-bottom-info">--%>
-                    <%--                                <div class="thumbnail">--%>
-                    <%--                                    <a href="chitietBlog.jsp" class="link-to-post"><img src="assets/images/our-blog/post-thumb-05.jpg" width="370" height="270" alt=""></a>--%>
-                    <%--                                </div>--%>
-                    <%--                                <div class="post-content">--%>
-                    <%--                                    <h4 class="post-name"><a href="chitietBlog.jsp" class="linktopost">11+ lợi ích sức khỏe của dâu tây, những điều cần lưu ý</a></h4>--%>
-                    <%--                                    <p class="post-archive"><b class="post-cat">ORGANIC</b><span class="post-date"> / 26-12</span><span class="author">Đăng bởi: Braum J.Teran</span></p>--%>
-                    <%--                                    <p class="excerpt">Khi nhắc đến dâu tây, chắc hẳn ai cũng biết rõ về những lợi ích sắc đẹp mà loại thực phẩm này mang lại...</p>--%>
-                    <%--                                    <div class="group-buttons">--%>
-                    <%--                                        <a href="chitietBlog.jsp" class="btn readmore">Tìm hiểu thêm</a>--%>
-                    <%--                                        <a href="#" class="btn count-number liked"><i class="biolife-icon icon-heart-1"></i><span class="number">20</span></a>--%>
-                    <%--                                        <a href="#" class="btn count-number commented"><i class="biolife-icon icon-conversation"></i><span class="number">06</span></a>--%>
-                    <%--                                    </div>--%>
-                    <%--                                </div>--%>
-                    <%--                            </div>--%>
-                    <%--                        </li>--%>
-                    <%--                        <li class="post-elem col-lg-4 col-md-4 col-sm-6 col-xs-12">--%>
-                    <%--                            <div class="post-item effect-04 style-bottom-info">--%>
-                    <%--                                <div class="thumbnail">--%>
-                    <%--                                    <a href="chitietBlog.jsp" class="link-to-post"><img src="assets/images/our-blog/post-thumb-04.jpg" width="370" height="270" alt=""></a>--%>
-                    <%--                                </div>--%>
-                    <%--                                <div class="post-content">--%>
-                    <%--                                    <h4 class="post-name"><a href="chitietBlog.jsp" class="linktopost">11+ lợi ích sức khỏe của dâu tây, những điều cần lưu ý</a></h4>--%>
-                    <%--                                    <p class="post-archive"><b class="post-cat">ORGANIC</b><span class="post-date"> / 26-12</span><span class="author">Đăng bởi: Braum J.Teran</span></p>--%>
-                    <%--                                    <p class="excerpt">Khi nhắc đến dâu tây, chắc hẳn ai cũng biết rõ về những lợi ích sắc đẹp mà loại thực phẩm này mang lại...</p>--%>
-                    <%--                                    <div class="group-buttons">--%>
-                    <%--                                        <a href="chitietBlog.jsp" class="btn readmore">Tìm hiểu thêm</a>--%>
-                    <%--                                        <a href="#" class="btn count-number liked"><i class="biolife-icon icon-heart-1"></i><span class="number">20</span></a>--%>
-                    <%--                                        <a href="#" class="btn count-number commented"><i class="biolife-icon icon-conversation"></i><span class="number">06</span></a>--%>
-                    <%--                                    </div>--%>
-                    <%--                                </div>--%>
-                    <%--                            </div>--%>
-                    <%--                        </li>--%>
-                    <%--                        <li class="post-elem col-lg-4 col-md-4 col-sm-6 col-xs-12">--%>
-                    <%--                            <div class="post-item effect-04 style-bottom-info">--%>
-                    <%--                                <div class="thumbnail">--%>
-                    <%--                                    <a href="chitietBlog.jsp" class="link-to-post"><img src="assets/images/our-blog/post-thumb-03.jpg" width="370" height="270" alt=""></a>--%>
-                    <%--                                </div>--%>
-                    <%--                                <div class="post-content">--%>
-                    <%--                                    <h4 class="post-name"><a href="chitietBlog.jsp" class="linktopost">5 lý do bạn cần thêm quả mọng trong cuộc sống – Fitbit Blog</a></h4>--%>
-                    <%--                                    <p class="post-archive"><b class="post-cat">ORGANIC</b><span class="post-date"> / 26-12</span><span class="author">Đăng bởi: Braum J.Teran</span></p>--%>
-                    <%--                                    <p class="excerpt">Ăn bất kỳ loại trái cây nào cũng là một động thái lành mạnh. Nhưng nếu bạn thực sự muốn...</p>--%>
-                    <%--                                    <div class="group-buttons">--%>
-                    <%--                                        <a href="chitietBlog.jsp" class="btn readmore">Tìm hiểu thêm</a>--%>
-                    <%--                                        <a href="#" class="btn count-number liked"><i class="biolife-icon icon-heart-1"></i><span class="number">20</span></a>--%>
-                    <%--                                        <a href="#" class="btn count-number commented"><i class="biolife-icon icon-conversation"></i><span class="number">06</span></a>--%>
-                    <%--                                    </div>--%>
-                    <%--                                </div>--%>
-                    <%--                            </div>--%>
-                    <%--                        </li>--%>
-                    <%--                        <li class="post-elem col-lg-4 col-md-4 col-sm-6 col-xs-12">--%>
-                    <%--                            <div class="post-item effect-04 style-bottom-info">--%>
-                    <%--                                <div class="thumbnail">--%>
-                    <%--                                    <a href="chitietBlog.jsp" class="link-to-post"><img src="assets/images/our-blog/post-thumb-06.jpg" width="370" height="270" alt=""></a>--%>
-                    <%--                                </div>--%>
-                    <%--                                <div class="post-content">--%>
-                    <%--                                    <h4 class="post-name"><a href="chitietBlog.jsp" class="linktopost">Trái dâu tằm: Món ăn ngon, vị thuốc quý!</a></h4>--%>
-                    <%--                                    <p class="post-archive"><b class="post-cat">ORGANIC</b><span class="post-date"> / 26-12</span><span class="author">Đăng bỏi: Braum J.Teran</span></p>--%>
-                    <%--                                    <p class="excerpt">Nói đến dâu tằm, ai cũng nghĩ ngay đến vải vóc, tơ lụa. Nhưng dâu tằm cũng là một cây thuốc quý với nhiều công dụng khác nhau...</p>--%>
-                    <%--                                    <div class="group-buttons">--%>
-                    <%--                                        <a href="chitietBlog.jsp" class="btn readmore">Tìm hiểu thêm</a>--%>
-                    <%--                                        <a href="#" class="btn count-number liked"><i class="biolife-icon icon-heart-1"></i><span class="number">20</span></a>--%>
-                    <%--                                        <a href="#" class="btn count-number commented"><i class="biolife-icon icon-conversation"></i><span class="number">06</span></a>--%>
-                    <%--                                    </div>--%>
-                    <%--                                </div>--%>
-                    <%--                            </div>--%>
-                    <%--                        </li>--%>
-                    <%--                        <li class="post-elem col-lg-4 col-md-4 col-sm-6 col-xs-12">--%>
-                    <%--                            <div class="post-item effect-04 style-bottom-info">--%>
-                    <%--                                <div class="thumbnail">--%>
-                    <%--                                    <a href="chitietBlog.jsp" class="link-to-post"><img src="assets/images/our-blog/post-thumb-02.jpg" width="370" height="270" alt=""></a>--%>
-                    <%--                                </div>--%>
-                    <%--                                <div class="post-content">--%>
-                    <%--                                    <h4 class="post-name"><a href="chitietBlog.jsp" class="linktopost">4 điều sẽ xảy ra nêu bạn không chịu ăn rau</a></h4>--%>
-                    <%--                                    <p class="post-archive"><b class="post-cat">ORGANIC</b><span class="post-date"> / 26-12</span><span class="author">Đăng bởi: Braum J.Teran</span></p>--%>
-                    <%--                                    <p class="excerpt">Chắc các bạn cũng đã nghe giảng giải quá nhiều về lợi ích của việc ăn rau đúng không? Tuy nhiên, có vẻ như những bài giảng này...</p>--%>
-                    <%--                                    <div class="group-buttons">--%>
-                    <%--                                        <a href="chitietBlog.jsp" class="btn readmore">Tìm hiểu thêm</a>--%>
-                    <%--                                        <a href="#" class="btn count-number liked"><i class="biolife-icon icon-heart-1"></i><span class="number">20</span></a>--%>
-                    <%--                                        <a href="#" class="btn count-number commented"><i class="biolife-icon icon-conversation"></i><span class="number">06</span></a>--%>
-                    <%--                                    </div>--%>
-                    <%--                                </div>--%>
-                    <%--                            </div>--%>
-                    <%--                        </li>--%>
-                    <%--                        <li class="post-elem col-lg-4 col-md-4 col-sm-6 col-xs-12">--%>
-                    <%--                            <div class="post-item effect-04 style-bottom-info">--%>
-                    <%--                                <div class="thumbnail">--%>
-                    <%--                                    <a href="chitietBlog.jsp" class="link-to-post"><img src="assets/images/our-blog/post-thumb-05.jpg" width="370" height="270" alt=""></a>--%>
-                    <%--                                </div>--%>
-                    <%--                                <div class="post-content">--%>
-                    <%--                                    <h4 class="post-name"><a href="chitietBlog.jsp" class="linktopost">11+ lợi ích sức khỏe của dâu tây, những điều cần lưu ý</a></h4>--%>
-                    <%--                                    <p class="post-archive"><b class="post-cat">ORGANIC</b><span class="post-date"> / 26-12</span><span class="author">Đăng bởi: Braum J.Teran</span></p>--%>
-                    <%--                                    <p class="excerpt">Khi nhắc đến dâu tây, chắc hẳn ai cũng biết rõ về những lợi ích sắc đẹp mà loại thực phẩm này mang lại...</p>--%>
-                    <%--                                    <div class="group-buttons">--%>
-                    <%--                                        <a href="chitietBlog.jsp" class="btn readmore">Tìm hiểu thêm</a>--%>
-                    <%--                                        <a href="#" class="btn count-number liked"><i class="biolife-icon icon-heart-1"></i><span class="number">20</span></a>--%>
-                    <%--                                        <a href="#" class="btn count-number commented"><i class="biolife-icon icon-conversation"></i><span class="number">06</span></a>--%>
-                    <%--                                    </div>--%>
-                    <%--                                </div>--%>
-                    <%--                            </div>--%>
-                    <%--                        </li>--%>
-                    <%--                        <li class="post-elem col-lg-4 col-md-4 col-sm-6 col-xs-12">--%>
-                    <%--                            <div class="post-item effect-04 style-bottom-info">--%>
-                    <%--                                <div class="thumbnail">--%>
-                    <%--                                    <a href="chitietBlog.jsp" class="link-to-post"><img src="assets/images/our-blog/post-thumb-04.jpg" width="370" height="270" alt=""></a>--%>
-                    <%--                                </div>--%>
-                    <%--                                <div class="post-content">--%>
-                    <%--                                    <h4 class="post-name"><a href="chitietBlog.jsp" class="linktopost">11+ lợi ích sức khỏe của dâu tây, những điều cần lưu ý</a></h4>--%>
-                    <%--                                    <p class="post-archive"><b class="post-cat">ORGANIC</b><span class="post-date"> / 26-12</span><span class="author">Đăng bởi: Braum J.Teran</span></p>--%>
-                    <%--                                    <p class="excerpt">Khi nhắc đến dâu tây, chắc hẳn ai cũng biết rõ về những lợi ích sắc đẹp mà loại thực phẩm này mang lại...</p>--%>
-                    <%--                                    <div class="group-buttons">--%>
-                    <%--                                        <a href="chitietBlog.jsp" class="btn readmore">Tìm hiểu thêm</a>--%>
-                    <%--                                        <a href="#" class="btn count-number liked"><i class="biolife-icon icon-heart-1"></i><span class="number">20</span></a>--%>
-                    <%--                                        <a href="#" class="btn count-number commented"><i class="biolife-icon icon-conversation"></i><span class="number">06</span></a>--%>
-                    <%--                                    </div>--%>
-                    <%--                                </div>--%>
-                    <%--                            </div>--%>
-                    <%--                        </li>--%>
-                    <%--                        <li class="post-elem col-lg-4 col-md-4 col-sm-6 col-xs-12">--%>
-                    <%--                            <div class="post-item effect-04 style-bottom-info">--%>
-                    <%--                                <div class="thumbnail">--%>
-                    <%--                                    <a href="chitietBlog.jsp" class="link-to-post"><img src="assets/images/our-blog/post-thumb-03.jpg" width="370" height="270" alt=""></a>--%>
-                    <%--                                </div>--%>
-                    <%--                                <div class="post-content">--%>
-                    <%--                                    <h4 class="post-name"><a href="chitietBlog.jsp" class="linktopost">5 lý do bạn cần thêm quả mọng trong cuộc sống – Fitbit Blog</a></h4>--%>
-                    <%--                                    <p class="post-archive"><b class="post-cat">ORGANIC</b><span class="post-date"> / 20 Nov, 2018</span><span class="author">Posted By: Braum J.Teran</span></p>--%>
-                    <%--                                    <p class="excerpt">Ăn bất kỳ loại trái cây nào cũng là một động thái lành mạnh. Nhưng nếu bạn thực sự muốn...</p>--%>
-                    <%--                                    <div class="group-buttons">--%>
-                    <%--                                        <a href="chitietBlog.jsp" class="btn readmore">Tìm hiểu thêm</a>--%>
-                    <%--                                        <a href="#" class="btn count-number liked"><i class="biolife-icon icon-heart-1"></i><span class="number">20</span></a>--%>
-                    <%--                                        <a href="#" class="btn count-number commented"><i class="biolife-icon icon-conversation"></i><span class="number">06</span></a>--%>
-                    <%--                                    </div>--%>
-                    <%--                                </div>--%>
-                    <%--                            </div>--%>
-                    <%--                        </li>--%>
                 </ul>
 
             </div>
@@ -261,9 +125,6 @@
         style: 'currency',
         currency: 'VND',
 
-        // These options are needed to round to whole numbers if that's what you want.
-        //minimumFractionDigits: 0, // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)
-        //maximumFractionDigits: 0, // (causes 2500.99 to be printed as $2,501)
     });
 
     function executeData() {
@@ -289,10 +150,8 @@
         xhttp.onload = function () {
             let realData = "";
             let mydata = JSON.parse(this.responseText);
-            console.log(mydata);
             let totalmoney = 0.0;
             for (let i = 0; i < mydata.length; i++) {
-                // console.log("");
                 let line = "ChiTietSanPham?id_product=" + mydata[i].product.id_product;
                 realData += "<li>";
                 realData += "                                                    <div class=\"minicart-item\">";
@@ -336,7 +195,6 @@
             try {
                 let va = JSON.parse(this.responseText);
                 let searchResult = "";
-                console.log(va);
                 if (this.readyState == 4 && this.status == 200) {
                     for (let i = 0; i < va.length; i++) {
                         // searchResult += "<option type='submit'  value=\"\">";
@@ -344,7 +202,6 @@
 
                         // document.getElementById("livesearch").style.border="1px solid #A5ACB2";
                     }
-                    console.log(searchResult)
                     document.getElementById("livesearch").innerHTML = searchResult;
 
                 }

@@ -148,9 +148,6 @@
         style: 'currency',
         currency: 'VND',
 
-        // These options are needed to round to whole numbers if that's what you want.
-        //minimumFractionDigits: 0, // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)
-        //maximumFractionDigits: 0, // (causes 2500.99 to be printed as $2,501)
     });
     function executeData(){
         <%
@@ -180,10 +177,8 @@
         xhttp.onload = function() {
             let realData = "";
             let mydata = JSON.parse(this.responseText);
-            console.log(mydata);
             let totalmoney = 0.0;
             for(let i =0;i<mydata.length;i++){
-                // console.log("");
                 let line = "ChiTietSanPham?id_product="+mydata[i].product.id_product;
                 realData += "<li>";
                 realData += "                                                    <div class=\"minicart-item\">";
@@ -227,7 +222,6 @@
             try {
                 let va = JSON.parse(this.responseText);
                 let searchResult = "";
-                console.log(va);
                 if (this.readyState==4 && this.status==200) {
                     for(let i =0;i<va.length;i++) {
                         // searchResult += "<option type='submit'  value=\"\">";
@@ -235,7 +229,7 @@
 
                         // document.getElementById("livesearch").style.border="1px solid #A5ACB2";
                     }
-                    console.log(searchResult)
+
                     document.getElementById("livesearch").innerHTML = searchResult;
 
                 }

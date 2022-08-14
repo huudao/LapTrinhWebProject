@@ -93,9 +93,6 @@
         var addresses = [];
         var chooseAddress = -1;
         <%for (UserAddress a : addresses ) {%>
-
-        //id_address,city_province,district,ward,house_address,phone_number
-
         addresses[addresses.length] = new UserAddress("<%=a.getId_user()%>","<%=a.getCity_province()%>","<%=a.getDistrict()%>","<%=a.getWard()%>","<%=a.getHouse_address()%>","<%=a.getPhone_number()%>","<%=a.getUser_name()%>",<%=a.isChoose()%>);
 
         <%if(a.isChoose()==true){%>
@@ -105,8 +102,6 @@
         if(chooseAddress==-1 && addresses.length!=0){
             chooseAddress =0;
         }
-        console.log(addresses)
-        console.log(chooseAddress)
     </script>
 </head>
 <body class="biolife-body">
@@ -145,36 +140,18 @@
                     <div class="content-checkout-left col-lg-7 col-md-7 col-sm-6 col-xs-12">
                         <hr>
                         <h2 class="title-bill">THANH TOÁN VÀ GIAO HÀNG, xin chào <%=ua.getUser_name()%></h2>
-<!--                        <h2  style="color:red">THIẾU SỐ LƯỢNG,cho phép khách hàng chọn địa chỉ.họ tên tự điền sẵn,email tự điền sẵn,sau khi thanh toán thành công sẽ nhận được biên lại,thiếu thanh toán bằng kiểu gì,.</h2>-->
                         <style>
                             .field__input-wrapper {
                                 position: relative;
                             }
                         </style>
                         <div style="outline: #4CAF50 solid 10px;background-color: #4CAF50;">
-<!--                            <button style="margin-left: 10px;">áp dụng địa chỉ</button>-->
-<!--                            <br>-->
-<!--                        <select style="color: black;background-color: black;margin-left: 20px;" name="cars" id="cars">-->
-<!--                            <option style="color:black;" value="volvo">địa chỉ 1</option>-->
-<!--                            <option style="color:black;" value="saab">địa chỉ 2</option>-->
-<!--                            <option style="color:black;" value="opel">địa chỉ 3</option>-->
-<!--                            <option style="color:black;" value="audi" >địa chỉ 4</option>-->
-<!--                        </select>-->
+
                             <label class="form-label" style="color: white;">Sổ địa chỉ</label>
 
                             <input type="text" id = "address-input" list="addresses" placeholder="chọn địa chỉ" class="form-control">
                             <datalist id="addresses"  >
                             </datalist >
-<!--                            <div class="field__input-wrapper">-->
-<!--                                <label for="customer-address" class="field__label">Sổ địa chỉ</label>-->
-<!--                                <select size="1" type="text" class="field__input field__input&#45;&#45;select" id="customer-address" data-bind="customerAddress">-->
-<!--                                    <option value="0">Địa chỉ khác...</option>-->
-<!--                                </select>-->
-<!--                                <div class="field__caret">-->
-<!--                                    <i class="fa fa-caret-down"></i>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                            <br>-->
                         </div>
                         <br>
                         <div class="content-checkout">
@@ -279,23 +256,6 @@
                                         </div>
                                     </li>
                                     <%}%>
-<%--                                    <li class="cart-elem">--%>
-<%--                                        <div class="cart-item">--%>
-<%--                                            <div class="product-thumb">--%>
-<%--                                                <a class="prd-thumb" href="#">--%>
-<%--                                                    <figure><img src="assets/images/shippingcart/pr-02.jpg" width="113" height="113" alt="shop-cart" ></figure>--%>
-<%--                                                </a>--%>
-<%--                                            </div>--%>
-<%--                                            <div class="info">--%>
-<%--                                                <span class="txt-quantity">1X</span>--%>
-<%--                                                <a href="chiTietSanPham.jsp" class="pr-name">National Fresh Fruit</a>--%>
-<%--                                            </div>--%>
-<%--                                            <div class="price price-contain">--%>
-<%--                                                <ins><span class="price-amount"><span class="currencySymbol"></span>90000đ</span></ins>--%>
-<%--                                                <del><span class="price-amount"><span class="currencySymbol"></span>100000đ</span></del>--%>
-<%--                                            </div>--%>
-<%--                                        </div>--%>
-<%--                                    </li>--%>
                                 </ul>
                                 <ul class="subtotal">
                                     <li>
@@ -356,10 +316,6 @@
         var formatter = new Intl.NumberFormat('vi-VN', {
             style: 'currency',
             currency: 'VND',
-
-            // These options are needed to round to whole numbers if that's what you want.
-            //minimumFractionDigits: 0, // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)
-            //maximumFractionDigits: 0, // (causes 2500.99 to be printed as $2,501)
         });
 
         document.getElementById("totalMoney").innerHTML=formatter.format(<%=totalMoney%>)
@@ -385,15 +341,10 @@
         }
         getAddresses();
         function chooseAddress1(id){
-            // console.log("run me "+id)
             let i =-1
             try{          i  = parseInt(id);
                 if(i <0) return;
                 let choose = addresses[i];
-                console.log(i)
-                console.log(i)
-                console.log(typeof i)
-                console.log(choose)
                 document.getElementById("firstname").value = choose.user_name;
                 document.getElementById("my_phone_number").value = choose.phone_number;
                 document.getElementById("city-province").value = choose.city_province;

@@ -318,7 +318,7 @@
                                             <p class="form-row">
                                                 <textarea name="comment" id="txt-comment" cols="30" rows="10" placeholder="Viết đánh giá của bạn..."></textarea>
                                             </p>
-                                            <input type="hidden" id="num-star" name="numStar" value=""/>
+                                            <input type="hidden" required id="num-star" name="numStar" value="5"/>
                                             <input type="hidden" id="id" name="id_product" value="<%=p.getId_product()%>"/>
 
                                             <p class="form-row">
@@ -332,72 +332,23 @@
 
                                 <ol class="commentlist">
                                     <%
-//                                        System.out.println("rumme!");
                                         for (IComment x: p.getRawCommentProducts().values()
                                              ) {
                                             CommentProduct comment = (CommentProduct) x;
-//                                            System.out.println("run me "+comment.getId_comment_product());
                                         %>
                                     <li class="review">
                                         <div class="comment-container">
                                             <div class="row">
                                                 <div class="comment-content col-lg-8 col-md-9 col-sm-8 col-xs-12">
                                                     <p class="comment-in"><span class="post-name"><%=comment.getId_user()%></span><span class="post-date"><%=comment.getDate_post().toString()%></span></p>
-<%--                                                    <%System.out.println("comment 3 -> 5 stars: "+(comment.getNum_star()*100)/5);%>--%>
                                                     <div class="rating"><p class="star-rating"><span class="width-<%=(comment.getNum_star()*100)/5%>percent"></span><%=comment.getNum_star()%></p></div>
                                                     <p><%=comment.getComment_content()%></p>
                                                 </div>
-<!--                                                <div class="comment-review-form col-lg-3 col-lg-offset-1 col-md-3 col-sm-4 col-xs-12">-->
-<!--                                                    <span class="title">bình luận này có hữu dụng không?</span>-->
-<!--                                                    <ul class="actions">-->
-<!--                                                        <li><a href="#" class="btn-act like" data-type="like"><i class="fa fa-thumbs-up" aria-hidden="true"></i>có (100)</a></li>-->
-<!--                                                        <li><a href="#" class="btn-act report" data-type="dislike"><i class="fa fa-flag" aria-hidden="true"></i>báo cáo</a></li>-->
-<!--                                                    </ul>-->
-<!--                                                </div>-->
+
                                             </div>
                                         </div>
                                     </li>
                                     <%}%>
-<%--                                    <li class="review">--%>
-<%--                                        <div class="comment-container">--%>
-<%--                                            <div class="row">--%>
-<%--                                                <div class="comment-content col-lg-8 col-md-9 col-sm-8 col-xs-12">--%>
-<%--                                                    <p class="comment-in"><span class="post-name">Nguyễn Bá Cường--%>
-<%--</span><span class="post-date">01/04/2021</span></p>--%>
-<%--                                                    <div class="rating"><p class="star-rating"><span class="width-80percent"></span></p></div>--%>
-<%--                                                    <p class="comment-text">Vì sao mua online lại rẻ hơn vậy? Khi mua hàng online khác thế nào với khi mua ở cửa hàng?</p>--%>
-<%--                                                </div>--%>
-<%--<!--                                                <div class="comment-review-form col-lg-3 col-lg-offset-1 col-md-3 col-sm-4 col-xs-12">-->--%>
-<%--<!--                                                    <span class="title">bình luận này có hữu dụng không?</span>-->--%>
-<%--<!--                                                    <ul class="actions">-->--%>
-<%--<!--                                                        <li><a href="#" class="btn-act like" data-type="like"><i class="fa fa-thumbs-up" aria-hidden="true"></i>có (100)</a></li>-->--%>
-<%--<!--                                                        <li><a href="#" class="btn-act hate" data-type="dislike"><i class="fa fa-thumbs-down" aria-hidden="true"></i>không (20)</a></li>-->--%>
-<%--<!--                                                        <li><a href="#" class="btn-act report" data-type="dislike"><i class="fa fa-flag" aria-hidden="true"></i>báo cáo</a></li>-->--%>
-<%--<!--                                                    </ul>-->--%>
-<%--<!--                                                </div>-->--%>
-<%--                                            </div>--%>
-<%--                                        </div>--%>
-<%--                                    </li>--%>
-<%--                                    <li class="review">--%>
-<%--                                        <div class="comment-container">--%>
-<%--                                            <div class="row">--%>
-<%--                                                <div class="comment-content col-lg-8 col-md-9 col-sm-8 col-xs-12">--%>
-<%--                                                    <p class="comment-in"><span class="post-name">Thuận</span><span class="post-date">03/04/2021</span></p>--%>
-<%--                                                    <div class="rating"><p class="star-rating"><span class="width-80percent"></span></p></div>--%>
-<%--                                                    <p class="comment-text">--%>
-<%--                                                       nhà em mới trồng rau, shop có mua lại không ạ?.</p>--%>
-<%--                                                </div>--%>
-<%--<!--                                                <div class="comment-review-form col-lg-3 col-lg-offset-1 col-md-3 col-sm-4 col-xs-12">-->--%>
-<%--<!--                                                    <span class="title">bình luận này có hữu dụng không?</span>-->--%>
-<%--<!--                                                    <ul class="actions">-->--%>
-<%--<!--                                                        <li><a href="#" class="btn-act like" data-type="like"><i class="fa fa-thumbs-up" aria-hidden="true"></i>có (100)</a></li>-->--%>
-<%--<!--                                                        <li><a href="#" class="btn-act hate" data-type="dislike"><i class="fa fa-thumbs-down" aria-hidden="true"></i>không (20)</a></li>-->--%>
-<%--<!--                                                        <li><a href="#" class="btn-act report" data-type="dislike"><i class="fa fa-flag" aria-hidden="true"></i>báo cáo</a></li>-->--%>
-<%--<!--                                                    </ul>-->--%>
-<%--<!--                                                </div>-->--%>
-<%--                                            </div>--%>
-<%--                                        </div>--%>
-<%--                                    </li>--%>
                                 </ol>
                                 <div class="biolife-panigations-block version-2">
                                     <ul class="panigation-contain">
@@ -425,7 +376,7 @@
                     <span class="biolife-icon icon-organic"></span>
                     <h3 class="main-title">các sản phẩm liên quan</h3>
                 </div>
-                <ul class="products-list biolife-carousel nav-center-02 nav-none-on-mobile" data-slick='{"rows":1,"arrows":true,"dots":false,"infinite":false,"speed":400,"slidesMargin":0,"slidesToShow":5, "responsive":[{"breakpoint":1200, "settings":{ "slidesToShow": 4}},{"breakpoint":992, "settings":{ "slidesToShow": 3, "slidesMargin":20 }},{"breakpoint":768, "settings":{ "slidesToShow": 2, "slidesMargin":10}}]}'>
+                <ul class="products-list biolife-carousel nav-center-02 nav-none-on-mobile" data-slick='{"rows":1,"arrows":true,"dots":false,"infinite":false,"speed":400,"slidesMargin":0,"slidesToShow":4, "responsive":[{"breakpoint":1200, "settings":{ "slidesToShow": 4}},{"breakpoint":992, "settings":{ "slidesToShow": 3, "slidesMargin":20 }},{"breakpoint":768, "settings":{ "slidesToShow": 2, "slidesMargin":10}}]}'>
                     <%
                         for (Product x :(List<Product>)request.getAttribute("relateProducts")
                              ) {
@@ -462,7 +413,7 @@
                                     <p class="message"><%=x.getShort_description()%></p>
                                     <div class="buttons">
                                         <a href="#" class="btn wishlist-btn"><i class="fa fa-heart" aria-hidden="true"></i></a>
-                                        <a href="#" class="btn add-to-cart-btn"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i>thêm vào giỏ hàng.</a>
+                                        <a href="#" class="btn add-to-cart-btn" onclick="addCart('<%=x.getId_product()%>','<%=x.getProduct_name()%>')"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i>thêm vào giỏ hàng.</a>
                                         <a href="#" class="btn compare-btn"><i class="fa fa-random" aria-hidden="true"></i></a>
                                     </div>
                                 </div>
@@ -470,428 +421,7 @@
                         </div>
                     </li>
                     <%}%>
-<%--                    <li class="product-item col-lg-3 col-md-3 col-sm-4 col-xs-6">--%>
-<%--                        <div class="contain-product layout-default">--%>
-<%--                            <div class="product-thumb">--%>
-<%--                                <a href="#" class="link-to-product">--%>
-<%--                                    <img src="assets/images/products/p-13.jpg" alt="dd" width="270" height="270" class="product-thumnail">--%>
-<%--                                </a>--%>
-<%--                            </div>--%>
-<%--                            <div class="info">--%>
-<%--                                <b class="categories">Trái cây</b>--%>
-<%--                                <h4 class="product-title"><a href="#" class="pr-name"> hồng đào gói bịch </a></h4>--%>
-<%--                                <div class="price">--%>
-<%--                                    <ins><span class="price-amount"><span class="currencySymbol"></span>15.000đ</span></ins>--%>
-<%--                                    <del><span class="price-amount"><span class="currencySymbol"></span>40.000đ</span></del>--%>
-<%--                                </div>--%>
-<%--                                <div class="shipping-info">--%>
-<%--                                    <p class="shipping-day">còn hàng</p>--%>
-<%--                                </div>--%>
-<%--                                <div class="slide-down-box">--%>
-<%--                                    <p class="message">giá trị hồng đào liên quan tới vitamin C sẽ giúp ích cho hệ tiêu hóa của bạn</p>--%>
-<%--                                    <div class="buttons">--%>
-<%--                                        <a href="#" class="btn wishlist-btn"><i class="fa fa-heart" aria-hidden="true"></i></a>--%>
-<%--                                        <a href="#" class="btn add-to-cart-btn"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i>thêm vào giỏ hàng</a>--%>
-<%--                                        <a href="#" class="btn compare-btn"><i class="fa fa-random" aria-hidden="true"></i></a>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                    </li>--%>
-<%--                    <li class="product-item col-lg-3 col-md-3 col-sm-4 col-xs-6">--%>
-<%--                        <div class="contain-product layout-default">--%>
-<%--                            <div class="product-thumb">--%>
-<%--                                <a href="#" class="link-to-product">--%>
-<%--                                    <img src="assets/images/products/p-21.jpg" alt="dd" width="270" height="270" class="product-thumnail">--%>
-<%--                                </a>--%>
-<%--                            </div>--%>
-<%--                            <div class="info">--%>
-<%--                                <b class="categories">Fresh Fruit</b>--%>
-<%--                                <h4 class="product-title"><a href="#" class="pr-name">Táo tàu khô loại tốt</a></h4>--%>
-<%--                                <div class="price">--%>
-<%--                                    <ins><span class="price-amount"><span class="currencySymbol"></span>250.000đ</span></ins>--%>
-<%--                                    <del><span class="price-amount"><span class="currencySymbol"></span></span></del>--%>
-<%--                                </div>--%>
-<%--                                <div class="shipping-info">--%>
-<%--                                    <p class="shipping-day" style="color:red;">hết hàng</p>--%>
-<%--                                </div>--%>
-<%--                                <div class="slide-down-box">--%>
-<%--                                    <p class="message">giá trị hồng đào liên quan tới vitamin C sẽ giúp ích cho hệ tiêu hóa của bạn</p>--%>
-<%--                                    <div class="buttons">--%>
-<%--                                        <a href="#" class="btn wishlist-btn"><i class="fa fa-heart" aria-hidden="true"></i></a>--%>
-<%--                                        <a href="#" class="btn add-to-cart-btn"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i>thêm vào giỏ hàng</a>--%>
-<%--                                        <a href="#" class="btn compare-btn"><i class="fa fa-random" aria-hidden="true"></i></a>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                    </li>--%>
-<%--                    <li class="product-item col-lg-3 col-md-3 col-sm-4 col-xs-6">--%>
-<%--                        <div class="contain-product layout-default">--%>
-<%--                            <div class="product-thumb">--%>
-<%--                                <a href="#" class="link-to-product">--%>
-<%--                                    <img src="assets/images/products/p-14.jpg" alt="dd" width="270" height="270" class="product-thumnail">--%>
-<%--                                </a>--%>
-<%--                            </div>--%>
-<%--                            <div class="info">--%>
-<%--                                <b class="categories">trái cây</b>--%>
-<%--                                <h4 class="product-title"><a href="#" class="pr-name">Ngũ cốc dinh dưỡng</a></h4>--%>
-<%--                                <div class="price">--%>
-<%--                                    <ins><span class="price-amount"><span class="currencySymbol"></span>80.000đ</span></ins>--%>
-<%--                                    <del><span class="price-amount"><span class="currencySymbol"></span>240000đ</span></del>--%>
-<%--                                </div>--%>
-<%--                                <div class="shipping-info">--%>
-<%--                                    <p class="shipping-day">còn hàng</p>--%>
-<%--                                </div>--%>
-<%--                                <div class="slide-down-box">--%>
-<%--                                    <p class="message">ngũ cốc giúp bạn bổ sung các chất dinh dưỡng cần thiết cho cơ thể của bạn</p>--%>
-<%--                                    <div class="buttons">--%>
-<%--                                        <a href="#" class="btn wishlist-btn"><i class="fa fa-heart" aria-hidden="true"></i></a>--%>
-<%--                                        <a href="#" class="btn add-to-cart-btn"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i>thêm vào giỏ hàng</a>--%>
-<%--                                        <a href="#" class="btn compare-btn"><i class="fa fa-random" aria-hidden="true"></i></a>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                    </li>--%>
 
-
-<%--                    <li class="product-item col-lg-3 col-md-3 col-sm-4 col-xs-6">--%>
-<%--                        <div class="contain-product layout-default">--%>
-<%--                            <div class="product-thumb">--%>
-<%--                                <a href="#" class="link-to-product">--%>
-<%--                                    <img src="assets/images/products/p-11.jpg" alt="dd" width="270" height="270" class="product-thumnail">--%>
-<%--                                </a>--%>
-<%--                            </div>--%>
-<%--                            <div class="info">--%>
-<%--                                <b class="categories"> Trái cây</b>--%>
-<%--                                <h4 class="product-title"><a href="#" class="pr-name">combo bơ+lựu đầy dinh dưỡng</a></h4>--%>
-<%--                                <div class="price">--%>
-<%--                                    <ins><span class="price-amount"><span class="currencySymbol"></span>250.000đ</span></ins>--%>
-<%--                                    <del><span class="price-amount"><span class="currencySymbol"></span>300.000đ</span></del>--%>
-<%--                                </div>--%>
-<%--                                <div class="shipping-info">--%>
-<%--                                    <p class="shipping-day">còn hàng</p>--%>
-<%--                                </div>--%>
-<%--                                <div class="slide-down-box">--%>
-<%--                                    <p class="message">combo giúp bạn thư giãn và bổ sung dinh dưỡng rất tốt cho sức khỏe của bạn</p>--%>
-<%--                                    <div class="buttons">--%>
-<%--                                        <a href="#" class="btn wishlist-btn"><i class="fa fa-heart" aria-hidden="true"></i></a>--%>
-<%--                                        <a href="#" class="btn add-to-cart-btn"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i>thêm vào giỏ hàng.</a>--%>
-<%--                                        <a href="#" class="btn compare-btn"><i class="fa fa-random" aria-hidden="true"></i></a>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                    </li>--%>
-<%--                    <li class="product-item col-lg-3 col-md-3 col-sm-4 col-xs-6">--%>
-<%--                        <div class="contain-product layout-default">--%>
-<%--                            <div class="product-thumb">--%>
-<%--                                <a href="#" class="link-to-product">--%>
-<%--                                    <img src="assets/images/products/p-13.jpg" alt="dd" width="270" height="270" class="product-thumnail">--%>
-<%--                                </a>--%>
-<%--                            </div>--%>
-<%--                            <div class="info">--%>
-<%--                                <b class="categories">Trái cây</b>--%>
-<%--                                <h4 class="product-title"><a href="#" class="pr-name"> hồng đào gói bịch </a></h4>--%>
-<%--                                <div class="price">--%>
-<%--                                    <ins><span class="price-amount"><span class="currencySymbol"></span>15.000đ</span></ins>--%>
-<%--                                    <del><span class="price-amount"><span class="currencySymbol"></span>40.000đ</span></del>--%>
-<%--                                </div>--%>
-<%--                                <div class="shipping-info">--%>
-<%--                                    <p class="shipping-day">còn hàng</p>--%>
-<%--                                </div>--%>
-<%--                                <div class="slide-down-box">--%>
-<%--                                    <p class="message">giá trị hồng đào liên quan tới vitamin C sẽ giúp ích cho hệ tiêu hóa của bạn</p>--%>
-<%--                                    <div class="buttons">--%>
-<%--                                        <a href="#" class="btn wishlist-btn"><i class="fa fa-heart" aria-hidden="true"></i></a>--%>
-<%--                                        <a href="#" class="btn add-to-cart-btn"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i>thêm vào giỏ hàng</a>--%>
-<%--                                        <a href="#" class="btn compare-btn"><i class="fa fa-random" aria-hidden="true"></i></a>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                    </li>--%>
-<%--                    <li class="product-item col-lg-3 col-md-3 col-sm-4 col-xs-6">--%>
-<%--                        <div class="contain-product layout-default">--%>
-<%--                            <div class="product-thumb">--%>
-<%--                                <a href="#" class="link-to-product">--%>
-<%--                                    <img src="assets/images/products/p-21.jpg" alt="dd" width="270" height="270" class="product-thumnail">--%>
-<%--                                </a>--%>
-<%--                            </div>--%>
-<%--                            <div class="info">--%>
-<%--                                <b class="categories">Fresh Fruit</b>--%>
-<%--                                <h4 class="product-title"><a href="#" class="pr-name">Táo tàu khô loại tốt</a></h4>--%>
-<%--                                <div class="price">--%>
-<%--                                    <ins><span class="price-amount"><span class="currencySymbol"></span>250.000đ</span></ins>--%>
-<%--                                    <del><span class="price-amount"><span class="currencySymbol"></span></span></del>--%>
-<%--                                </div>--%>
-<%--                                <div class="shipping-info">--%>
-<%--                                    <p class="shipping-day" style="color:red;">hết hàng</p>--%>
-<%--                                </div>--%>
-<%--                                <div class="slide-down-box">--%>
-<%--                                    <p class="message">giá trị hồng đào liên quan tới vitamin C sẽ giúp ích cho hệ tiêu hóa của bạn</p>--%>
-<%--                                    <div class="buttons">--%>
-<%--                                        <a href="#" class="btn wishlist-btn"><i class="fa fa-heart" aria-hidden="true"></i></a>--%>
-<%--                                        <a href="#" class="btn add-to-cart-btn"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i>thêm vào giỏ hàng</a>--%>
-<%--                                        <a href="#" class="btn compare-btn"><i class="fa fa-random" aria-hidden="true"></i></a>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                    </li>--%>
-<%--                    <li class="product-item col-lg-3 col-md-3 col-sm-4 col-xs-6">--%>
-<%--                        <div class="contain-product layout-default">--%>
-<%--                            <div class="product-thumb">--%>
-<%--                                <a href="#" class="link-to-product">--%>
-<%--                                    <img src="assets/images/products/p-14.jpg" alt="dd" width="270" height="270" class="product-thumnail">--%>
-<%--                                </a>--%>
-<%--                            </div>--%>
-<%--                            <div class="info">--%>
-<%--                                <b class="categories">trái cây</b>--%>
-<%--                                <h4 class="product-title"><a href="#" class="pr-name">Ngũ cốc dinh dưỡng</a></h4>--%>
-<%--                                <div class="price">--%>
-<%--                                    <ins><span class="price-amount"><span class="currencySymbol"></span>80.000đ</span></ins>--%>
-<%--                                    <del><span class="price-amount"><span class="currencySymbol"></span>240000đ</span></del>--%>
-<%--                                </div>--%>
-<%--                                <div class="shipping-info">--%>
-<%--                                    <p class="shipping-day">còn hàng</p>--%>
-<%--                                </div>--%>
-<%--                                <div class="slide-down-box">--%>
-<%--                                    <p class="message">ngũ cốc giúp bạn bổ sung các chất dinh dưỡng cần thiết cho cơ thể của bạn</p>--%>
-<%--                                    <div class="buttons">--%>
-<%--                                        <a href="#" class="btn wishlist-btn"><i class="fa fa-heart" aria-hidden="true"></i></a>--%>
-<%--                                        <a href="#" class="btn add-to-cart-btn"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i>thêm vào giỏ hàng</a>--%>
-<%--                                        <a href="#" class="btn compare-btn"><i class="fa fa-random" aria-hidden="true"></i></a>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                    </li>--%>
-<%--                    <li class="product-item col-lg-3 col-md-3 col-sm-4 col-xs-6">--%>
-<%--                        <div class="contain-product layout-default">--%>
-<%--                            <div class="product-thumb">--%>
-<%--                                <a href="#" class="link-to-product">--%>
-<%--                                    <img src="assets/images/products/p-11.jpg" alt="dd" width="270" height="270" class="product-thumnail">--%>
-<%--                                </a>--%>
-<%--                            </div>--%>
-<%--                            <div class="info">--%>
-<%--                                <b class="categories"> Trái cây</b>--%>
-<%--                                <h4 class="product-title"><a href="#" class="pr-name">combo bơ+lựu đầy dinh dưỡng</a></h4>--%>
-<%--                                <div class="price">--%>
-<%--                                    <ins><span class="price-amount"><span class="currencySymbol"></span>250.000đ</span></ins>--%>
-<%--                                    <del><span class="price-amount"><span class="currencySymbol"></span>300.000đ</span></del>--%>
-<%--                                </div>--%>
-<%--                                <div class="shipping-info">--%>
-<%--                                    <p class="shipping-day">còn hàng</p>--%>
-<%--                                </div>--%>
-<%--                                <div class="slide-down-box">--%>
-<%--                                    <p class="message">combo giúp bạn thư giãn và bổ sung dinh dưỡng rất tốt cho sức khỏe của bạn</p>--%>
-<%--                                    <div class="buttons">--%>
-<%--                                        <a href="#" class="btn wishlist-btn"><i class="fa fa-heart" aria-hidden="true"></i></a>--%>
-<%--                                        <a href="#" class="btn add-to-cart-btn"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i>thêm vào giỏ hàng.</a>--%>
-<%--                                        <a href="#" class="btn compare-btn"><i class="fa fa-random" aria-hidden="true"></i></a>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                    </li>--%>
-<%--                    <li class="product-item col-lg-3 col-md-3 col-sm-4 col-xs-6">--%>
-<%--                        <div class="contain-product layout-default">--%>
-<%--                            <div class="product-thumb">--%>
-<%--                                <a href="#" class="link-to-product">--%>
-<%--                                    <img src="assets/images/products/p-13.jpg" alt="dd" width="270" height="270" class="product-thumnail">--%>
-<%--                                </a>--%>
-<%--                            </div>--%>
-<%--                            <div class="info">--%>
-<%--                                <b class="categories">Trái cây</b>--%>
-<%--                                <h4 class="product-title"><a href="#" class="pr-name"> hồng đào gói bịch </a></h4>--%>
-<%--                                <div class="price">--%>
-<%--                                    <ins><span class="price-amount"><span class="currencySymbol"></span>15.000đ</span></ins>--%>
-<%--                                    <del><span class="price-amount"><span class="currencySymbol"></span>40.000đ</span></del>--%>
-<%--                                </div>--%>
-<%--                                <div class="shipping-info">--%>
-<%--                                    <p class="shipping-day">còn hàng</p>--%>
-<%--                                </div>--%>
-<%--                                <div class="slide-down-box">--%>
-<%--                                    <p class="message">giá trị hồng đào liên quan tới vitamin C sẽ giúp ích cho hệ tiêu hóa của bạn</p>--%>
-<%--                                    <div class="buttons">--%>
-<%--                                        <a href="#" class="btn wishlist-btn"><i class="fa fa-heart" aria-hidden="true"></i></a>--%>
-<%--                                        <a href="#" class="btn add-to-cart-btn"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i>thêm vào giỏ hàng</a>--%>
-<%--                                        <a href="#" class="btn compare-btn"><i class="fa fa-random" aria-hidden="true"></i></a>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                    </li>--%>
-<%--                    <li class="product-item col-lg-3 col-md-3 col-sm-4 col-xs-6">--%>
-<%--                        <div class="contain-product layout-default">--%>
-<%--                            <div class="product-thumb">--%>
-<%--                                <a href="#" class="link-to-product">--%>
-<%--                                    <img src="assets/images/products/p-21.jpg" alt="dd" width="270" height="270" class="product-thumnail">--%>
-<%--                                </a>--%>
-<%--                            </div>--%>
-<%--                            <div class="info">--%>
-<%--                                <b class="categories">Fresh Fruit</b>--%>
-<%--                                <h4 class="product-title"><a href="#" class="pr-name">Táo tàu khô loại tốt</a></h4>--%>
-<%--                                <div class="price">--%>
-<%--                                    <ins><span class="price-amount"><span class="currencySymbol"></span>250.000đ</span></ins>--%>
-<%--                                    <del><span class="price-amount"><span class="currencySymbol"></span></span></del>--%>
-<%--                                </div>--%>
-<%--                                <div class="shipping-info">--%>
-<%--                                    <p class="shipping-day" style="color:red;">hết hàng</p>--%>
-<%--                                </div>--%>
-<%--                                <div class="slide-down-box">--%>
-<%--                                    <p class="message">giá trị hồng đào liên quan tới vitamin C sẽ giúp ích cho hệ tiêu hóa của bạn</p>--%>
-<%--                                    <div class="buttons">--%>
-<%--                                        <a href="#" class="btn wishlist-btn"><i class="fa fa-heart" aria-hidden="true"></i></a>--%>
-<%--                                        <a href="#" class="btn add-to-cart-btn"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i>thêm vào giỏ hàng</a>--%>
-<%--                                        <a href="#" class="btn compare-btn"><i class="fa fa-random" aria-hidden="true"></i></a>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                    </li>--%>
-<%--                    <li class="product-item col-lg-3 col-md-3 col-sm-4 col-xs-6">--%>
-<%--                        <div class="contain-product layout-default">--%>
-<%--                            <div class="product-thumb">--%>
-<%--                                <a href="#" class="link-to-product">--%>
-<%--                                    <img src="assets/images/products/p-14.jpg" alt="dd" width="270" height="270" class="product-thumnail">--%>
-<%--                                </a>--%>
-<%--                            </div>--%>
-<%--                            <div class="info">--%>
-<%--                                <b class="categories">trái cây</b>--%>
-<%--                                <h4 class="product-title"><a href="#" class="pr-name">Ngũ cốc dinh dưỡng</a></h4>--%>
-<%--                                <div class="price">--%>
-<%--                                    <ins><span class="price-amount"><span class="currencySymbol"></span>80.000đ</span></ins>--%>
-<%--                                    <del><span class="price-amount"><span class="currencySymbol"></span>240000đ</span></del>--%>
-<%--                                </div>--%>
-<%--                                <div class="shipping-info">--%>
-<%--                                    <p class="shipping-day">còn hàng</p>--%>
-<%--                                </div>--%>
-<%--                                <div class="slide-down-box">--%>
-<%--                                    <p class="message">ngũ cốc giúp bạn bổ sung các chất dinh dưỡng cần thiết cho cơ thể của bạn</p>--%>
-<%--                                    <div class="buttons">--%>
-<%--                                        <a href="#" class="btn wishlist-btn"><i class="fa fa-heart" aria-hidden="true"></i></a>--%>
-<%--                                        <a href="#" class="btn add-to-cart-btn"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i>thêm vào giỏ hàng</a>--%>
-<%--                                        <a href="#" class="btn compare-btn"><i class="fa fa-random" aria-hidden="true"></i></a>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                    </li>--%>
-<%--                    <li class="product-item col-lg-3 col-md-3 col-sm-4 col-xs-6">--%>
-<%--                        <div class="contain-product layout-default">--%>
-<%--                            <div class="product-thumb">--%>
-<%--                                <a href="#" class="link-to-product">--%>
-<%--                                    <img src="assets/images/products/p-11.jpg" alt="dd" width="270" height="270" class="product-thumnail">--%>
-<%--                                </a>--%>
-<%--                            </div>--%>
-<%--                            <div class="info">--%>
-<%--                                <b class="categories"> Trái cây</b>--%>
-<%--                                <h4 class="product-title"><a href="#" class="pr-name">combo bơ+lựu đầy dinh dưỡng</a></h4>--%>
-<%--                                <div class="price">--%>
-<%--                                    <ins><span class="price-amount"><span class="currencySymbol"></span>250.000đ</span></ins>--%>
-<%--                                    <del><span class="price-amount"><span class="currencySymbol"></span>300.000đ</span></del>--%>
-<%--                                </div>--%>
-<%--                                <div class="shipping-info">--%>
-<%--                                    <p class="shipping-day">còn hàng</p>--%>
-<%--                                </div>--%>
-<%--                                <div class="slide-down-box">--%>
-<%--                                    <p class="message">combo giúp bạn thư giãn và bổ sung dinh dưỡng rất tốt cho sức khỏe của bạn</p>--%>
-<%--                                    <div class="buttons">--%>
-<%--                                        <a href="#" class="btn wishlist-btn"><i class="fa fa-heart" aria-hidden="true"></i></a>--%>
-<%--                                        <a href="#" class="btn add-to-cart-btn"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i>thêm vào giỏ hàng.</a>--%>
-<%--                                        <a href="#" class="btn compare-btn"><i class="fa fa-random" aria-hidden="true"></i></a>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                    </li>--%>
-<%--                    <li class="product-item col-lg-3 col-md-3 col-sm-4 col-xs-6">--%>
-<%--                        <div class="contain-product layout-default">--%>
-<%--                            <div class="product-thumb">--%>
-<%--                                <a href="#" class="link-to-product">--%>
-<%--                                    <img src="assets/images/products/p-13.jpg" alt="dd" width="270" height="270" class="product-thumnail">--%>
-<%--                                </a>--%>
-<%--                            </div>--%>
-<%--                            <div class="info">--%>
-<%--                                <b class="categories">Trái cây</b>--%>
-<%--                                <h4 class="product-title"><a href="#" class="pr-name"> hồng đào gói bịch </a></h4>--%>
-<%--                                <div class="price">--%>
-<%--                                    <ins><span class="price-amount"><span class="currencySymbol"></span>15.000đ</span></ins>--%>
-<%--                                    <del><span class="price-amount"><span class="currencySymbol"></span>40.000đ</span></del>--%>
-<%--                                </div>--%>
-<%--                                <div class="shipping-info">--%>
-<%--                                    <p class="shipping-day">còn hàng</p>--%>
-<%--                                </div>--%>
-<%--                                <div class="slide-down-box">--%>
-<%--                                    <p class="message">giá trị hồng đào liên quan tới vitamin C sẽ giúp ích cho hệ tiêu hóa của bạn</p>--%>
-<%--                                    <div class="buttons">--%>
-<%--                                        <a href="#" class="btn wishlist-btn"><i class="fa fa-heart" aria-hidden="true"></i></a>--%>
-<%--                                        <a href="#" class="btn add-to-cart-btn"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i>thêm vào giỏ hàng</a>--%>
-<%--                                        <a href="#" class="btn compare-btn"><i class="fa fa-random" aria-hidden="true"></i></a>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                    </li>--%>
-<%--                    <li class="product-item col-lg-3 col-md-3 col-sm-4 col-xs-6">--%>
-<%--                        <div class="contain-product layout-default">--%>
-<%--                            <div class="product-thumb">--%>
-<%--                                <a href="#" class="link-to-product">--%>
-<%--                                    <img src="assets/images/products/p-21.jpg" alt="dd" width="270" height="270" class="product-thumnail">--%>
-<%--                                </a>--%>
-<%--                            </div>--%>
-<%--                            <div class="info">--%>
-<%--                                <b class="categories">Fresh Fruit</b>--%>
-<%--                                <h4 class="product-title"><a href="#" class="pr-name">Táo tàu khô loại tốt</a></h4>--%>
-<%--                                <div class="price">--%>
-<%--                                    <ins><span class="price-amount"><span class="currencySymbol"></span>250.000đ</span></ins>--%>
-<%--                                    <del><span class="price-amount"><span class="currencySymbol"></span></span></del>--%>
-<%--                                </div>--%>
-<%--                                <div class="shipping-info">--%>
-<%--                                    <p class="shipping-day" style="color:red;">hết hàng</p>--%>
-<%--                                </div>--%>
-<%--                                <div class="slide-down-box">--%>
-<%--                                    <p class="message">giá trị hồng đào liên quan tới vitamin C sẽ giúp ích cho hệ tiêu hóa của bạn</p>--%>
-<%--                                    <div class="buttons">--%>
-<%--                                        <a href="#" class="btn wishlist-btn"><i class="fa fa-heart" aria-hidden="true"></i></a>--%>
-<%--                                        <a href="#" class="btn add-to-cart-btn"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i>thêm vào giỏ hàng</a>--%>
-<%--                                        <a href="#" class="btn compare-btn"><i class="fa fa-random" aria-hidden="true"></i></a>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                    </li>--%>
-<%--                    <li class="product-item col-lg-3 col-md-3 col-sm-4 col-xs-6">--%>
-<%--                        <div class="contain-product layout-default">--%>
-<%--                            <div class="product-thumb">--%>
-<%--                                <a href="#" class="link-to-product">--%>
-<%--                                    <img src="assets/images/products/p-14.jpg" alt="dd" width="270" height="270" class="product-thumnail">--%>
-<%--                                </a>--%>
-<%--                            </div>--%>
-<%--                            <div class="info">--%>
-<%--                                <b class="categories">trái cây</b>--%>
-<%--                                <h4 class="product-title"><a href="#" class="pr-name">Ngũ cốc dinh dưỡng</a></h4>--%>
-<%--                                <div class="price">--%>
-<%--                                    <ins><span class="price-amount"><span class="currencySymbol"></span>80.000đ</span></ins>--%>
-<%--                                    <del><span class="price-amount"><span class="currencySymbol"></span>240000đ</span></del>--%>
-<%--                                </div>--%>
-<%--                                <div class="shipping-info">--%>
-<%--                                    <p class="shipping-day">còn hàng</p>--%>
-<%--                                </div>--%>
-<%--                                <div class="slide-down-box">--%>
-<%--                                    <p class="message">ngũ cốc giúp bạn bổ sung các chất dinh dưỡng cần thiết cho cơ thể của bạn</p>--%>
-<%--                                    <div class="buttons">--%>
-<%--                                        <a href="#" class="btn wishlist-btn"><i class="fa fa-heart" aria-hidden="true"></i></a>--%>
-<%--                                        <a href="#" class="btn add-to-cart-btn"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i>thêm vào giỏ hàng</a>--%>
-<%--                                        <a href="#" class="btn compare-btn"><i class="fa fa-random" aria-hidden="true"></i></a>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                    </li>--%>
                 </ul>
             </div>
         </div>
@@ -937,10 +467,8 @@
         xhttp.onload = function() {
             let realData = "";
             let mydata = JSON.parse(this.responseText);
-            console.log(mydata);
             let totalmoney = 0.0;
             for(let i =0;i<mydata.length;i++){
-                // console.log("");
                 let line = "ChiTietSanPham?id_product="+mydata[i].product.id_product;
                 realData += "<li>";
                 realData += "                                                    <div class=\"minicart-item\">";
@@ -984,7 +512,6 @@
             try {
                 let va = JSON.parse(this.responseText);
                 let searchResult = "";
-                console.log(va);
                 if (this.readyState==4 && this.status==200) {
                     for(let i =0;i<va.length;i++) {
                         // searchResult += "<option type='submit'  value=\"\">";
@@ -992,7 +519,6 @@
 
                         // document.getElementById("livesearch").style.border="1px solid #A5ACB2";
                     }
-                    console.log(searchResult)
                     document.getElementById("livesearch").innerHTML = searchResult;
 
                 }
@@ -1024,16 +550,10 @@
         $(".btn-rating").click(function(event) {
             myDocument = this.id;
             document.getElementById("num-star").value = myDocument;
-            console.log((myDocument));
-            run()
         });
     });
 </script>
-<script>
-    function run(){
-        console.log((myDocument));
-    }
-</script>
+
 </body>
 
 </html>
