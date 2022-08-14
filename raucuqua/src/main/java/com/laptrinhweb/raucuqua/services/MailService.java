@@ -119,6 +119,9 @@ public static boolean sendMail(String to, String subject, String content,boolean
     public static void main(String[] args) {
         String email = "huudao805@gmail.com";
         String content = "xin chao user 123, day la duong link de lay lai mat khau";
-        MailService.sendMail(email,"xác nhận lấy mật khẩu từ trang raucuqua jdk 7",content);
+        File path = new File("C:\\Users\\huuda\\.jdks\\corretto-11.0.15\\bin\\bill\\BI0014.pdf");
+        System.out.println(path.getAbsolutePath());
+//        MailService.sendMail(email,"xác nhận lấy mật khẩu từ trang raucuqua jdk 7",content);
+        MailService.sendMail(email,"xác nhận lấy mật khẩu từ trang raucuqua jdk 7",content,true,path.getAbsolutePath());
     }
 }

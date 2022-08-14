@@ -25,6 +25,7 @@ public class CKFinderUpdateImage extends HttpServlet {
         }
         Util.updateImgUrl(ua.getId_user(),url);
         ua.setImg_url(url);
+        request.getSession().setAttribute("auth",ua);
         response.sendRedirect("thongTinTaiKhoan.jsp");
     }
 

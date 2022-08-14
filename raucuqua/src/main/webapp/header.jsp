@@ -7,6 +7,38 @@
     }
 %>
 
+<style>
+    form.form-search {
+        position: relative;
+    }
+    ul#livesearch {
+        position: absolute;
+        z-index: 100;
+        background: white;
+        top: 113%;
+        left: 0;
+        width: 100%;
+        box-shadow: rgba(0 ,0 ,0 , 0.35) 0px 5px 15px;
+        border-radius: 5px;
+        padding: 0;
+    }
+    ul#livesearch li {
+        list-style: none;
+    }
+
+    ul#livesearch li a {
+        display: inline-block;
+        color: black;
+        width: 100%;
+        padding: 10px 15px;
+    }
+
+    ul#livesearch li a:hover {
+        background-color: rgba(0,0,0,0.05);
+    }
+
+</style>
+
 <header id="header" class="header-area style-01 layout-03">
     <div class="header-top bg-main hidden-xs">
         <div class="container">

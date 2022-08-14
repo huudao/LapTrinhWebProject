@@ -100,7 +100,7 @@
                 <div class="block-right">
                     <h1 class="title-head">Đổi mật khẩu</h1>
                     <div class="page-login">
-                        <form action="../ChangePasswordController"  id="change_customer_password" method="post" onsubmit ="return verifyPassword()">
+                        <form action="ChangePasswordController"  id="change_customer_password" method="post" onsubmit ="return verifyPassword()">
                             <p>
                                 Để đảm bảo tính bảo mật vui lòng đặt mật khẩu với ít nhất 8 kí tự
                             </p>
@@ -117,9 +117,16 @@
                                     <label for="confirmPass">Xác nhận lại mật khẩu <span class="error">*</span></label>
                                     <input type="password" name="ConfirmPassword" id="confirmPass" required class="changePass-input">
                                 </fieldset>
-                                <p id="notice">some notice here</p>
+
 <%--                                onclick="my_function()"--%>
                                 <button type="submit" class="changePass-btn" id = "setButton"  >Đặt lại mật khẩu</button>
+                                <p id="notice" style="color: red">
+                                    <%
+                                        String resNotify = (String) request.getAttribute("resNotify");
+                                        if(resNotify != null && !resNotify.equals("")) {%>
+                                        ${resNotify}
+                                    <%}%>
+                                </p>
 
                                 <script>
                                     function verifyPassword(){
@@ -160,6 +167,9 @@
 <script src="../assets/js/slick.min.js"></script>
 <script src="../assets/js/biolife.framework.js"></script>
 <script src="../assets/js/functions.js"></script>
+<script>
+
+</script>
 <script>
     $("#setButton").click(function(){
         var c = document.getElementById("changePass").value;
