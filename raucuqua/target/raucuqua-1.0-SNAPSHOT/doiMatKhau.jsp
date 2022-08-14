@@ -62,26 +62,6 @@
         <div class="container account-contain">
             <div class="block-all">
                 <div class="block-left">
-<%--                    <div class="block-account">--%>
-<%--                        <h5 class="title-head">Trang tài khoản</h5>--%>
-<%--                        <ul>--%>
-<%--                            <li>--%>
-<%--                                <a class="title-info" href="./thongTinTaiKhoan.jsp">Thông tin tài khoản</a>--%>
-<%--                            </li>--%>
-<%--                            <li>--%>
-<%--                                <a class="title-info" href="ListBill">Đơn hàng của bạn</a>--%>
-<%--                            </li>--%>
-<%--                            <li>--%>
-<%--                                <a disabled="disabled" style="color: red; font-weight: 600;">Đổi mật khẩu</a>--%>
-<%--                            </li>--%>
-<%--                            <li>--%>
-<%--                                <a class="title-info" href="ShowDiaChi">Sổ địa chỉ (0)</a>--%>
-<%--                            </li>--%>
-<%--<!--                            <li>-->--%>
-<%--<!--                                <a class="title-info" href="./sanPhamYeuThich.jsp">Các sản phẩm yêu thích</a>-->--%>
-<%--<!--                            </li>-->--%>
-<%--                        </ul>--%>
-<%--                    </div>--%>
                 </div>
                 <div class="block-right">
                     <h1 class="title-head">Đổi mật khẩu</h1>
@@ -129,10 +109,6 @@
     var formatter = new Intl.NumberFormat('vi-VN', {
         style: 'currency',
         currency: 'VND',
-
-        // These options are needed to round to whole numbers if that's what you want.
-        //minimumFractionDigits: 0, // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)
-        //maximumFractionDigits: 0, // (causes 2500.99 to be printed as $2,501)
     });
     function executeData(){
 
@@ -187,52 +163,6 @@
 <script src="assets/js/slick.min.js"></script>
 <script src="assets/js/biolife.framework.js"></script>
 <script src="assets/js/functions.js"></script>
-<script>
-    <%--$("#setButton").click(function(){--%>
-    <%--    var c = document.getElementById("changePass").value;--%>
-    <%--    $.post("<%=request.getContextPath()%>"+"/ChangePassword",--%>
-    <%--        {--%>
-    <%--            password: c,--%>
-    <%--            my:"java"--%>
-    <%--        },--%>
-    <%--        function(data, status){--%>
-    <%--            alert("Data: " + data + "\nStatus: " + status);--%>
-    <%--        });--%>
-    <%--});--%>
-    <%--function changePassx(pass){--%>
-    <%--    const xhttp = new XMLHttpRequest();--%>
-    <%--    xhttp.onload = function() {--%>
-    <%--        let rawResult = xhttp.response;--%>
-    <%--        let result = rawResult.substring(0,rawResult.length-2);--%>
-    <%--        if(result === 'true'){--%>
-    <%--            document.getElementById("notice").innerHTML = "đổi mật khẩu thành công";--%>
-    <%--        }else{--%>
-    <%--            document.getElementById("notice").innerHTML = "đổi mật khẩu thất bại";--%>
-    <%--        }--%>
-    <%--    }--%>
-    <%--    // "password="+pass--%>
-    <%--    &lt;%&ndash;xhttp.open("GET", "<%=request.getContextPath()%>"+"/ChangePassword?password="+pass);&ndash;%&gt;--%>
-    <%--    &lt;%&ndash;xhttp.open("POST", "<%=request.getContextPath()%>"+"/ChangePassword);&ndash;%&gt;--%>
-
-    <%--    // let data = {password:pass};--%>
-    <%--    // console.log(data);--%>
-    <%--    // xhttp.send(JSON.stringify(data));--%>
-    <%--    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");--%>
-    <%--    xhttp.send("password="+pass);--%>
-    <%--}--%>
-    <%--function my_function(){--%>
-    <%--    var confirmPass = document.getElementById("confirmPass").value;--%>
-    <%--    if(changePass.length<0){--%>
-    <%--        document.getElementById("notice").innerHTML = "mật khẩu phải ít nhất 8 kí tự";--%>
-    <%--        return;--%>
-    <%--    }--%>
-    <%--    if(changePass===confirmPass) {--%>
-    <%--        changePassx(changePass);--%>
-    <%--    }else{--%>
-    <%--        document.getElementById("notice").innerHTML = "đổi mật khẩu thất bại";--%>
-    <%--    }--%>
-    <%--}--%>
-</script>
 </body>
 
 </html>

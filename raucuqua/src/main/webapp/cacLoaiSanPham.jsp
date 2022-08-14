@@ -145,16 +145,6 @@
         <h1 class="page-title">Các loại sản phẩm loại <%=type%></h1>
     </div>
 
-    <!--Navigation section-->
-<!--    <div class="container">-->
-<!--        <nav class="biolife-nav">-->
-<!--            <ul>-->
-<!--                <li class="nav-item"><a href="index-2.jsp" class="permal-link">Trang chủ</a></li>-->
-<!--                <li class="nav-item"><a href="#" class="permal-link">danh sách sản phẩm</a></li>-->
-<!--                <li class="nav-item"><span class="current-page">Trái cây</span></li>-->
-<!--            </ul>-->
-<!--        </nav>-->
-<!--    </div>-->
     <div>
         <br>
     </div>
@@ -445,10 +435,6 @@
                 xhttp.open("GET", "AddCart?id_user=<%=id%>&id_product="+id_product+"&amount="+amount);
                 xhttp.send();
             }
-            // function runme(){
-            //     alert("run me finish");
-            // }
-            // alert("run this method");
         </script>
 </body>
 

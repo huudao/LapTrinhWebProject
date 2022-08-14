@@ -186,18 +186,6 @@
 
                         </ul>
                     </div>
-
-<%--                    <div class="biolife-panigations-block">--%>
-<%--                        <ul class="panigation-contain">--%>
-<%--                            <li><span class="current-page">1</span></li>--%>
-<%--                            <li><a href="#" class="link-page">2</a></li>--%>
-<%--                            <li><a href="#" class="link-page">3</a></li>--%>
-<%--                            <li><span class="sep">....</span></li>--%>
-<%--                            <li><a href="#" class="link-page">20</a></li>--%>
-<%--                            <li><a href="#" class="link-page next"><i class="fa fa-angle-right" aria-hidden="true"></i></a></li>--%>
-<%--                        </ul>--%>
-<%--                    </div>--%>
-
                 </div>
 
             </div>
@@ -283,7 +271,6 @@
             var x = $(window).height();
             let bound = $(document).height() * 0.95;
             if (loadInterval==null && scroll + x > bound) {
-                // flag = false;
                 let next_num = number + 10;
                 lazyNextLoad(seed, number, next_num);
                 number = next_num;
@@ -292,7 +279,6 @@
                         //Nullified interval after 5 seconds
                         loadInterval = null;}
                     , 1000);
-                // flag = true;
         }
     });
     function lazyNextLoad(seed,origin,next){
@@ -306,10 +292,8 @@
                     let v = mydata[i].price * ((100 - mydata[i].percent_discount) / 100.0);
                     let is = false;
                     if (mydata[i].amount_bought >= mydata[i].amount_imported) {
-                        //out of item
                         is = false;
                     } else {
-                        //available
                         is = true;
                     }
                     productsJs[productsJs.length] = new Product(mydata[i].id_product, mydata[i].product_name, mydata[i].product_type, v, mydata[i].percent_discount, mydata[i].price, mydata[i].short_description, mydata[i].img_url, mydata[i].numstar, mydata[i].numberComment, is);
@@ -336,7 +320,7 @@
                 arr.sort(priceArrangeDecrease);
             }
         }
-        //classify
+
         var classify = document.getElementById('option_classification').value;
 
         if((classify==="normal")==false){
@@ -349,7 +333,6 @@
             if (classify === "raucu") {
                 value = "trái cây"
             }
-            //remove different element type
             for (let i=0;i<arr.length;i++){
                 if(arr[i].type===value) {
                     arr.splice(i,1);
@@ -374,7 +357,6 @@ if(session.getAttribute("auth")!=null) {
             id = ua.getId_user();
         }%>
     function addCart(id_product,amount,name_product){
-        // alert(id_product+", "+amount+", "+name_product);
         const xhttp = new XMLHttpRequest();
         xhttp.onload = function() {
             let rawResult = xhttp.response;
@@ -388,10 +370,6 @@ if(session.getAttribute("auth")!=null) {
         xhttp.open("GET", "AddCart?id_user=<%=id%>&id_product="+id_product+"&amount="+amount);
         xhttp.send();
     }
-    // function runme(){
-    //     alert("run me finish");
-    // }
-    // alert("run this method");
 </script>
 </body>
 
