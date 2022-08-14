@@ -67,40 +67,6 @@
     </div>
     <div class="main-frame">
         <h2 id="title-page">Quản lý tài khoản</h2>
-        <%--            <div class="table-frame">--%>
-        <%--                <ul class="responsive-table">--%>
-        <%--                    <li class="table-header">--%>
-        <%--                        <div class="col col-1">User ID</div>--%>
-        <%--                        <div class="col col-2">User name</div>--%>
-        <%--                        <div class="col col-3">Email</div>--%>
-        <%--                        <div class="col col-4">Password</div>--%>
-        <%--                    </li>--%>
-        <%--                    <li class="table-row">--%>
-        <%--                        <div class="col col-1">1</div>--%>
-        <%--                        <div class="col col-2">huudao</div>--%>
-        <%--                        <div class="col col-3">abc</div>--%>
-        <%--                        <div class="col col-4">jfsdkljflsdjfsldfjk</div>--%>
-        <%--                    </li>--%>
-        <%--                    <li class="table-row">--%>
-        <%--                        <div class="col col-1">1</div>--%>
-        <%--                        <div class="col col-2">huudao</div>--%>
-        <%--                        <div class="col col-3">abc</div>--%>
-        <%--                        <div class="col col-4">jfsdkfsdkljflsdjfsldfjkfsdkljflsdjfsldfjkfsdkljflsdjfsldfjkfsdkljflsdjfsldfjkljflsdjfsldfjk</div>--%>
-        <%--                    </li>--%>
-        <%--                    <li class="table-row">--%>
-        <%--                        <div class="col col-1">1</div>--%>
-        <%--                        <div class="col col-2">huudao</div>--%>
-        <%--                        <div class="col col-3">abc</div>--%>
-        <%--                        <div class="col col-4">jfsdkljflsdjfsldfjk</div>--%>
-        <%--                    </li>--%>
-        <%--                    <li class="table-row">--%>
-        <%--                        <div class="col col-1">1</div>--%>
-        <%--                        <div class="col col-2">huudao</div>--%>
-        <%--                        <div class="col col-3">abc</div>--%>
-        <%--                        <div class="col col-4">jfsdkljflsdjfsldfjk</div>--%>
-        <%--                    </li>--%>
-        <%--                </ul>--%>
-        <%--            </div>--%>
         <div id="total-income"></div>
         <div id="div-datatable">
 
@@ -187,13 +153,6 @@
         $("#pop-up").css("display", "none");
     }
 
-    // function makeChangeButton() {
-    //     var siblings = ($(this).siblings());
-    //     siblings.each(function (sibling) {
-    //         $(sibling).removeClass('active');
-    //     })
-    //     $(this).addClass('active');
-    // }
 
     function loadDataAccount() {
         title.innerHTML = "Quản lý tài khoản";

@@ -361,19 +361,7 @@
                                     <div class="post-meta">
                                         <%--                                        <a href="#" class="post-meta__item author"><img src="" width="28" height="28" alt=""><span><%=ua.getUser_name()%></span></a>--%>
                                         <a  class="post-meta__item btn liked-count" href=<%=link_p%>><%=blog.getNumberComment()%><span class="biolife-icon icon-comment"></span></a>
-                                        <%--                                        <a href="#" class="post-meta__item btn comment-count">6<span class="biolife-icon icon-like"></span></a>--%>
-                                        <%--                                        <div class="post-meta__item post-meta__item-social-box">--%>
-                                        <%--                                            <span class="tbn"><i class="fa fa-share-alt" aria-hidden="true"></i></span>--%>
-                                        <%--                                            <div class="inner-content">--%>
-                                        <%--                                                <ul class="socials">--%>
-                                        <%--                                                    <li><a href="#" title="twitter" class="socail-btn"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>--%>
-                                        <%--                                                    <li><a href="#" title="facebook" class="socail-btn"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>--%>
-                                        <%--                                                    <li><a href="#" title="pinterest" class="socail-btn"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>--%>
-                                        <%--                                                    <li><a href="#" title="youtube" class="socail-btn"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>--%>
-                                        <%--                                                    <li><a href="#" title="instagram" class="socail-btn"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>--%>
-                                        <%--                                                </ul>--%>
-                                        <%--                                            </div>--%>
-                                        <%--                                        </div>--%>
+
                                     </div>
                                     <p class="excerpt"><%=blog.getShort_discription()%></p>
                                     <div class="group-buttons">
